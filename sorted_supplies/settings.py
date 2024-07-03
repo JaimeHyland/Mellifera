@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)*(%eoty_f#9pl!^0%v1f07q!3$3!f)16&1(1-wl=y-o*8qj7$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
 SITE_ID = 1
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
