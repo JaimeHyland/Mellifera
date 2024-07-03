@@ -42,39 +42,37 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top"></header>
-
-    {% if messages %}
-    <div class="message-container">
+    <header class="container-fluid fixed-top">
         <div class="row">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h1 cl="logo-font text-black my-0">Sorted Supplies</h1>
+                    <h2 class="logo-font text-black my-0"><strong>Sorted</strong> Supplies</h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
-            <form action="" method="get">
-                <div class="input-group w=100">
-                    <input type="text" class="form-control border border-black rounded-0" name="q"
-                        placeholder="Search for the product you want">
-                    <div class="input-group-append">
-                        <button class="form-controlbtn btn-black border border-black rounded-0" type="submit">
-                            <span class="icon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <form action="" method="get">
+                    <div class="input-group w=100">
+                        <input type="text" class="form-control border border-black rounded-0" name="q"
+                            placeholder="Search for the product you want">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item dropdown"></li>
-                    <a href="" class="text-black nav-link">
-                        <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <p class="my-0">My Account</p>
-                        </div>
+                    <li class="list-inline-item dropdown">
+                        <a href="" class="text-black nav-link">
+                            <div class="text-center">
+                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <p class="my-0">My Account</p>
+                            </div>
+                        </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
@@ -87,25 +85,27 @@
                                 <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
-                    </a>
-                    <li class="list-inline-item"></li>
-                    <a href="" class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
-                        <div class="text-center">
-                            <div><i class="fasfa.shopping-bag fa-lg"></i></div>
-                            <p class="my-0">
-                                {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
-                                {% else %}
-                                    $0.00
-                                {% endif %}
-                            </p>
-                        </div>
-                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""
+                            class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
+                            <div class="text-center">
+                                <div><i class="fasfa.shopping-bag fa-lg"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                        ${{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        $0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
-    {% endif %}
+    </header>
+
 
     {% block page_header %}
     {% endblock %}
