@@ -27,8 +27,8 @@ card.addEventListener('change', function (event) {
                 <i class="fas fa-times"></i>
             </span>
             <span>${event.error.message}</span>
-            `
-        $(errorDiv).html(html)
+            `;
+        $(errorDiv).html(html);
     } else {
         errorDiv.textContent = '';
     }
@@ -40,6 +40,9 @@ form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    console.log('Debug: overlay loaded!');
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
@@ -53,6 +56,8 @@ form.addEventListener('submit', function(ev) {
                 </span>
                 <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+            $('#payment-form').fadeToggle(100);
+            $('#loading-overlay').fadeToggle(100);
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
         } else {
@@ -62,4 +67,3 @@ form.addEventListener('submit', function(ev) {
         }
     });
 });
-
