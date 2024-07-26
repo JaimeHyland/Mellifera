@@ -1,54 +1,76 @@
+import uuid
+
+from django.db import models
+from django.db.models import Sum
 from django.conf import settings
-from django.http import HttpResponse
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 
-from checkout.webhook_handler import StripeWH_Handler
+from products.models import Product
 
-import stripe
 
-@require_POST
-@csrf_exempt
-def webhook(request):
-    """Listen for webhooks from Stripe"""
-    # Setup
-    wh_secret = settings.STRIPE_WH_SECRET
-    stripe.api_key = settings.STRIPE_SECRET_KEY
+class Order(models.Model):
+    order_number = models.CharField(max_length=32, null=False, editable=False)
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    country = models.CharField(max_length=40, null=False, blank=False)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
+    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    street_address1 = models.CharField(max_length=80, null=False, blank=False)
+    street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    county = models.CharField(max_length=80, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
+    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
-    # Get the webhook data and verify its signature
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
+    def _generate_order_number(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
 
-    try:
-        event = stripe.Webhook.construct_event(
-        payload, sig_header, wh_secret
-        )
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
-        return HttpResponse(status=400)
-    except Exception as e:
-        return HttpResponse(content=e, status=400)
+    def update_total(self):
+        """
+        Update grand total each time a line item is added,
+        accounting for delivery costs.
+        """
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
+            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        else:
+            self.delivery_cost = 0
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
 
-    # Set up a webhook handler
-    handler = StripeWH_Handler(request)
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the order number
+        if it hasn't been set already.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
 
-    # Map webhook events to relevant handler functions
-    event_map = {
-        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
-        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
-    }
+    def __str__(self):
+        return self.order_number
 
-    # Get the webhook type from Stripe
-    event_type = event['type']
 
-    # If there's a handler for it, get it from the event map
-    # Use the generic one by default
-    event_handler = event_map.get(event_type, handler.handle_event)
+class OrderLineItem(models.Model):
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    product_size = models.CharField(max_length=2, null=True, blank=True) # XS, S, M, L, XL
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
-    # Call the event handler with the event
-    response = event_handler(event)
-    return response
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the lineitem total
+        and update the order total.
+        """
+        self.lineitem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'SKU {self.product.sku} on order {self.order.order_number}'
