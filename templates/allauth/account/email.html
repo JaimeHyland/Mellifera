@@ -4,8 +4,10 @@
 
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
-{% block content %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+{% block inner_content %}
+    <hr>
+    <h2 class="logo-font mb-4">{% trans "E-mail addresses" %}</h2>
+    <hr>
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
@@ -31,8 +33,8 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make primary' %}</button>
+      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send verification' %}</button>
       <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
 </div>
 
@@ -50,7 +52,7 @@
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        <button name="action_add" type="submit">{% trans "Add e-mail" %}</button>
     </form>
 
 {% endblock %}
