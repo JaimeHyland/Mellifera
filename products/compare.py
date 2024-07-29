@@ -9,6 +9,7 @@ from .forms import ProductForm
 # Create your views here.
 
 def all_products(request):
+    """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
     query = None
@@ -29,7 +30,6 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-
             products = products.order_by(sortkey)
 
         if 'category' in request.GET:
@@ -40,9 +40,9 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You haven't created any search criteria for your search!")
+                messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-
+            
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
@@ -59,6 +59,7 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
+    """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -70,13 +71,11 @@ def product_detail(request, product_id):
 
 
 def add_product(request):
+    """ Add a product to the store """
     form = ProductForm()
     template = 'products/add_product.html'
     context = {
         'form': form,
     }
-    
-    print(f'Debug: request = {request}')
-    print(f'Debug: template = {template}')
-    print(f'Debug: context = {context}')
+
     return render(request, template, context)
