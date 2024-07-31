@@ -194,3 +194,5 @@ DEFAULT_FROM_EMAIL = 'sales@sorted_supplies.com'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+print('DEBUG:', DEBUG)

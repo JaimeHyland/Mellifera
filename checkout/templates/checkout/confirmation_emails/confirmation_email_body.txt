@@ -1,4 +1,4 @@
-Hello {{ order,full_name }},
+Hello {{ order.full_name }},
 
 Thanks very much for your order!
 

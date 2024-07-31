@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -15,7 +16,6 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
-    print('Debug: Started cache_checkout_data()')
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -32,7 +32,6 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
-    print('Debug: Started checkout()')
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -138,7 +137,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    print('Debug: Started checkout_success()')
+    
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -161,9 +160,13 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f"Your order has been successfully processed! \
-        Your order number is {order_number}. We'll be sending you \
-        a confirmation email to {order.email}.")
+    messages.success(request, mark_safe(
+        f"Your order has been successfully processed!<br><br>"
+        f"Your order number is:<br>"
+        f"{order_number}<br><br>"
+        f"We'll be sending you a confirmation email to:<br>"
+        f"{order.email}."
+    ))
 
     if 'bag' in request.session:
         del request.session['bag']
