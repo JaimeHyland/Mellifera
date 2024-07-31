@@ -29,7 +29,6 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-
             products = products.order_by(sortkey)
 
         if 'category' in request.GET:
@@ -75,7 +74,7 @@ def add_product(request):
         if form.is_valid():
             product = form.save()
             messages.success(request, 'You have successfully added a new product to the range.')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Could not add new product. Please make sure your form entries are valid.')
     else:
@@ -85,13 +84,13 @@ def add_product(request):
     context = {
         'form': form,
     }
-    
+
     return render(request, template, context)
 
 
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    if request.method =='POST':
+    if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
@@ -108,5 +107,12 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-    
+
     return render(request, template, context)
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    del_product_name = product.name
+    product.delete()
+    messages.info(request, f'You have successfully deleted the {del_product_name} product')
+    return redirect(reverse('products'))
