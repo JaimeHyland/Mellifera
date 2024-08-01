@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 import sys
 from pathlib import Path
 
@@ -29,9 +30,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-)*(%eoty_f#9pl!^0%v1f07q!3$3!f)16&1(1-wl=y-o*8qj7$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['sorted-supplies.herokuapp.com', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -131,12 +132,18 @@ WSGI_APPLICATION = 'sorted_supplies.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+if DATABASE_URL in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation
