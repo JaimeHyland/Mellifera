@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['sorted-supplies.herokuapp.com', 'localhost', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
