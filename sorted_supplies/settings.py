@@ -15,6 +15,8 @@ import dj_database_url
 import sys
 from pathlib import Path
 
+
+print(f"Debug: os.path.isfile('env.py')={os.path.isfile('env.py')}")
 if os.path.isfile('env.py'):
     import env
 
@@ -31,6 +33,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
+print(f'Debug: DEBUG={DEBUG}')
+
 
 ALLOWED_HOSTS = ['sorted-supplies.herokuapp.com', 'localhost', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
@@ -188,7 +192,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if 'USE_AWS' in os.environ:
+if os.getenv('USE_AWS'):
+    print(f'Debug: USE_AWS={os.getenv('USE_AWS')}')
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
     # Bucket configuration
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
