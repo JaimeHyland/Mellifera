@@ -50,10 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    # 'allauth.socialaccount',
+    'allauth.socialaccount',
 
     # internal project apps
     'home',
@@ -233,7 +233,6 @@ else:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Default primary key field type
