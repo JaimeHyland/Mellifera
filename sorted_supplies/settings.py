@@ -32,8 +32,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEVELOPMENT')
-
+# DEBUG = os.environ.get('DEVELOPMENT')
+DEBUG = True
 
 ALLOWED_HOSTS = ['sorted-supplies-9c99263e57a0.herokuapp.com','sorted-supplies.herokuapp.com', 'localhost', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
