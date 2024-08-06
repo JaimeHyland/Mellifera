@@ -76,11 +76,15 @@ The usual options allowing the user to register, log in and log out are also ava
 
 While Elise is conscious of the benefits of using a mobile-first design philosophy, she decided to base her wireframe on small laptop or tablet screen (with a resolution of 1024 x 786 pixels), knowing as she does from experience that most beekeepers would use their household laptop or tablet to make their online beekeeping purchases. However, she also makes a couple of sketches for a standard mobile app.
 
-![Elisa's initial wireframe for her project homepage](/assets/documentation/readme_assets/Mellifera_wireframe_home.png)
+![Elise's initial wireframe for her project homepage](/assets/documentation/readme_assets/Mellifera_wireframe_home.png)
 
-*Elisa's initial wireframe for her project homepage*
+*Elise's initial wireframe for her project homepage*
 
-The wireframe she made is largely for her reference, as well as to show her friends in the local beekeeping society
+It had struck Elise since taking up beekeeping how her fellow beekeepers introduced themselves in beekeeping circles by mentioning the beekeeping system they used straight after giving their name.  Elise has in fact developed the habit herself: she now almost automatically starts every talk she gives to beekeepers with the words "My name's Elise Knolle and I work using Langstroth". Other users of the Langstroth measurements then know immediately that their systems work well with hers, making it easier for them to help each other with spare beehive resources when someone is short of some resource or other, or wants to expand. Indeed the expression "working out of System X" is almost a declaration of identity in beekeeping circles, and thus it quickly occurred to her that the keywords (Langstroth, Dadant, Zander and DNM -- _Deutsche Normalmaß-Beute_) were likely very useful keywords for marketing.
+
+The wireframe she made is largely for her reference, as well as to show her friends in the local beekeeping society so they can give a little feedback.
+
+They liked the four standard-sized hive buttons (Langstroth, Dadant, Zander and DNM -- Deutsche Normalmaß-System)
 
 - - -
 

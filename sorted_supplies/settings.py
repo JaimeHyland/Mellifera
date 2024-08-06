@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEVELOPMENT')
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = ['sorted-supplies-9c99263e57a0.herokuapp.com','sorted-supplies.herokuapp.com', 'localhost', '8000-jaimehyland-sortedsuppl-f0z39qwc8bf.ws-eu114.gitpod.io', '8000-jaimehyland-sortedsuppl-rlcqg15tfet.ws.codeinstitute-ide.net']
 
@@ -233,8 +233,6 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-    if DEBUG:
-        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
