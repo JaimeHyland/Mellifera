@@ -9,22 +9,22 @@ Build a Full-Stack e-commerce website that facilitates the online sale of and pa
 
 I believe that completing such a project would satisfy the requirements listed for the fifth porfolio project in Code Institute's LMS, i.e. to show  an appropriate level of understanding on my part of a number of different concepts, technologies and disciplines related to Full-Stack programming in the e-commerce sector:
 
--- Django development on a cloud-based IDE (using Django-3.x on a VS Studio IDE hosted on Gitpod).
--- The creation and maintenance of database models, implemented using Django, running on Postgresql.
--- Use of agile methodologies via the project features available in GitHub, associated with the repository for this portfolio project.
--- Creation of UI elements outside Django's admin panel to allow users to create and update records in database tables.
--- The use of robots.txt and sitemap.xml files.
--- The use and purpose of descriptive metatags in HTML code.
--- How to link to external resources using the Rel attribute.
--- How to make a custom 404 error page.
--- The use of social media, using the instance of Facebook as an example.
--- Creation of a newsletter signup form.
--- The use of DEBUG mode, and in particular the need to turn it off before deploying.
--- The Django functionality allowing users to log in and out of the project application.
--- The use of Stripe together with Django, bootstrap and bespoke HTML, CSS, JavaScript and Python code to demonstrate a working online purchasing system
--- The correct use of linting to check code formatting.
--- Detailed human-made logs of testing processes.
--- Appropriate use of online research and problem-solving resources publicly available on the Internet.
+- Django development on a cloud-based IDE (using Django-3.x on a VS Studio IDE hosted on Gitpod).
+- The creation, maintenance and use in Python code of database models, implemented using Django, running on Postgresql.
+- Use of agile methodologies via the project features available in GitHub, associated with the repository for this portfolio project.
+- Creation of UI elements outside Django's admin panel to allow users to create and update records in database tables.
+- The use of robots.txt and sitemap.xml files.
+- The use and purpose of descriptive metatags in HTML code.
+- How to link to external resources using the Rel attribute.
+- How to make a custom 404 error page.
+- The use of social media, using the instance of Facebook as an example.
+- Creation of a newsletter signup form.
+- The use of DEBUG mode, and in particular the need to turn it off before deploying.
+- The Django functionality allowing users to log in and out of the project application.
+- The use of Stripe together with Django, bootstrap and bespoke HTML, CSS, JavaScript and Python code to demonstrate a(n almost) working online purchasing system
+- The correct use of linting to check code formatting.
+- Detailed human-made logs of testing processes.
+- Appropriate use of online research and problem-solving resources publicly available on the Internet.
 
 
 ![Behives in autumn](/assets/documentation/beehives_in_autumn.webp)
@@ -34,9 +34,11 @@ I believe that completing such a project would satisfy the requirements listed f
 ## An apologetic note for the examiner
 I do not expect this portfolio project to achieve the pass criteria in its current state. A number of the requirements listed in the instructions for it have not yet been implemented. I am obviously not a very fast coder yet, for which I apologise. In my defence, I should say that I feel that, out of the three options for the final module of the course, at least the e-commerce option &mdash;and in particular the walkthrough for the boutique-ado ecommerce website&mdash; involves a good deal more work (rather than simply more complexity) than the first four modules and, though I was to some extent forewarned of this, I didn't expect the difference in terms of time required to be _quite_ as big as it has turned out to be. There were a number of other circumstances, including a short bout of illness, that contributed to my inability to finish on time, but those circumstances paled into insignificance beside the widely recognised technical flaws and continuity gaps in the final walkthrough, as well as its sheer length.
 
-I am determined however, to get this final part of the course done properly if given a reasonable amount of time to complete the job. I realise that my failure to complete the 5th project on time will put a pass ceiling on my efforts, but my priority has always been to learn the skills I need to learn rather than to receive an especially impressive certificate.
+I am determined however, to get this final part of the course done properly, given a reasonable amount of time to complete the job. I realise that my failure to complete the 5th project on time will put a pass ceiling on my efforts, but my priority has always been to learn the skills I need to learn rather than to receive an especially impressive grade on my certificate.
 
-I'm very grateful to the tutors for their ongoing help in getting through this very challenging section of the course (though they were just as supportive, encouraging, patient and competent in earlier parts of the course) and to my customer care person for their encouragement and advice.
+I'm very grateful to the tutors for their ongoing help in getting through this very challenging section of the course (though they were also just as supportive, encouraging, patient and competent in earlier parts of the course) and to my customer care person for their encouragement and advice. I'm grateful too to my mentor for the help he has provided so far, and I hope to benefit further from his expertise and generosity over the next couple of weeks in my efforts to finish this project.
+
+Thanks very much to you as well for your patience!  And my sincere apologies for the unfinished state of my project!
 
 [TOC]
 
@@ -80,206 +82,197 @@ While Elise is conscious of the benefits of using a mobile-first design philosop
 
 *Elise's initial wireframe for her project homepage*
 
-It had struck Elise since taking up beekeeping how her fellow beekeepers introduced themselves in beekeeping circles by mentioning the beekeeping system they used straight after giving their name.  Elise has in fact developed the habit herself: she now almost automatically starts every talk she gives to beekeepers with the words "My name's Elise Knolle and I work using Langstroth". Other users of the Langstroth measurements then know immediately that their systems work well with hers, making it easier for them to help each other with spare beehive resources when someone is short of some resource or other, or wants to expand. Indeed the expression "working out of System X" is almost a declaration of identity in beekeeping circles, and thus it quickly occurred to her that the keywords (Langstroth, Dadant, Zander and DNM -- _Deutsche Normalmaß-Beute_) were likely very useful keywords for marketing.
+It had struck Elise since taking up beekeeping how her fellow beekeepers introduced themselves in beekeeping circles by mentioning the beekeeping system they used straight after giving their name.  Elise has in fact developed the habit herself: she now almost automatically starts every talk she gives to beekeepers with the words "My name's Elise Knolle and I work using Langstroth". Other users of the Langstroth measurements then know immediately that their systems work well with hers, making it easier for them to help each other with spare beehive resources when someone is short of some resource or other, or wants to expand. Indeed the expression "working out of System X" is almost a declaration of identity in beekeeping circles, and thus it quickly occurred to her that the names of such systems (Langstroth, Dadant, Zander and DNM -- _Deutsche Normalmaß-Beute_) were likely very useful keywords for marketing purposes. She therefore noted these and a number of related terms as in her notebook for short-tail keywords (see the sub-section on web marketing below).
 
-The wireframe she made is largely for her reference, as well as to show her friends in the local beekeeping society so they can give a little feedback.
-
-They liked the four standard-sized hive buttons (Langstroth, Dadant, Zander and DNM -- Deutsche Normalmaß-System)
+The wireframe she made is primarily for her own reference, but also to show her friends in the local beekeeping society so they can give a little marketing-relevant feedback. I'll now discuss the feedback they and others gave her in Marketing section below.
 
 - - -
 
-<!-- TOC --><a name="system-design"></a>
-## System design
+## Product range & Marketing
 
-![Some flow charts portraying a selection of important witch-hazel worklflows](assets/readme_assets/hamamelis.gif)
+### Face-to-face 'interviews'
 
-*Some flow charts portraying a selection of important witch-hazel worklflows*
+Elise didn't actually do any formal face-to-face interviews with anyone (hence the scare quotes above), what she did was corner a number of fellow beekeepers, show them her wireframes and explain her plan in more or less detail, treating them as a sort of informal focus group. I won't reproduced the copious notes she took of these conversations; suffice it to say that the most important points they made included the following:
 
+- Product range
+>> Their expectations of such an e-commerce website were rather more ambitious than Elise's original idea: they would have expected a wider range of products to be available aside from wooden hive components. They saw it as desirable that the site should as near as possible be a "one-stop-shop" for beekeeper needs; to have in particular the capacity to offer the following categories of product:
+  - plastic feeder trays, sleeves and bottles
+  - varroa mite treatment equipment and chemicals
+  - beekeeper tools (all the way from handtools and buckets to honey extracting machines) and protective clothing
+  - honey packaging (chiefly jars and lids)
+  - wax foundations for insertion into honey and brood frames
+>> but ...
+  - living bees
+>> The one thing they seemed to agree was not necessary (or even desirable) for her to sell in her shop were packages of bees themselves: mated queen packages, hive nuclei, etc.. The consensus was that such products should be left to a specialist producer/dealer and that offering them would do little to add to the site's reputation as a reliable and professional supplier
 
+- Filtering by basic hive design
+>> Beekeepers appreciated her idea of giving them up-front on the homepage the option of filtering out hive components incompatible with their hive dimensions by clicking on their chosen system as it appeared in a horizontal bar at the bottom of the site header, which would have the effect that all their subsequent searches limit themselves to products compatible with their systems, unless and until they decided to undo their filter by clicking on the name of their chosen system again. While no beekeeping system is selected, no such filter is enforced.
 
-Accordingly, I prepared a series of outline flow charts in consultation with Laura and Donal on the basis of the needs they described to me. Once they'd approved the charts, I began thinking about actually programming the various functionalities.
+- Other filters and sorting options
+They also let her know that the ability to filter according to a number of different criteria would be appreciated, with the general consensus being that "the more, the better", but that the site's products should be filterable and sortable according to the categories mentioned above under "Product range".
 
-For simplicity's sake, and because I thought the data was not enormously complex, I decided to store it all on a single google spreadsheet, which I simply named 'hamamelis'. It contains three worksheets.
-- rootstock
-- grafts-year-zero
-- plants
+- Added marketing discussions
+  - Beekeeper's forum
+>> There was some humming and hawing when Elise mentioned the possibility of adding a separate beekeeping forum attached loosely to the site: there was no clear consensus but many thought the internet were plenty of discussion fora on the internet for beekeepers and that a new one, aside from requiring an awful lot of moderation effort, would not provide much added value at the moment for potential customers.
+  - Techno-beekeeping blog
+>> However, some of her pals seemed at least mildly interested when she mentioned the idea of adding a little blog to her site, especially if she concentrated on the interface between apiculture and consumer software development.
+  - Hive inspection app 
+>> The hive inspection app that Elise had half finished using Flutter a couple of years ago, whose purpose it was to make it easier for beekeepers to note down observations while inspecting their hives, seemed to some to be a potentially useful tool on condition she managed to complete and fully test it and make it available on Google Play and/or Apple App Store. Having such a good quality tool associated with the site, many thought, could well add authority to it in its very well-defined domain. There were other products on the market, but they were all too inflexible in their workflow and, in the words of one early adopter were "not much use".  -- A page listing links to official local and national beekeeping authorities, associations and university faculties were mentioned as being possible useful service to site users.
 
-The data should be read as follows.
+### Phone calls and e-mails with Tomáš
+Through some more or less detailed conversations with Tomáš via WhatsApp and email, she got a clearer idea of the full range of products he can supply. As well as simple bee boxes and frames, he can also supply a couple of designs for entrance and feeder boxes, queen excluders, inner covers and bee escapes, for example, and he has a business partner whose phone number he can give who makes excellent galvanised steel hive roofs in various sizes.
 
-<!-- TOC --><a name="the-rootstock-worksheet"></a>
-### The 'rootstock' worksheet 
-- The first column (A) is a label to tell the witch-hazel program what year the figures in the corresponding row refer to. The current year is at the top. 
-- The top figure in the second column (B) shows the number of cuttings that the couple plan to take in the autumn of the current year minus one. The figures below that represent the number of cuttings that the couple planned to take in each relevant year minus one in the past.
-- The third column (C) shows the number of cuttings that they actually took in the relevant year.
-- The fourth column (D) shows the number of cuttings that rooted successfully and were potted up during the spring. It is a representation of work done, and does not increase when immature rootstocks are acquired from an outside source, nor does it reduce when such rootstocks are lost through disease or damage, or when they are used up to in the grafting process. Notice the change in nomenclature: successfully rooted _cuttings_ begin to be referred to as _rootstocks_ as soon as they've planted in pots (potted up).
-- The fifth column (E) contains at most two non-zero values: one in E1, which represents the figure for rootstocks in stock this year to become available for use as next year as rootstocks. It is equivalent to the value in D1 minus any losses and plus any acquisitions. The value in E2 represents the total number of rootstocks now available for use in this year's grafting. Every time a grafting session is recorded, this value goes down by the number of grafts made. 
-Any rootstocks left over after the year's grafting campaign is finished remain in the system until they are set to zero upon creation of a new year. The reason for this is that two-year-old rootstocks will rarely be suitable for grafting when the time comes around again in the new year. They are generally physically disposed of (recycling the pots and compost) when the opportunity arises during the course of the new year.
-![The rootstock worksheet the end of a year](assets/readme_assets/rootstock_old_year.png)
+### Other consultations
+A number of chats with relatives and non-beekeeping friends underlined the point that Elise's site is far more likely to be successful if she gets herself in a position to sell a full range of beekeeping supplies.
 
-*The rootstock worksheet as it might look towards the end of a growing year*
-
-<!-- TOC --><a name="the-grafts-year-zero-worksheet"></a>
-### The 'grafts-year-zero' worksheet
-The grafts-year-zero worksheet contains two more columns than the number of cultivars of _Hamamelis_ currently cultivated by the Witch Hazel nursery. 
-- The first column identifies the year to which the data in the corresponding row refers.
-- The second column tells any human or machine reader whether the figures in the corresponding row refer to numbers of grafted plants that the couple originally planned ('planned'), that they actually made ('grafted') and that they currently have in stock ('stock'). The 'stock' figure for the current year refers to the number of plants of the given category currently in stock (i.e., the number of grafts originally made of the relevant cultivar in the current year minus any losses recorded since then, plus any gains since then). When a new year is created, the relevant numbers are passed into the 'plants' worksheet, three new rows are created for the current year and the figures for 'planned' and 'grafted' for previous years can no longer be edited. 
-- Each subsequent column gives the figures described above for the cultivar labelled in the topmost cell.
-![The grafts-year-zero worksheet the end of a year](assets/readme_assets/grafts-year-zero_old_year.png)
-
-*The grafts-year-zero worksheet as it might look towards the end of a growing year*
-
-<!-- TOC --><a name="the-plants-worksheet"></a>
-### The 'plants' worksheet
-The plants worksheet is a little simpler. It shows the current stocks of each cultivar of each age group &ndash; i.e.: the total number of grafts of that age currently in stock, adjusted according to the losses and gains subsequently recorded by the couple in the witch-hazel program using the record_loss, record_gain, hold_back and bring_forward functions (see below).
-![The plants worksheet towards the end of a year](assets/readme_assets/plants_old_year.png)
-
-*The plants worksheet as it might look towards the end of a growing year*
+One enormously important area of research will of course be to see what the compeition is doing. There are already a large number of beekeeping e-commerce sites already on the internet aimed at the DACH market. Practically everyone with whom she discusses her _Mellifera_ site mentions this as an essential preparation. The obvious rubric in which to frame this information-gathering effort is to see it as a way to formally define the site's unique selling proposition (USP) on the basis of places Elise can go (with Tomáš' and perhaps others' help) that other online beekeeping suppliers can't. The initial competitive advantage she has identified is value for money at the quality end of the market, but there may well be others. She suspects, for example, she can project superior authority and expertise in the beekeeping sector through better organisation and presentation of information on compatibility and incompatibilities between popular standard beehive designs used in the DACH region.
 
 
-- - - 
+## Elise's initial marketing conclusions
 
-<!-- TOC --><a name="the-programs-original-workflow-and-the-technical-issues-with-the-technology-used"></a>
-## The program's original workflow and the technical issues with the technology used
+### Marketing-relevant measures for immediate action
 
-At the outset of programming, I wanted the app to call a run.py file in the usual way but to attach an argument after a blank space on the command line, depending on the task that the user wished to do at that time. Unfortunately, the Heroku pseudo terminal on which the app is destined to run does not allow the use of command-line arguments (or at least I have been unable to find a way of implementing such a command-line-argument-based design). Due to some issues with my implementation of the Heroku architecture, I discovered this limitation rather late in the day. As a result I was forced redesign the app at the last-minuteto follow a different (and in my opinion much less elegant) logic. Originally, the user would have typed the run.py file name on the terminal, followed by a space and then a short string indicating what they wanted the app to do.
+- The first of Elise's conclusions from all this informal consultation was that she definitely needs to find suppliers for all the other commonly required beekeeping supplies. That task will have to take a high priority as soon she's successfully concluded her code demonstration for Tomáš. 
 
-For example, they would have typed ``run.py plan_cuttings`` to plan their campaign of taking and preparing cuttings. But the Heroku pseudo-terminal automatically runs the ``run.py`` file without any arguments immediately upon opening, so everything must be based on an argument-free initial call. The description of the workflow below is based on my last-minute changes due to this difficulty. It should be understood, however, that workflow described below was not my first choice.
+- She'll add a newsletter subscription facility early in the development process as it's likely to be relatively simple to code a GDPR-compliant subscription form and doing so won't commit her to extra work on a regular basis: she can always write up newsletters as the need and opportunity arises.
 
-The time used dealing with this problem at the last minute may have affected some of the finishing work on the program. For example, it was my original intention to connect each task to the next in their logical order, asking the user if they wished to go on to the next task. Sadly, the user now needs to restart the program every time they wish to complete a new task. 
+- While the site will need to be developed in English for Tomáš's sake, she'll have to keep in mind the need for it to switch the live version of the shop to German by default in a German-speaking DACH environment (it's a pretty basic marketing requirement to speak to your customer base in German), but to switch to English (and stay there) if the user expresses a preference for English. Though, depending on the time available to her, she may decide to leave internationalisation to a later stage and simply replace all the English texts with German.
 
-- - - 
+- Elise will need to identify and formulate what her USP is going to be and set further marketing objectives to ensure that her chosen USP becomes and remains a reality.
 
-<!-- TOC --><a name="the-programs-workflow"></a>
-## The program's workflow:
+- She'll need a set of logos, fonts, styles and colour schemes, which she'll develop on an ongoing basis while developing her proof-of-concept site.  She'll also consult with a designer friend of hers on how the site's look might be improved once she's completed the demo.
 
-<!-- TOC --><a name="seasonal-tasks-in-order"></a>
-### Seasonal tasks in order
-Typically towards the autumn of every year, the owners will want to close out the figures they have entered over the previous year, begin a new year and start work on planning their campaign of taking H. Virginiana cuttings. They begin this task by running the app and choosing option ``1`` (``Create new year/Close out current year``). This function adds the required new lines for the new current year on each worksheet, and copies the data on graft stocks for the old current year to date from the ``grafts-year-zero`` worksheet to the ``plants`` worksheet. This has the effect of putting the data for the previous year out of reach of the seasonal tasks.
+- Elise is a keen user of Facebook (perhaps too keen, she often thinks); she'll put together a Facebook page for _Mellifera_, render it as far as possible in the website's livery (see the previous point) and try to contribute to it occasionally, other work permitting.
 
-Also within the ``Create new year/Close out current year`` function, users can choose either to enter the figure for cuttings that they anticipate taking this year or opt to leave that job for later.
+- Elise reckons that by far the most important page on the website (especially in relation to Tomáš' products) is the *product detail* page, where users will expect to find all the information they need to tell whether the individual article is compatible with their beekeeping system. A well-structured product details page containing accurate information will contribute very substantially to the site's expertise, authority and trustworthiness.
+  - Firstly, products incompatible with the site user's chosen filter (if any) should simply not appear on the products listing page.
+  - Secondly, beebox products should show a full set of interior dimensions, along with a clear indication of the type and (especially) thickness of the timber used.
+  - Where relevant, assembly instructions and any recommended wood treatments should be mentioned, as well as any additional consumables or materials needed to put the piece together. All such materials should as far as possible also be available from the site, and should be linked to from all relevant products. Bee boxes in particular will need non-toxic paints or wood treatments and honey frames will need support wires, nails and eyelets, as well as beeswax foundation sheets.
+  - Assembly instructions for such standard hive components are widely available on the internet.  Elise won't necessarily therefore need to create assembly and care instructions, but she should take a look at existing tips and tricks on the internet (in youtube videos, for example) to see if any such resources are relevant and authoritative enough to be worth linking to. It might even be worth adding some of Elise's own tips and tricks.
 
-![The rootstock worksheet straight after the user executes the ``Create new year/Close out current year`` function](assets/readme_assets/rootstock_new_year.png)
+### ... and possibly for later
 
-*The rootstock worksheet straight after the user executes the ``Create new year/Close out current year`` function. Note that the user has chosen to enter a value for planned cuttings of 2800. That value can be changed at any time during the year by running Option 2 ``Plan this year's cutting campaign``.*
+- Elise won't commit for the moment to the effort of creating and maintaining a regular blog either directly on the site or linked to the site. She'll keep the option in the back of her mind.
 
-- - -
+- She has some experience in editing video from school, and has a pretty good video camera. At some stage she might consider creating some of her own material either directly for the site or designed to indirectly nudge traffic towards the site. She knows from experience, however, that this involves a lot of hard work and could well require long-term commitment. She'll therefore file that too in the back of her mind for possible future use.
 
-![The grafts-year-zero worksheet straight after the user executes the ``Create new year/Close out current year`` function](assets/readme_assets/grafts-year-zero_new_year.png)
+- As Elise hasn't got a clue about the hive systems commonly used in countries outside the DACH area, localising to other languages can wait at least until she's got a bit of data on how beekeeping is done in other parts of Europe.
 
-*The grafts-year-zero worksheet straight after the user executes the ``Create new year/Close out current year`` function.*
+- While Elise's market is extremely well-defined and online advertising may well therefore be very easy to target, Elise's lack of resources forbids her from considering it, though she might at a later stage, depending on her initial success either use her own profits or talk to suppliers, possibly including Tomáš, about subsidising future efforts here.
 
-- - -
+- She should keep in mind the large number of youtuber and blogger beekeepers using various languages and with varying numbers of followers, possibly offering free products to the most relevant and authoritative of them, in the hope that her wares might end up being showcased on such output. She'll have to bone up on the applicable law and on platform provider rules on advertising (paid for either in cash or in kind). Again, this is something for the future rather than an immediate priority.
 
-![The plants worksheet straight after the user executes the ``Create new year/Close out current year`` function](assets/readme_assets/plants_new_year.png)
+- Elise decided not to create a marketing survey (using Survey Monkey or any other similar online service) for the moment for three reasons:
+  1. she doesn't yet have a suitable list of identifiable respondents
+  2. she isn't yet sure precisely what questions she needs to ask
+  3. she has other things to be getting on with (not least some pretty challenging programming)
+>> She has, however, made a mental note to consider creating and sending out such a survey when she has a viable list of respondents and a bit of clarity on exactly what it is she wants to know. 
 
-*The plants worksheet straight after the user executes the ``Create new year/Close out current year`` function.*
+- Elise has a phobia of committing to spending money when she's not sure how much the total is going to be, so she's liable to keep clear of pay-per-click advertising until she can be very sure that it's going to substantially more than pay for itself.
 
-Then, whether or not they have entered a figure for planned cuttings, they can run app option ``2`` ``Plan this year's cutting campaign`` to revise that figure. If they have already recorded a figure for cuttings actually made, they are given a warning to tell them that the cutting campaign has already started and asked to confirm whether they want to replace the planned figure with a new total. The new figure is not added to the old one; it simply replaced it. This is the case with all planning functions.
+- The DACH region is home to a variety of charities interested in the protection (in ascending order of specialisation) of insect life in general, of the many species of wild bee native to central Europe, of the European Honey Bee, and of central Europe's own native Dark Honey Bee sub-species (Apis _mellifera mellifera_, which has been driven to the edge of extinction through displacement and hybridisation with other sub-species of Apis _mellifera_ imported by beekeepers since the late 18th century from southern Europe). Elise has communicated with and contributed to some of these charities in the past. She may discuss a public association with one of them to help raise the authority of the site.
 
-When they run app option ``3`` (``Record cuttings taken``), they are asked to enter a number of cuttings actually taken. They are given the already existing figure for cuttings taken and warned not to enter a number for cuttings unless that number has already been physically taken, prepared and inserted in the cuttings bed. It tells the user when the number of cuttings taken exceeds the number of cuttings planned.
 
-The new figure entered by the user is added to the already existing number. In the nursery, the cuttings campaign takes several days, the owners typically entering the day's figure for cutting production in the evening of the relevant day. The user receives a message on the command line when the figure exceeds the planned figure. The logic behind the difference between planned figures (each of which simply replaces the previous one) and the actually taken figures is that the latter are usually totted up for each day in the cutting/grafting campaigns, and the user should expect the app to remember the numbers recorded from previous days.
+### CEO and the like
 
-Option ``4`` (``Record rooted cuttings potted up``) instructs the user to enter a figure for the number of successfully rooted cuttings actually potted up. As another figure indicating for work actually done (usually daily), it functions in a similar cumulative way to option ``3`` (``Record cuttings taken``, as do all functions designed to record work actually done). It informs the user when the total number of potted cuttings recorded has reached or exceeded the total number of cuttings taken.
+- Some time when she needs a change from the programming effort she'll brainstorm out a list of short- and long-tail keywords (in German mostly) to insert strategically in her site and run a few experiments with Google search to see which of them come up most frequently in searches.
 
-Option ``5`` (``Plan grafts for this year``) displays the number of rootstocks (i.e. the figure for cuttings successfully potted up in the previous year, minus losses, plus gains) asks the user what cultivar they want to graft and how many grafts they want to make of that cultivar. The function keeps a running total of the rootstocks required and issues a notification/warning if and when the total number of planned cuttings exceeds the number of rootstocks available. As the function is about planning numbers, new numbers simply overwrite old ones the second and subsequent time the user runs the option for a particular cultivar.
+- She'll have a chat with a friend who's a specialist in CEO for advice on how far to go with inserting the keywords, etc..
 
-Option ``6`` (``Record grafts taken``) argument asks the user which cultivar they want to record grafts for. The owners typically enter the day's figure for graft production separately for each cultivar in the evening of the relevant day. The user receives a message on the command line if and when any figure exceeds the associated planned figure. As for other options recording work actually done, new figures are added to old figures creating a new total. Each time a grafting session is recorded in this way, the current stock of rootstocks is reduced by the corresponding amount.
+- She might consider shelling out the ten dollars she'll need to pay to search for keywords used outside the territories covered under the free version of Wordtracker.com.
 
-_N.B.: In order to record total work done separately from current stocks (i.e., total work done minus losses plus gains) all the following numbers are recorded separately:_
-- _cuttings taken vs total rootstocks_
-- _grafts taken vs total plants in stock (recorded for each cultivar separately)_
+- She'll need to draw up a list of beekeeping associations, organisations, clubs, institutes, etc., to be able to include them on a list of useful links somewhere on the site. Other uses for this information could well occur to her in the future.
 
-<!-- TOC --><a name="ad-hoc-tasks"></a>
-### ad-hoc tasks
-Option ``7`` (``Record plant losses``) asks the user the cultivar and age of the plants they want to record as lost (including year-zero rooted cuttings), showing them the current figure for that cultivar and age. The user is prevented from entering a number greater than that figure. It gives a confirmation message before writing the data entered by the user to the spreadsheet.
+- She'll have to have a chat with Tomáš (and any other possible suppliers) about the extent of product documentation, and in particular the quality and style of any immages available.
 
-Option ``8`` (``Record plant gains``) works similarly, adding instead of subtracting. It does not impose any restriction on the number added.
+- She'll create a sitemap.xml file to ensure that crawlers get to where she wants them to look.
 
-Option ``9`` (``Hold over plants for one year``) asks the user to identify the cultivar and age of the plants they want to hold back, shows the user the current number of those plants and subtracts the number given by the user from the current age category, adding the same number to the category one year younger. As with ``record_loss``, the user can't move more plants than the recorded number for the relevant category in any direction. The system also prevents the user from entering a value less than two, as it is impossible to hold year-one plants over to year-zero. The year zero values are not recorded in the ``plants`` worksheet at all. They have ther own worksheet (``grafts-year-zero``)
+- She'll create a robots.txt file to ensure that crawlers don't get to where she doesn't want them to look.
 
-Option ``10`` (``Bring plants forward one year``) does the same in the opposite direction. Again, the appropriate restriction on numbers moved applies. In contrast to the previous option, the user can choose the value ``1`` for year cohort, as the same problem doesn't apply here.
+- In general, she'll consider SEO when creating any content in her site, both at an initial stage and on an ongoing basis, putting herself in the shoes of Google's team of raters. In particular, she'll be careful to cite sources for any factual information included on the site, and to choose only clearly trustworthy sites as sources.
 
-In exceptional cases where the user wishes to hold back or bring forward a number of plants by more than a year, they must run the relevant process twice.
+- She'll include a privacy statement, an "Impressum" (a declaration indicating who's responsible for the site contents required by German, Austrian and Swiss law) and a splashscreen allowing the user to opt out of the cookies for use in Google Analytics.
 
-Unfortunately, due to the time restraints, I was unable to implement option ``11`` (``Add new cultivar``). I have, however prepared much of the groundwork to introducing it in the future. For example, I have implemented a system by which the functions that involve cultivars identify those cultivars dynamically.
 
-Reductions in plant stocks through _sales_ are not recorded in this app. The couple tell me that this may be the next step once they have this work planning system bedded in.
+## Design of website's logic and structure
 
-The same can be said of a number of other parts of the nursery workflow.
+### From the user-shopper' point of view
+From the point of view of a guest user, the core website will consist of nothing more than a _home_ , a _products_, a _product_details, an _order_list, an _order_, a _checkout_ and finally a checkout_success page. The _home_ page, apart from providing the usual links to routinely and legally necessary administrative pages in its footer and allowing a guest user via a dropdown list to either _Sign on_ as a registered user or _log in_ as an existing one, gives that user the option of creating an initial filter based a particular hive system or systems (see above), along with providing a number of routes to reach a _products_ overview page. This _products_ page simply lists out a number of products, each in its own cell, filtered according to any setting that the user has already chosen on the _home_ page. On the _products_ page, the user then can refine or remove the filter, thus increasing or reducing the range of the products listed on the page, or double click on a particular product, which will bring the user to that product's _product/_detail_ page. Some products will be available a variety of sizes (for example, Langstroth hive boxes will be available in _1/2_, _2/3_, _3/4_ or _1/1_ heights and protective clothing will be available in _S_, _M_, _L_ and _XL_). Other products (tools and tins of non-toxic paints) will not.
 
-<!-- TOC --><a name="bug-fixes-and-warning-resolution"></a>
-## Bug fixes and warning resolution
-<!-- TOC --><a name="bugs"></a>
+For the moment, aside from box heights and clothing sizes, any difference in other dimensions, material or special features will be dealt with by creating a separate product record.
+
+In order to provide the flexibility to add new size scales in the future, the two size scales (bee box height and clothes size) will be stored as separate records in JSON format in the database under a simple _Size_ table connected to the relevant _Product_ records via a foreign key. For the foreseeable future, all _Size_ json records will be one-dimensional.
+
+Thankfully, there are no products in the prospective range that require both separate heights and clothing sizes! :) However, it may be useful in the future to allow a particular product to have sub-products on two dimensions (such as say, "_1/2_, _2/3_, _3/4_" or "_1/1_" and "_with lip_" and "_without lip_"), so it might be simpler to allow the database structure to handle such issues, even if the code doesn't necessarily need to implement such a hypothetical requirement. While the Django framework that Elise is using in this project makes database updates much less difficult than using vanilla SQL, making such late changes is not without its risks.
+
+Users can put items in their pre-order list only from that item's _product-detail_ page. Clicking on the _Add to order list_ button will put the chosen number (and the chosen size, where relevant) of that product on the _order-list_ page, giving the user a message that they have successfully done so, and returning them to the _product_ page with the chosen filters still intact. The shopper can continue to browse through that page. The top left of each page of the site will show the total monetary value the products contained in the order_list.
+
+Clicking on the _Go to order list_ button, icon or link will bring the user to their _order list_ page. The above-mentioned message contains a link to the pre-order page, as does the pre-order icon at the top right of every page on the site. The products page will ahow a _Go to pre-order_ button at bottom right.
+
+### From the registered user's point of view
+
+### From the superuser point of view
+
+### Database design
+
+![Some flow charts portraying a selection of important Mellifera workflows](assets/readme_assets/hamamelis.gif)
+
+*Some flow charts portraying a selection of important Mellifery worklflows*
+
+A good proportion of the database tables required for the project were provided by Django's standard user authentication system, _django.contrib.auth_. I do not propose to discuss that system in detail.
+
+... However, it may be useful in the future to allow a particular product to have sub-products on two dimensions (such as say, "_1/2_, _2/3_, _3/4_" or "_1/1_" and "_with lip_" and "_without lip_"), so it might be simpler to allow the database structure to handle such issues, even if the code doesn't necessarily need to implement such a hypothetical requirement. While the Django framework that Elise is using in this project makes database updates much less difficult than using vanilla SQL, making such late changes is not without its risks.
+
+### Frameworks
+
+### Bootstrap
+### Django
+
+### jQuery
+
+## Setting up the environment
+
+### Registering for Heroku and using it
+
+### Registering for Stripe and using it
+
+### Registering for Amazon AWS and using those services
+
+## App robustness
+
+### Incorrect user entries
+
+## i10n and l10n
+
+## Help functions
+
+## Manual testing
+
+### Robustness testing
+The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.  
+
+### Features testing
+
+### Device compatibility and responsiveness
+
+## Bug fixes, warning resolution and linting
+
 ### Bugs
-Bugs were fixed as they arose during smoke testing.
+Bugs will be fixed as they arose during smoke testing (see below).
 
 As far as practicable, all Bugs are resolved separately and the Bug resolution is recorded in Git commits separately, prefixing the commit text with "Bug: ".
 
+### Warnings appearing on consoles, terminals and logs
 
-<!-- TOC --><a name="warnings"></a>
-### Warnings
-pycodestyle issues (all warnings) were closed shortly before submitting the app project.
+### Linting
 
-Two warnings could not be resolved, but appear not affect the functioning, reading or comprehension of the program in any way! They were:
-```
-$ pip install pycodestyle
-$ pycodestyle ...
+## Unresolved technical issues
 
-  warnings.warn(
-run.py:318:22: E231 missing whitespace after ':'
-run.py:318:22: E701 multiple statements on one line (colon)
-run.py:428:80: E501 line too long (82 > 79 characters)
-```
-
-In reality there are at least a dozen warnings relating to lines that are too long, but they do not affect the Heroku pseudo-terminal and do not appear to affect the readability of the code. I corrected them, saw that the caused bugs in the presentation, and even in the running of the code itself, and reversed them (one by one).
-
-<!-- TOC --><a name="app-robustness"></a>
-## App robustness
-
-<!-- TOC --><a name="numerical-vs-characterstring-entries"></a>
-### Numerical vs character/string entries
-Aside from the restrictions on user entries mentioned above, the user must not enter either a negative number or an entry that cannot be rendered as an integer. Sadly, in most cases, I have not had the time to resolve all issues relating to the user entering characters and strings that cannot be converted into integers yet, but I have put the necessary software in place in some functions (notably the opening menu function and functions 6, 7, 8 and 9). I have told the users to be careful not to make non-numerical entries where numerical entries are expected.
-
-<!-- TOC --><a name="out-of-range-numbers"></a>
-### Out of range numbers
-The app has been designed so that integers entered outside the valid range of values are handled elegantly without the program havin to shut down. Users are shown an appropriate message repeatedly until they make a valid entry.
-
-<!-- TOC --><a name="yes-or-no-responses"></a>
-### Yes or no responses
-The app is designed so that the user can respond to yes or know answers by entering 'y' or 'Y' for yes; entering any other value than 'y' or 'Y' is interpreted as a no.
-
----
-<!-- TOC --><a name="programming-philosophy"></a>
-## Programming philosophy
-
-Being an app generally modelling a procedural series of steps, little use was made of the concepts of OOP in its design. Few custom classes were specifically designed for the app. This was deliberate and should not be taken for any absence of understanding of the basic concepts of OOP.  It may, however, be useful to look at other programs created for a similar purpose when the time comes to refactor this code, and to use the advantages of OOD/OOP to make the code more efficient and more comprehensible.
-
-<!-- TOC --><a name="sharing-the-hamamelis-google-spreadsheet"></a>
-## Sharing the hamamelis google spreadsheet
-
-This section is work in progress.
-
-<!-- TOC --><a name="registering-for-heroku-and-using-it"></a>
-## Registering for Heroku and using it
-
-This section is work in progress.
-
-<!-- TOC --><a name="lessons-learned"></a>
 ## Lessons learned
 
-This section is work in progress.
-
-<!-- TOC --><a name="other-unresolved-issues-and-future-development"></a>
 ## Other unresolved issues and future development
 
-This section is work in progress.
-
-<!-- TOC --><a name="credits"></a>
 ## Credits
-
-This section is work in progress.
-
 
 ## Gitpod Reminders
 
