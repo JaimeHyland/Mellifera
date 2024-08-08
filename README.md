@@ -36,6 +36,8 @@ I do not expect this portfolio project to achieve the pass criteria in its curre
 
 I am determined however, to get this final part of the course done properly, given a reasonable amount of time to complete the job. I realise that my failure to complete the 5th project on time will put a pass ceiling on my efforts, but my priority has always been to learn the skills I need to learn rather than to receive an especially impressive grade on my certificate.
 
+This Readme file (especially from line 214 on) should be treated as a set of notes for the later finalisation of my eventual Readme file for the finished portfolio project.
+
 I'm very grateful to the tutors for their ongoing help in getting through this very challenging section of the course (though they were also just as supportive, encouraging, patient and competent in earlier parts of the course) and to my customer care person for their encouragement and advice. I'm grateful too to my mentor for the help he has provided so far, and I hope to benefit further from his expertise and generosity over the next couple of weeks in my efforts to finish this project.
 
 Thanks very much to you as well for your patience!  And my sincere apologies for the unfinished state of my project!
@@ -238,9 +240,48 @@ A good proportion of the database tables required for the project were provided 
 
 ### Registering for Amazon AWS and using those services
 
-## App robustness
+## Required features
 
-### Incorrect user entries
+### Original custom models
+The project as I have conceived it so far will require at least three data models markedly different from those included in the walkthrough project:
+- The Product model/table will contain a number of important original fields/columns not included in the walkthrough.
+- The Category model/table will be significantly more complex than the one used in the walkthrough.
+- there will be at least one original custom model/table: _Choice_.
+
+### UI elements to delete records
+The project will include several UI elements that allow Site administrators and/or regular users to delete Database records without using the Admin panel.
+
+### Agile methodology
+All development will be completed as guided by Milestones, Epics and User stories pre-defined using an associated project in the GitHub repository. All User Stories will be assigned to particular sprints.
+
+### CEO
+The project will include a functional robots.txt and sitemap.xml file. The header of each page on the site will include appropriate descriptive metatags. At least one link will correctly implement the Rel attribute to help increase the authority of the site.
+
+### Social media
+The online shop will be associated with a real (though temporary) and relevant Facebook page, formatted as far as possible in the site's livery.
+
+### Custom 404 page
+Any attempt by any sort of user to enter a non-existent page within the site will bring them to a custom 404 page consistent with the on-line shop's livery.
+
+### Newsletter signup option
+The site will include a custom newsletter sign-up page.
+
+### Ecommerce strategy/business model
+The description of the site owner's ecommerce business model is already largely in place on this readme (see above).  The description is dominated by an account of the owner's marketing strategy.
+
+### DEBUG mode
+The DEBUG mode of the program will be guaranteed to be false in its deployed state via a Heroku-side Config Var.
+
+### User registration, logging in and logging out, and purchasing rules
+Users will be able to register, and log in and out of the app via a verification system based on the walkthrough project. They will be able to buy products either as logged-in registered users or as guest site visitors.
+
+### Testing logs
+The final readme.md file will include detailed accounts of testing work, and a short account of linting (code validation) issues found and resolved.
+
+### Visibility of code-related environments
+All environments used to create my eventual future project will be made available publicly to allow the assessor(s) to do their work. That will include my GitHub repository and my project board created on my GitHub environment. The actual site will be fully deployed and available at the URL created by Heroku.
+
+## App robustness
 
 ## i10n and l10n
 
@@ -248,8 +289,8 @@ A good proportion of the database tables required for the project were provided 
 
 ## Manual testing
 
-### Robustness testing
-The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.  
+### Robustness testing; invalid user entries
+The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.
 
 ### Features testing
 
@@ -262,6 +303,8 @@ Bugs will be fixed as they arose during smoke testing (see below).
 
 As far as practicable, all Bugs are resolved separately and the Bug resolution is recorded in Git commits separately, prefixing the commit text with "Bug: ".
 
+
+
 ### Warnings appearing on consoles, terminals and logs
 
 ### Linting
@@ -273,110 +316,3 @@ As far as practicable, all Bugs are resolved separately and the Bug resolution i
 ## Other unresolved issues and future development
 
 ## Credits
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
