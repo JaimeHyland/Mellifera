@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
-    {% block extra_corecss %}
+    {% block extra_css %}
     {% endblock %}
 
     <!-- Load JavaScript as early as possible -->
@@ -51,7 +51,7 @@
 </head>
 <body>
     <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+        <div id="topnav" class="row bg-honey pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font text-black my-0"><strong>M</strong>ellifera</h2>
@@ -79,7 +79,7 @@
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
+                                <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Account{% endif %}</p>
                             </div>
                         </a>
 
@@ -91,8 +91,8 @@
                                 <a href="{% url 'profile' %}" class="dropdown-item">My profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Get an account</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Log in</a>
                             {% endif %}
                         </div>
                     </li>
@@ -113,7 +113,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row bg-white">
+        <div class="row bg-honey">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

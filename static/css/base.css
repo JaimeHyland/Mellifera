@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: url('/media/honeycomb.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -209,6 +209,10 @@ input[name='q']::placeholder {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+.bg-honey {
+    background-color: #f0c717;
 }
 
 
