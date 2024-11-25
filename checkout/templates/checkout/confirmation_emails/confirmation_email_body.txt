@@ -2,7 +2,7 @@ Hello {{ order.full_name }},
 
 Thanks very much for your order!
 
-This email is just to confirm your order and receipt of your payment to Sorted Supplies, and to let you know that it's already on its way to your address.
+This email is just to confirm your order and receipt of your payment to Mellifera, and to let you know that it's already on its way to your address.
 
 The details of this order are as follows:
 
@@ -23,4 +23,4 @@ Thank you for sorting your supplies with us!
 
 With very best wishes,
 
-Sorted Supplies Customer Service
+Mellifera Customer Service

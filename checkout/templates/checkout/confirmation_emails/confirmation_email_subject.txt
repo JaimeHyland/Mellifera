@@ -1,1 +1,1 @@
-Sorted Supplies order confirmation for Order {{ order.order_number }}
+Mellifera order confirmation for Order {{ order.order_number }}

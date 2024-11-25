@@ -5,7 +5,7 @@ A simple B2C ecommerce website for the online sale of honey-bee-related equipmen
 
 Code Institute - Fifth Milestone Project: Under my interpretation, the requirements for this project would be satisfied as follows:
 
-Build a Full-Stack e-commerce website that facilitates the online sale of and payment for a range of beekeeping-related goods based on a business logic that reflects the variety and taxonomy of that range of goods, satisfying the expectations of both an imaginaray online store owner and of their imaginary customers.
+Build a Full-Stack e-commerce website that facilitates the online sale of and payment for a range of beekeeping-related goods based on a business logic that reflects the variety and taxonomy of that range of goods, satisfying the expectations of both an imaginary online store owner and of their imaginary customers.
 
 I believe that completing such a project would satisfy the requirements listed for the fifth porfolio project in Code Institute's LMS, i.e. to show  an appropriate level of understanding on my part of a number of different concepts, technologies and disciplines related to Full-Stack programming in the e-commerce sector:
 
@@ -19,7 +19,7 @@ I believe that completing such a project would satisfy the requirements listed f
 - How to make a custom 404 error page.
 - The use of social media, using the instance of Facebook as an example.
 - Creation of a newsletter signup form.
-- The use of DEBUG mode, and in particular the need to turn it off before deploying.
+- The use of DEBUG mode, and in particular the need to switch it to False before deploying.
 - The Django functionality allowing users to log in and out of the project application.
 - The use of Stripe together with Django, bootstrap and bespoke HTML, CSS, JavaScript and Python code to demonstrate a(n almost) working online purchasing system
 - The correct use of linting to check code formatting.
@@ -48,11 +48,11 @@ Thanks very much to you as well for your patience!  And my sincere apologies for
 
 ### The initial proposition
 
-The very fictional Elise Knolle is a Berlin-based amateur beekeeper who, while on an equally fictional skiiing holiday in mountainous Northern Bohemia a few months ago, met an imaginary woodworker who makes high-quality beehive boxes and honey frames in the spruce and pine lumber local to area. He makes a good living selling his wooden products at very competitive retail prices. He also makes higher quality cedar boxes at a higher, though still relatively attractive retail prices. Elise (who had, with some relief, just completed an online course in Full-Stack Development at the famous Irish training company, Code Institute) hit it off immediately with the Czech woodworker on meeting him one evening during the apres-ski, and after a generous helping of excellent food, washed down with an excellent Pilsner beer and a glass of homemade herbal schnapps, the conversation, as often happens in such circumstances, turned to business.
+The very fictional Elise Knolle is a Berlin-based amateur beekeeper who, while on an equally fictional skiiing holiday in mountainous Northern Bohemia a few months ago, met an imaginary woodworker who makes high-quality beehive boxes and honey frames in the spruce and pine lumber local to the area. He makes a good living selling his wooden products at very competitive retail prices. He also makes higher quality cedar boxes at a higher, though still relatively attractive retail prices. Elise (who had, with some relief, just completed an online course in Full-Stack Development at the famous Irish training company, Code Institute) hit it off immediately with the Czech woodworker on meeting him one evening during the apres-ski, and after a generous helping of excellent food, washed down with an excellent Pilsner beer and a glass of homemade herbal schnapps, the conversation, as often happens in such circumstances, turned to business.
 
-Tomáš (for that's his name) has a good deal of experience sending his wares by DHL around the Czech Republic, Poland and Slovakia, and is the proud owner of some very expensive and sorely under-exploited woodworking machinery. As such, he's keen to expand his geographical market. Early in his conversation with Elise (neither spoke the other's native language, so they communicated in English), he learnt two facts that made his ears prick up: firstly, that there are no less than 150,000 hobby beekeepers in Germany, and secondly, that Elise is currently having to buy beehive boxes of what she considers inferior quality from a Brandenburg-based specialist at a significantly higher price (after conversion into Euros).
+Tomáš (for that's his name) has a good deal of experience sending his wares by DHL around the Czech Republic, Poland and Slovakia, and is the proud owner of some very expensive and sorely under-exploited woodworking tools and machinery. As such, he's keen to expand his production, with the first option for achoeving this being extending his products' geographical market. Early in his conversation with Elise (neither spoke the other's native language, so they communicated in English), he learnt two facts that made his ears prick up: firstly, that there are no less than 150,000 hobby beekeepers in Germany, and secondly, that Elise is currently having to buy beehive boxes of what she considers inferior quality from a Brandenburg-based specialist at a significantly higher price (after conversion into Euros).
 
-As the conversation went on, Elise, who is not rolling in money (skiing is rather cheaper in Czechia than in Austria), and is tempermentally unsuited to working as anyone's employee, began outlining  to Tomáš (with increasing excitement) the training she had so recently received from the Dublin-based training firm, suddenly interrupting her own monologue, taking a deep breath and tentatively putting a hypothetical question to Tomáš: if she were ever in a position to pass on orders for his wares to him from the DACH area (Germany, Austria and Switzerland), would he be prepared to pay her a commission with a guarantee of no diminution in quality. He, cottoning on to what it was she was (still hypothetically) hinting at, replied that he'd be very happy with such an arrangement. Given the lateness of the evening, though, perhaps they ought to meet in the morning to talk about the matter further.
+As the conversation went on, Elise, who is not rolling in money (ski holidays are rather cheaper in Czechia than in, say, Austria), and is tempermentally unsuited to working as anyone's employee, began outlining  to Tomáš (with increasing excitement) the training she had so recently received from the Dublin-based IT training institute, suddenly interrupting her own monologue, taking a deep breath and tentatively putting a hypothetical question to Tomáš: if she were ever in a position to pass on orders for his wares to him from the DACH area (Germany, Austria and Switzerland), would he be prepared to pay her a commission with a guarantee of no diminution in quality. He, cottoning on to what it was she was (still hypothetically) hinting at, replied that he'd be very happy with such an arrangement. Given the lateness of the evening, though, (said he) perhaps they ought to meet in the morning to talk about the matter further.
 
 The following day they met for coffee at the bottom of the ski slope (Elise was happy to give up her skiing for the day to continue her conversation with Tomáš), they came to the following arrangement:
 
@@ -61,15 +61,15 @@ Within six weeks of arriving back in Berlin, Elise should put together a proof-o
 The project that I will be presenting in a few weeks' time (and I apologise sincerely for being unable to present a fully functional project fulfilling all the above requirements in time for the project's 8 August deadline &m-dash; see my explanation above) should be considered the test website that Elise build and turned up two months later (she was a little delayed too, as we'll see below!) to present to Tomáš.
 
 ### Elise's thought process
-Even as the train trundled along across the border on its way back home to Berlin, Elise had already begun mulling over the complications that might face her in her coding efforts.
+Even as the train trundled back across the Czech border on its way back home to Berlin, Elise had already begun mulling over the complications that might face her in her coding efforts.
 
 For one thing, different beekeepers all over the world use a variety different standard sizes in their hives and they'd have to be very convinced they were buying the right sizes for their particular configuration before they'd be remotely likely to buy from an unfamiliar website. For another, the standard measurements for hive boxes that developed over the history of beekeeping generally relate to the interior dimensions of such boxes, which are governed by whatever standard-sized bee frames beekeepers have chosen for their system.
 
-While Tomáš had reassured her that he can make hive boxes to whatever size she might want, Elise realised she wasn't very clear herself on the variety of exterior measurements of boxes used by German beekeepers. While the critical measurements for hive boxes are the interior measurements, getting the exterior sizes right may well help beekeepers combine their newly purchased boxes with the ones they already have tidily. Though boxes with thinner or thicker walls can usually be placed on top of one another, any lips or ledges left may look a little untidy, and might even shorten the useful life of the bee boxes, as such lips can allow water to lie in nooks and crannies &mdash; and standing water will significantly accelerate rotting processes in wood, especially since the wood used in beekeeping, for obvious reasons, can't be treated with anti-rot chemicals of any sort.
+While Tomáš had reassured her that he can make hive boxes to whatever size she might want, Elise realised she wasn't very clear herself on the variety of exterior measurements of boxes used by German beekeepers. While the critical measurements for hive boxes are their interior measurements, getting the exterior sizes right may well help beekeepers combine their newly purchased boxes with the ones they already have tidily. Though boxes with thinner or thicker walls can usually be placed on top of one another, any lips or ledges left may look a little untidy, and might even shorten the useful life of the bee boxes, as such lips can allow water to lie in nooks and crannies &mdash; and standing water will significantly accelerate rotting processes in wood, especially since the wood used in beekeeping, for obvious reasons, can't be treated with anti-rot chemicals of any sort.
 
-Thankfully, the standard frames that are hung inside such boxes are slightly less complicated, varying only in terms of length and depth to match only the interior measurements of that box. The actual thickness of the timber used to make such frames is a fairly standard 9.5 mm (or about 3/8 of an inch for the old-fashioned among us).
+Thankfully, the standard frames that are hung inside such boxes are slightly less complicated, generally varying only in terms of length and depth to match only the interior measurements of that box. The actual thickness of the timber used to make such frames is a fairly standard 9.5 mm (or about 3/8 of an inch for the more old-fashioned among us).
 
-Despite this little mercy, all this seemed like worrying complications. It was nothing she couldn't handle (thought she) by adjusting her data models and workflow to take account of it, relying on Tomáš' reassurances.
+Despite this little mercy, all these factors seemed like worrying complications. It was nothing she couldn't handle (thought she) by adjusting her data models and workflow to take account of it, relying on Tomáš' reassurances.
 
 ## Initial design
 So, almost as soon as she got back to Berlin, Elise got to work, starting by sketching out a wireframe using the Balsamiq app in test version on the cloud.
@@ -84,9 +84,9 @@ While Elise is conscious of the benefits of using a mobile-first design philosop
 
 *Elise's initial wireframe for her project homepage*
 
-It had struck Elise since taking up beekeeping how her fellow beekeepers introduced themselves in beekeeping circles by mentioning the beekeeping system they used straight after giving their name.  Elise has in fact developed the habit herself: she now almost automatically starts every talk she gives to beekeepers with the words "My name's Elise Knolle and I work using Langstroth". Other users of the Langstroth measurements then know immediately that their systems work well with hers, making it easier for them to help each other with spare beehive resources when someone is short of some resource or other, or wants to expand. Indeed the expression "working out of System X" is almost a declaration of identity in beekeeping circles, and thus it quickly occurred to her that the names of such systems (Langstroth, Dadant, Zander and DNM -- _Deutsche Normalmaß-Beute_) were likely very useful keywords for marketing purposes. She therefore noted these and a number of related terms as in her notebook for short-tail keywords (see the sub-section on web marketing below).
+It had struck Elise since taking up beekeeping how her fellow beekeepers introduced themselves in beekeeping circles by mentioning the beekeeping system they used straight after giving their name.  Elise has in fact developed the habit herself: she now almost automatically starts every talk she gives to beekeepers with the words (translated from the German) "My name's Elise Knolle and I work using Langstroth". Other users of the Langstroth measurements then know immediately that their systems work well with hers, making it easier for them to help each other with spare beehive resources when someone is short of some resource or other, or wants to expand. Indeed the expression "working out of System X" is almost a declaration of identity in beekeeping circles, and thus it quickly occurred to her that the names of such systems (Langstroth, Dadant, Zander and DNM -- _Deutsche Normalmaß-Beute_) were likely very useful keywords for marketing purposes. She therefore noted these and a number of related terms as in her notebook for short-tail keywords (see the sub-section on web marketing below).
 
-The wireframe she made is primarily for her own reference, but also to show her friends in the local beekeeping society so they can give a little marketing-relevant feedback. I'll now discuss the feedback they and others gave her in Marketing section below.
+The wireframe she made is primarily for her own reference, but also to show her friends in the local beekeeping society so they can give a little marketing-relevant feedback. I'll now discuss the feedback they and others gave her in the Marketing section below.
 
 - - -
 
@@ -99,10 +99,11 @@ Elise didn't actually do any formal face-to-face interviews with anyone (hence t
 - Product range
 >> Their expectations of such an e-commerce website were rather more ambitious than Elise's original idea: they would have expected a wider range of products to be available aside from wooden hive components. They saw it as desirable that the site should as near as possible be a "one-stop-shop" for beekeeper needs; to have in particular the capacity to offer the following categories of product:
   - plastic feeder trays, sleeves and bottles
-  - varroa mite treatment equipment and chemicals
-  - beekeeper tools (all the way from handtools and buckets to honey extracting machines) and protective clothing
-  - honey packaging (chiefly jars and lids)
-  - wax foundations for insertion into honey and brood frames
+  - pest treatment equipment and chemicals (especilly against varroa mites)
+  - beekeeper tools (all the way from handtools and buckets to honey extracting centrifuges and the like) 
+  - protective and hygienic clothing
+  - honey packaging (chiefly jars of various sizes and their lids)
+  - wax 'foundations' for insertion into honey and brood frames
 >> but ...
   - living bees
 >> The one thing they seemed to agree was not necessary (or even desirable) for her to sell in her shop were packages of bees themselves: mated queen packages, hive nuclei, etc.. The consensus was that such products should be left to a specialist producer/dealer and that offering them would do little to add to the site's reputation as a reliable and professional supplier
@@ -119,13 +120,13 @@ They also let her know that the ability to filter according to a number of diffe
   - Techno-beekeeping blog
 >> However, some of her pals seemed at least mildly interested when she mentioned the idea of adding a little blog to her site, especially if she concentrated on the interface between apiculture and consumer software development.
   - Hive inspection app 
->> The hive inspection app that Elise had half finished using Flutter a couple of years ago, whose purpose it was to make it easier for beekeepers to note down observations while inspecting their hives, seemed to some to be a potentially useful tool on condition she managed to complete and fully test it and make it available on Google Play and/or Apple App Store. Having such a good quality tool associated with the site, many thought, could well add authority to it in its very well-defined domain. There were other products on the market, but they were all too inflexible in their workflow and, in the words of one early adopter were "not much use".  -- A page listing links to official local and national beekeeping authorities, associations and university faculties were mentioned as being possible useful service to site users.
+>> The hive inspection app that Elise had half finished using Flutter a couple of years ago, whose purpose it was to make it easier for beekeepers to note down observations while inspecting their hives, seemed to some to be a potentially useful tool on condition she managed to complete and fully test it and make it available on Google Play and/or Apple App Store. Having such a tool associated with the site, many thought, could well add authority to it in its very well-defined domain if it was well-designed and finished. There were other products already on the market, but they were all too inflexible in their workflow and were, in the words of one early adopter, "not much use".  -- A page listing links to official local and national beekeeping authorities, associations and university faculties were mentioned as being possible useful service to site users.
 
 ### Phone calls and e-mails with Tomáš
 Through some more or less detailed conversations with Tomáš via WhatsApp and email, she got a clearer idea of the full range of products he can supply. As well as simple bee boxes and frames, he can also supply a couple of designs for entrance and feeder boxes, queen excluders, inner covers and bee escapes, for example, and he has a business partner whose phone number he can give who makes excellent galvanised steel hive roofs in various sizes.
 
 ### Other consultations
-A number of chats with relatives and non-beekeeping friends underlined the point that Elise's site is far more likely to be successful if she gets herself in a position to sell a full range of beekeeping supplies.
+A number of chats with relatives and non-beekeeping friends underlined the point that Elise's site is far more likely to be successful if she g+manages to put herself in a position to sell a full range of beekeeping supplies.
 
 One enormously important area of research will of course be to see what the compeition is doing. There are already a large number of beekeeping e-commerce sites already on the internet aimed at the DACH market. Practically everyone with whom she discusses her _Mellifera_ site mentions this as an essential preparation. The obvious rubric in which to frame this information-gathering effort is to see it as a way to formally define the site's unique selling proposition (USP) on the basis of places Elise can go (with Tomáš' and perhaps others' help) that other online beekeeping suppliers can't. The initial competitive advantage she has identified is value for money at the quality end of the market, but there may well be others. She suspects, for example, she can project superior authority and expertise in the beekeeping sector through better organisation and presentation of information on compatibility and incompatibilities between popular standard beehive designs used in the DACH region.
 
@@ -138,7 +139,7 @@ One enormously important area of research will of course be to see what the comp
 
 - She'll add a newsletter subscription facility early in the development process as it's likely to be relatively simple to code a GDPR-compliant subscription form and doing so won't commit her to extra work on a regular basis: she can always write up newsletters as the need and opportunity arises.
 
-- While the site will need to be developed in English for Tomáš's sake, she'll have to keep in mind the need for it to switch the live version of the shop to German by default in a German-speaking DACH environment (it's a pretty basic marketing requirement to speak to your customer base in German), but to switch to English (and stay there) if the user expresses a preference for English. Though, depending on the time available to her, she may decide to leave internationalisation to a later stage and simply replace all the English texts with German.
+- While the site will need to be developed in English for Tomáš's sake, she'll have to keep in mind the need for it to switch the live version of the shop to German by default in a German-speaking DACH environment (it's a pretty basic marketing requirement to speak to one's customer base in their own native language), but to switch to English (and stay there) if the user expresses a preference for English. Though, depending on the time available to her, she may decide to leave internationalisation to a later stage and simply replace all the English texts with German once Tomáš had given his approval.
 
 - Elise will need to identify and formulate what her USP is going to be and set further marketing objectives to ensure that her chosen USP becomes and remains a reality.
 
@@ -154,13 +155,13 @@ One enormously important area of research will of course be to see what the comp
 
 ### ... and possibly for later
 
-- Elise won't commit for the moment to the effort of creating and maintaining a regular blog either directly on the site or linked to the site. She'll keep the option in the back of her mind.
+- Elise won't commit for the moment to the effort of creating and maintaining a regular blog either directly on the site or linked to the site. But she'll keep the option in the back of her mind.
 
 - She has some experience in editing video from school, and has a pretty good video camera. At some stage she might consider creating some of her own material either directly for the site or designed to indirectly nudge traffic towards the site. She knows from experience, however, that this involves a lot of hard work and could well require long-term commitment. She'll therefore file that too in the back of her mind for possible future use.
 
 - As Elise hasn't got a clue about the hive systems commonly used in countries outside the DACH area, localising to other languages can wait at least until she's got a bit of data on how beekeeping is done in other parts of Europe.
 
-- While Elise's market is extremely well-defined and online advertising may well therefore be very easy to target, Elise's lack of resources forbids her from considering it, though she might at a later stage, depending on her initial success either use her own profits or talk to suppliers, possibly including Tomáš, about subsidising future efforts here.
+- While Elise's market is extremely well-defined and online advertising may well therefore be very easy to target, Elise's lack of resources forbids her from considering it, though she might at a later stage, depending on her initial success, either use her own profits or talk to suppliers, possibly including Tomáš, about subsidising future efforts in this area.
 
 - She should keep in mind the large number of youtuber and blogger beekeepers using various languages and with varying numbers of followers, possibly offering free products to the most relevant and authoritative of them, in the hope that her wares might end up being showcased on such output. She'll have to bone up on the applicable law and on platform provider rules on advertising (paid for either in cash or in kind). Again, this is something for the future rather than an immediate priority.
 
@@ -172,20 +173,20 @@ One enormously important area of research will of course be to see what the comp
 
 - Elise has a phobia of committing to spending money when she's not sure how much the total is going to be, so she's liable to keep clear of pay-per-click advertising until she can be very sure that it's going to substantially more than pay for itself.
 
-- The DACH region is home to a variety of charities interested in the protection (in ascending order of specialisation) of insect life in general, of the many species of wild bee native to central Europe, of the European Honey Bee, and of central Europe's own native Dark Honey Bee sub-species (Apis _mellifera mellifera_, which has been driven to the edge of extinction through displacement and hybridisation with other sub-species of Apis _mellifera_ imported by beekeepers since the late 18th century from southern Europe). Elise has communicated with and contributed to some of these charities in the past. She may discuss a public association with one of them to help raise the authority of the site.
+- The DACH region is home to a variety of charities active in the protection (listed in ascending order of specialisation) of insect life in general, of the many species of wild bee native to central Europe, of the European Honey Bee, and of central Europe's own native Dark Honey Bee sub-species (Apis _mellifera mellifera_, which has been driven to the edge of extinction through displacement and hybridisation with other sub-species of Apis _mellifera_ imported by beekeepers since the late 18th century from southern Europe). Elise has communicated with and contributed to some of these charities in the past. She may discuss a public association with one of them to help raise the authority of the site.
 
 
 ### CEO and the like
 
-- Some time when she needs a change from the programming effort she'll brainstorm out a list of short- and long-tail keywords (in German mostly) to insert strategically in her site and run a few experiments with Google search to see which of them come up most frequently in searches.
+- Some time when she needs a change from the programming effort she'll brainstorm out a list of short- and long-tail keywords (mostly in German) to insert strategically in her site and run a few experiments with Google search to see which of them come up most frequently in searches.
 
-- She'll have a chat with a friend who's a specialist in CEO for advice on how far to go with inserting the keywords, etc..
+- She'll have a chat with a friend who's a specialist in CEO for advice on how far to go with inserting such keywords, etc..
 
 - She might consider shelling out the ten dollars she'll need to pay to search for keywords used outside the territories covered under the free version of Wordtracker.com.
 
 - She'll need to draw up a list of beekeeping associations, organisations, clubs, institutes, etc., to be able to include them on a list of useful links somewhere on the site. Other uses for this information could well occur to her in the future.
 
-- She'll have to have a chat with Tomáš (and any other possible suppliers) about the extent of product documentation, and in particular the quality and style of any immages available.
+- She'll have to have a chat with Tomáš (and any other possible suppliers) about the extent of product documentation, and in particular the quality and style of any images available.
 
 - She'll create a sitemap.xml file to ensure that crawlers get to where she wants them to look.
 
@@ -193,7 +194,7 @@ One enormously important area of research will of course be to see what the comp
 
 - In general, she'll consider SEO when creating any content in her site, both at an initial stage and on an ongoing basis, putting herself in the shoes of Google's team of raters. In particular, she'll be careful to cite sources for any factual information included on the site, and to choose only clearly trustworthy sites as sources.
 
-- She'll include a privacy statement, an "Impressum" (a declaration indicating who's responsible for the site contents required by German, Austrian and Swiss law) and a splashscreen allowing the user to opt out of the cookies for use in Google Analytics.
+- She'll include a privacy statement, an "Impressum" (a declaration indicating who's responsible for the site contents required by German, Austrian and Swiss law) and a splashscreen-like initial dialog allowing the user to opt out of the cookies for use in Google Analytics.
 
 
 ## Design of website's logic and structure
@@ -201,7 +202,7 @@ One enormously important area of research will of course be to see what the comp
 ### From the user-shopper' point of view
 From the point of view of a guest user, the core website will consist of nothing more than a _home_ , a _products_, a _product_details, an _order_list, an _order_, a _checkout_ and finally a checkout_success page. The _home_ page, apart from providing the usual links to routinely and legally necessary administrative pages in its footer and allowing a guest user via a dropdown list to either _Sign on_ as a registered user or _log in_ as an existing one, gives that user the option of creating an initial filter based a particular hive system or systems (see above), along with providing a number of routes to reach a _products_ overview page. This _products_ page simply lists out a number of products, each in its own cell, filtered according to any setting that the user has already chosen on the _home_ page. On the _products_ page, the user then can refine or remove the filter, thus increasing or reducing the range of the products listed on the page, or double click on a particular product, which will bring the user to that product's _product/_detail_ page. Some products will be available a variety of sizes (for example, Langstroth hive boxes will be available in _1/2_, _2/3_, _3/4_ or _1/1_ heights and protective clothing will be available in _S_, _M_, _L_ and _XL_). Other products (tools and tins of non-toxic paints) will not.
 
-For the moment, aside from box heights and clothing sizes, any difference in other dimensions, material or special features will be dealt with by creating a separate product record.
+For the moment, aside from box heights and sizes for protective and hygienic clothing, any difference in other dimensions, material or special features will be dealt with by creating a separate product record.
 
 In order to provide the flexibility to add new size scales in the future, the two size scales (bee box height and clothes size) will be stored as separate records in JSON format in the database under a simple _Size_ table connected to the relevant _Product_ records via a foreign key. For the foreseeable future, all _Size_ json records will be one-dimensional.
 

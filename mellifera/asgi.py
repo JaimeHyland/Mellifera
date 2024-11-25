@@ -1,5 +1,5 @@
 """
-ASGI config for sorted_supplies project.
+ASGI config for Mellifera project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sorted_supplies.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mellifera.settings')
 
 application = get_asgi_application()

@@ -1,1 +1,1 @@
-web: gunicorn sorted_supplies.wsgi:application
+web: gunicorn mellifera.wsgi:application

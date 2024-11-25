@@ -72,7 +72,7 @@ def product_detail(request, product_id):
 @login_required
 def add_product(request):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Sorted Supplies staff.")
+        messages.error(request, "This page is only accessible to Mellifera staff.")
         return redirect(reverse('home'))
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -95,7 +95,7 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Sorted Supplies staff.")
+        messages.error(request, "This page is only accessible to Mellifera staff.")
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -122,7 +122,7 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Sorted Supplies staff.")
+        messages.error(request, "This page is only accessible to Mellifera staff.")
         return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     del_product_name = product.name

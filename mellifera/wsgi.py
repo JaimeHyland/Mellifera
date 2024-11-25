@@ -1,5 +1,5 @@
 """
-WSGI config for sorted_supplies project.
+WSGI config for Mellifera project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
