@@ -3,72 +3,88 @@
         "pk": 1,
         "model": "products.category",
         "fields": {
-            "name": "activewear",
-            "friendly_name": "Activewear"
+            "name": "boxes",
+            "friendly_name": "Boxes"
         }
     },
     {
-        "pk": 2,
+        "pk": 10,
         "model": "products.category",
         "fields": {
-            "name": "bed_bath",
-            "friendly_name": "Bed & Bath"
+            "name": "frames",
+            "friendly_name": "Frames"
         }
     },
     {
         "pk": 3,
         "model": "products.category",
         "fields": {
-            "name": "clearance",
-            "friendly_name": "Clearance"
+            "name": "inner_covers",
+            "friendly_name": "Inner covers"
         }
     },
     {
         "pk": 4,
         "model": "products.category",
         "fields": {
-            "name": "deals",
-            "friendly_name": "Deals"
+            "name": "roofs",
+            "friendly_name": "Roofs"
         }
     },
     {
         "pk": 5,
         "model": "products.category",
         "fields": {
-            "name": "essentials",
-            "friendly_name": "Essentials"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "products.category",
-        "fields": {
-            "name": "jeans",
-            "friendly_name": "Jeans"
+            "name": "floors",
+            "friendly_name": "Floors"
         }
     },
     {
         "pk": 7,
         "model": "products.category",
         "fields": {
-            "name": "kitchen_dining",
-            "friendly_name": "Kitchen & Dining"
+            "name": "hand_tools",
+            "friendly_name": "Hand tools"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.category",
+        "fields": {
+            "name": "machines",
+            "friendly_name": "Machines"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.category",
+        "fields": {
+            "name": "wax_products",
+            "friendly_name": "Wax products"
         }
     },
     {
         "pk": 8,
         "model": "products.category",
         "fields": {
-            "name": "new_arrivals",
-            "friendly_name": "New Arrivals"
+            "name": "bee_treatments",
+            "friendly_name": "Bee treatments"
         }
     },
     {
-        "pk": 9,
+        "pk": 13,
         "model": "products.category",
         "fields": {
-            "name": "shirts",
-            "friendly_name": "Shirts"
+            "name": "tacks_wires",
+            "friendly_name": "Tacks & wires"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.category",
+        "fields": {
+            "name": "feeders",
+            "friendly_name": "Feeders"
         }
     }
 ]

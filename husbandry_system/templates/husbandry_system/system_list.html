@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husbandry Systems</title>
+</head>
+<body>
+    <h1>Husbandry Systems</h1>
+    <ul>
+        {% for system in systems %}
+            <li>
+                <strong>{{ system.name }}</strong>: {{ system.description }}<br>
+                Box Dimensions: {{ system.box_width_mm }}x{{ system.box_depth_mm }}x{{ system.box_height_mm }} mm<br>
+                Frame Dimensions: {{ system.frame_width_mm }}x{{ system.frame_depth_mm }}x{{ system.frame_height_mm }} mm
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

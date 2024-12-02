@@ -5,7 +5,6 @@
                 Browse products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By husbandry system</a>
                 <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By material</a>
                 <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By special feature</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All products</a>
@@ -34,14 +33,14 @@
             </div>
         </li>
 
-        <li class="nav-item dropdown"></li>
+        <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold bg-honey nav-link text-black mr-5" href="#" id="supplies-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Supplies
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="tools-link">
-                <a href="{% url 'products' %}?category=hand-tools" class="dropdown-item">Packaging</a>
-                <a href="{% url 'products' %}?category=machines" class="dropdown-item">Food & treatments</a>
-                <a href="{% url 'products' %}?category=machines" class="dropdown-item">Miscellaneous</a>
+            <div class="dropdown-menu border-0" aria-labelledby="supplies-link">
+                <a href="{% url 'products' %}?category=packaging" class="dropdown-item">Packaging</a>
+                <a href="{% url 'products' %}?category=food,treatments" class="dropdown-item">Food & treatments</a>
+                <a href="{% url 'products' %}?category=miscellaneous" class="dropdown-item">Miscellaneous</a>
             </div>
         </li>
     </ul>
