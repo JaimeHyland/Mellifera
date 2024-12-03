@@ -270,9 +270,9 @@ The first step for someone completely new to Heroku would have been to create an
 As I have had this in place since my third portfolio project, I didn't have to go through this rigmarole again.
 
 #### Setting up the Heroku app
-I created a new Heroku app from the Heroku dashboard by clicking the _New_ button, then selecting "Create New App", naming the new app "Mellifera" and choosing Europe as the location. I then moved to the Settings tab of the page for the new app and added the url for the new database received by email from Code Institute as a Config Var (with the key ``DATABASE_URL``).
+I created a new Heroku app from the Heroku dashboard by clicking the _New_ button, then selecting "Create New App", naming the new app "Mellifera" and choosing Europe as the location. I then moved to the Settings tab of the page for the new app and added the url for the new database received by email from Code Institute as a Config Var (with the key ``DATABASE_URL``). I also created another config var called ``DISABLE_COLLECTSTATIC`` and gave it the value 1.
 
-I then added, committed and pushed my coding work to github, went to the _Deploy_ tab of the Heroku App and connected that App to the corresponding Github repository. There I enabled automatic deploys and pressed the _Deploy Branch_ button on the main branch of my repo.
+I then added, committed and pushed my coding work to github, went to the _Deploy_ tab of the Herou App and connected that App to the corresponding Github repository. There I enabled automatic deploys and pressed the _Deploy Branch_ button on the main branch of my repo.
 
 ### Registering for Amazon AWS and using its services
 I decided to use Amazon AWS as the location to store my App's static and media files for use in the deployed version of the App. The reason this was necessary is that Heroku's free tier is not designed to store either static or media files and cannot (of course) reach such files from within the development environment. As a result, the files have to be served from an environment designed for the purpose. Following the principle "if it ain't broke, don't fix it", I used a procedure effectively identical to the one described in the Boutique Ado walkthrough.
