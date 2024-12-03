@@ -27,9 +27,9 @@ I believe that completing such a project would satisfy the requirements listed f
 - Appropriate use of online research and problem-solving resources publicly available on the Internet.
 
 
-![Behives in autumn](/assets/documentation/beehives_in_autumn.webp)
+![10-frame Langstroth beehives in autumn](/assets/documentation/readme_assets/beehives_in_autumn.webp)
 
-*Traditional beehives on an autumn evening*
+*Traditional beehives (using the Langstroth 10-frame system) on an autumn evening*
 
 ## A note to the assessors
 I do not expect this portfolio project to achieve the pass criteria in its current state. A number of the requirements listed in the instructions for it have not yet been implemented. I am obviously not a very fast coder yet, for which I apologise. In my defence, I should say that I feel that, out of the three options for the final module of the course, at least the e-commerce option &mdash;and in particular the walkthrough for the boutique-ado ecommerce website&mdash; involves a good deal more work (rather than simply more complexity) than the first four modules and, though I was to some extent forewarned of this, I didn't expect the difference in terms of time required to be _quite_ as big as it has turned out to be. There were a number of other circumstances, including a short bout of illness, that contributed to my inability to finish on time, but those circumstances paled into insignificance beside the widely recognised technical flaws and continuity gaps in the final walkthrough, as well as its sheer length.
@@ -252,14 +252,62 @@ The database is largely based on the walk-through project's walkthrough, with se
 
 ## Creating the new database
 
+### The development DB
+
 As the project is based on a cloned copy the walk-through project, to create the database for the development environment, I did the following:
-- Deleted the existing db.sqlite3 file (copied from the walk-through project along with the rest of the )
+- Deleted the existing db.sqlite3 file (copied from the walk-through project along with the rest of the code it contained). I made the modifications to the models that I needed and commands ``python3 manage.py makemigrations`` followed by ``python3 manage.py migrate``. This created a new empty database suitable for the purposes of my Mellifera project.  I created a new set of json files in the products.fixtures directory to create new product and category records. Then I added data on other tables manually (as setting up the fixtures would have been more work). I was then in a position to continue development using very basic &ndash;but basically realistic&ndash; data.
+
+### The deployed DB
+When the time came to deploy the app to Heroku (see below for the rest of this fairly complex process), I followed the steps provided by Code Institute to create a db hosted on their servers and retrieved its URL. I then dumped the data from my local SQLite db, ready for import when the remote DB was ready. I changes the DATABASE settings to point to the new remote database and then (with some minor and highly educational complications) used the loaddata command several times (with a number of variants) to import all data dumped from the old database.
+
+Following a thorough check of the new data using the browser, I decided it was safe to delete the old database.
 
 ### Registering for Heroku and using it
 
-### Registering for Stripe and using it
+#### Initial signup
+The first step for someone completely new to Heroku would have been to create an account with Heroku at heroku.com, clicking on "Sign up for free" and filling out the sign-up form (using a genuine email address and with Role as Student and country as the country in which I currently live), and then clicking "Create free account". One would then need to confirm via the validation email sent by Heroku, set a password and log in, accepting Heroku's terms of service. Heroku requires a real 16-digit credit or debit card for all its accounts and requires users to implement a minimum two-step validation process to use its hosting services. It allows one to choose one's own form of validation. I originally chose a process in which a code number is sent to my smartphone every time I log in log-in via Salesforce's Authenticator app.
 
-### Registering for Amazon AWS and using those services
+As I have had this in place since my third portfolio project, I didn't have to go through this rigmarole again.
+
+#### Setting up the Heroku app
+I created a new Heroku app from the Heroku dashboard by clicking the _New_ button, then selecting "Create New App", naming the new app "Mellifera" and choosing Europe as the location. I then moved to the Settings tab of the page for the new app and added the url for the new database received by email from Code Institute as a Config Var (with the key DATABASE_URL):
+
+
+
+### Registering for Amazon AWS and using its services
+I decided to use Amazon AWS as the location to store my App's static and media files for use in the deployed version of the App. The reason this was necessary is that Heroku's free tier is not designed to store either static or media files and cannot (of course) reach such files from within the development environment. As a result, the files have to be served from an environment designed for the purpose. Following the principle "if it ain't broke, don't fix it", I used a procedure effectively identical to the one described in the Boutique Ado walkthrough.
+
+#### Signing up
+
+My original first step was to sign up for the AWS _free tier_, creating a user account, and setting up billing information (presumably for the day when I need services that are no longer free). As I had already done this for the walkthrough project, I didn't need to repeat the same rigmarole.
+
+The free tier allows 5GB of standard storage in S3 and 20,000 GET requests and 2,000 PUT requests each month before any charges start kicking in.
+
+#### Creating a bucket, a user and a user group
+
+Once signed in to my account, I went to the S3 console from my AWS dashboard and created an appropriately named bucket (I gave it the same name as my app: ``mellifera`` and selected the eu-north-1 region for it, as I am based in Gemany). I then went to the Identity and Access Management (IAM) console, where I created an appropriately named user (``mellifera_static_media_files``) and user group (``manage-mellifera``), giving the user group S3 permissions by creating the following custom policy, naming it (``mellifera-policy``) and attaching it to that group:
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Effect": "Allow",
+			"Action": [
+				"s3:*"
+			],
+			"Resource": [
+				"arn:aws:s3:::mellifera-static-media-files",
+				"arn:aws:s3:::mellifera-static-media-files/*"
+			]
+		}
+	]
+}
+```
+
+I then ensured that the user was enabled for use of AWSCLI and/or API.  When this was done, I copied the Access Key ID and Secret Access Key and copied them both as key-value pairs in my Heroku project's list of config vars (on the settings tap for the Mellifera Heroku project). I also entered the region I had chosen for the bucket in the Heroku config vars AWS_S3_REGION_NAME=eu-north-1.
+
+### Registering for Stripe and using it
 
 ## Required features
 
