@@ -281,11 +281,30 @@ I decided to use Amazon AWS as the location to store my App's static and media f
 
 My original first step was to sign up for the AWS _free tier_, creating a user account, and setting up billing information (presumably for the day when I need services that are no longer free). As I had already done this for the walkthrough project, I didn't need to repeat the same rigmarole.
 
-The free tier allows 5GB of standard storage in S3 and 20,000 GET requests and 2,000 PUT requests each month before any charges start kicking in.
+The free tier allows 5GB of standard storage in S3, as well as 20,000 GET requests and 2,000 PUT requests each month before any charges start kicking in.
 
 #### Creating a bucket, a user and a user group
 
-Once signed in to my account, I went to the S3 console from my AWS dashboard and created an appropriately named bucket (I gave it the same name as my app: ``mellifera`` and selected the eu-north-1 region for it, as I am based in Gemany). I then went to the Identity and Access Management (IAM) console, where I created an appropriately named user (``mellifera_static_media_files``) and user group (``manage-mellifera``), giving the user group S3 permissions by creating the following custom policy, naming it (``mellifera-policy``) and attaching it to that group:
+Once signed in to my account, I went to the S3 console from my AWS dashboard and created an appropriately named bucket (I gave it the same name as my app: ``mellifera`` and selected the eu-north-1 region for it, as I am based in Gemany). I turned off all block public access settings and added the following bucket policy to it in order to all defined users to acces the data in it:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::mellifera/*"
+        }
+    ]
+}
+```
+I created a ``media`` folder to the bucket and manually uploaded my media files (all of which were still images &mdash; mostly for products, but the background image on my home page). An automatic upload of such images will have to wait for another day.
+
+Finally, after installing the necessary apps (including )
+
+I then went to the Identity and Access Management (IAM) console, where I created an appropriately named user (``mellifera_static_media_files``) and user group (``manage-mellifera``), giving the user group S3 permissions by creating the following custom policy, naming it (``mellifera-policy``) and attaching it to that group:
 ```
 {
 	"Version": "2012-10-17",
@@ -308,6 +327,23 @@ Once signed in to my account, I went to the S3 console from my AWS dashboard and
 I then ensured that the user was enabled for use of AWSCLI and/or API.  When this was done, I copied the Access Key ID and Secret Access Key and copied them both as key-value pairs in my Heroku project's list of config vars (on the settings tap for the Mellifera Heroku project). I also entered the region I had chosen for the bucket in the Heroku config vars AWS_S3_REGION_NAME=eu-north-1.
 
 ### Registering for Stripe and using it
+I logged into my existing Stripe account, which I created while following the walkthrough project in a process in which I was required to follow on-screen instructions to verify my email address. I did not need to repeat this process.
+
+I went to to the developers section of the dashboard to obtain the ‘publishable key’ and ‘secret key’. These keys must be entered as config vars during the Heroku deployment phase detailed below.  They are identical for use in the development project (where they are entered as environment variables in the env.py file) and for the Heroku-hosted deployed app, where they are added as config vars on the settings tab of Heroku's Mellifera project.
+
+As with other settings in the project, corresponding entries Django setting.py file tell the system where to look for these settings' values (i.e. in env.py file during development and in the app's config vars after deployment).
+
+Under no circumstances should the Stripe secret key, or any other secret authorization code for that matter, be hardcoded in settings.py, or in any other file subject to version control in the publicly accessible github project repository.
+
+Still in the Developer section of my Stripe account (in test mode, of course), I created two Webhooks (in other words, API end points that may be thought of as sockets into which my project can plug). I needed two of them, because my app has both a development and a deployed version, and testing the data connection between Stripe and the App is required both in development and after deployment. They point to my project URL in the development and deployed environment respectively, and have two separate secret keys to authorize their connection to Stripe. I used the same naming conventions as the walkthrough project for all these settings, whether public or secret.
+
+ ![Stripe environmental variables in the env.py file for development](assets/documentation/readme_assets/Stripe_env_vars.jpg)
+
+ ![Stripe config vars as set in the settings tab of the heroku-hosted app](assets/documentation/readme_assets/Stripe_config_vars.jpg)
+
+ *The Stripe settings as seen in the env.py file for development and Heroku settings after deployment. Note that the value for the STRIPE_WH_SECRET differs between the two locations.*
+
+ Once the checkout functionality coding had been done, I used dummy credit card details to test the connections, both between the development and its Stripe webhook and between the deployed app and its own separate webhook.
 
 ## Required features
 
@@ -315,7 +351,7 @@ I then ensured that the user was enabled for use of AWSCLI and/or API.  When thi
 The project as I have conceived it so far will require at least three data models markedly different from those included in the walkthrough project:
 - The Product model/table will contain a number of important original fields/columns not included in the walkthrough.
 - The Category model/table will be significantly more complex than the one used in the walkthrough.
-- there will be at least one original custom model/table: _System_.
+- there will be at least one original custom model/table: _HusbandrySystem_.
 
 ### UI elements to delete records for CRUD
 The project will include several UI elements that allow Site administrators to create and remove product records without having to use the Admin panel. Both registered and unregistered users will of course be able to read all product records.
