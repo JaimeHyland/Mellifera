@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # DEBUG = os.environ.get('DEVELOPMENT')
 DEBUG = True # 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['localhost','8000-jaimehyland-mellifera-9iv0369mu6a.ws.codeinstitute-ide.net', 'https://mellifera-e383ea0670a3.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost','8000-jaimehyland-mellifera-9iv0369mu6a.ws.codeinstitute-ide.net', 'mellifera-e383ea0670a3.herokuapp.com']
 
 
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com", "https://*.codeinstitute-ide.net"]
