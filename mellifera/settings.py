@@ -208,7 +208,8 @@ if os.environ.get('USE_AWS'):
         'CacheControl': 'max-age=94608000',
     }
 
-    # Bucket configuration_STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    # Bucket configuration
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
