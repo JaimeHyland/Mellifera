@@ -31,9 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEVELOPMENT')
-DEBUG = True # 'DEBUG' in os.environ
+# SECURITY WARNING: don't mess with this setting: it ensures the deployed app is not in DEBUG mode!
+DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = ['localhost','8000-jaimehyland-mellifera-9iv0369mu6a.ws.codeinstitute-ide.net', 'mellifera-e383ea0670a3.herokuapp.com']
 
