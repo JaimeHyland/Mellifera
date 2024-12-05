@@ -193,7 +193,7 @@ USE_TZ = True
 
 
 # Required for sitemap.xml to provide the correct full urls on the site
-SITE_DOMAIN = 'https://mellifera-e383ea0670a3.herokuapp.com/'
+SITE_DOMAIN = 'https://mellifera-e383ea0670a3.herokuapp.com'
 
 
 # Static files (CSS, JavaScript, Images)
