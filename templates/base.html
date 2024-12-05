@@ -80,6 +80,15 @@
                         </div>
                     </div>
                 </form>
+                <form method="get" action="{% url 'home' %}">
+                    <select name="husbandry_system" class="form-control" onchange="this.form.submit()">
+                        <option value="">Select a husbandry System</option>
+                        {% for system in husbandry_systems %}
+                            <option value="{{ system.id }}" {% if system.id == selected_husbandry_system %}selected{% endif %}>{{ system.name }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+                <a href="{% url 'home' %}?husbandry_system=None">Clear Filter</a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">

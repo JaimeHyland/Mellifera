@@ -1,7 +1,7 @@
 from django.db import models
 
 class HusbandrySystem(models.Model):
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=100)
     box_length_mm = models.PositiveIntegerField(default=0)
     box_width_mm = models.PositiveIntegerField(default=0)
     depth_deep_mm = models.PositiveIntegerField(null=True, blank=True)
