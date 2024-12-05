@@ -2,6 +2,7 @@ from django.urls import reverse
 from products.models import Product
 from django.conf import settings
 from django.contrib.sitemaps import Sitemap
+from urllib.parse import urlparse
 
 
 class StaticViewSitemap(Sitemap):
@@ -9,18 +10,22 @@ class StaticViewSitemap(Sitemap):
     changefreq = 'monthly'
 
     def items(self):
-        return ['home', 'products', 'profile', 'product_sample']
+        return ['home', 'products', 'profile']
 
     def location(self, item):
-        if item == 'product_sample':
-            return reverse('product_detail', kwargs={'product_id': 1})
         return reverse(item)
 
-    # This is needed to get the sitemap view to use the site domain in the settings file!
+    # This rather involved rigmarole seems to be needed to get the sitemap view
+    # to use the site domain in the settings file without concatenating "https//example.com"!
+    # It's a workaround. There is almost certainly be a better way!
     def get_urls(self, site=None, **kwargs):
         urls = super().get_urls(site=site, **kwargs)
         for url in urls:
-            url['location'] = f"{settings.SITE_DOMAIN}{url['location']}"
+            parsed_url = urlparse(url['location'])
+            if not parsed_url.netloc:
+                url['location'] = f"{settings.SITE_DOMAIN}{url['location']}"
+            else:
+                url['location'] = f"{settings.SITE_DOMAIN}{parsed_url.path}"
         return urls
 
 
@@ -37,5 +42,9 @@ class ProductSitemap(Sitemap):
     def get_urls(self, site=None, **kwargs):
         urls = super().get_urls(site=site, **kwargs)
         for url in urls:
-            url['location'] = f"{settings.SITE_DOMAIN}{url['location']}"
+            parsed_url = urlparse(url['location'])
+            if not parsed_url.netloc:
+                url['location'] = f"{settings.SITE_DOMAIN}{url['location']}"
+            else:
+                url['location'] = f"{settings.SITE_DOMAIN}{parsed_url.path}"
         return urls
