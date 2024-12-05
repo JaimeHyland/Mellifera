@@ -22,25 +22,4 @@ def send_test_email(request):
     except Exception as e:
         return HttpResponse(f"Error: {e}")
 
-def home(request):
-    # Get all husbandry systems for the dropdown
-    husbandry_systems = HusbandrySystem.objects.all()
-
-    # Get the selected husbandry system from the query parameter (if set)
-    selected_husbandry_system = request.GET.get('husbandry_system')
-
-    # If a husbandry system is selected, filter the products
-    if selected_husbandry_system:
-        # Filter products by the selected husbandry system
-        products = Product.objects.filter(husbandry_system_id=selected_husbandry_system) | Product.objects.filter(husbandry_system__isnull=True)
-    else:
-        # If no filter is selected, show all products
-        products = Product.objects.all()
-
-    return render(request, 'home.html', {
-        'husbandry_systems': husbandry_systems,
-        'selected_husbandry_system': selected_husbandry_system,
-        'products': products,
-    })
-
     
