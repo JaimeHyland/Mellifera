@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -189,6 +190,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Required for sitemap.xml to provide the correct full urls on the site
+SITE_DOMAIN = 'https://mellifera-e383ea0670a3.herokuapp.com/'
 
 
 # Static files (CSS, JavaScript, Images)

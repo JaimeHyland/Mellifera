@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
-
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
-    path('husbandry_system/', include('husbandry_system.urls'))
+    path('husbandry_system/', include('husbandry_system.urls')),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

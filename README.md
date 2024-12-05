@@ -31,16 +31,6 @@ I believe that completing such a project would satisfy the requirements listed f
 
 *Traditional beehives (using the Langstroth 10-frame system) on an autumn evening*
 
-## A note to the assessors
-I do not expect this portfolio project to achieve the pass criteria in its current state. A number of the requirements listed in the instructions for it have not yet been implemented. I am obviously not a very fast coder yet, for which I apologise. In my defence, I should say that I feel that, out of the three options for the final module of the course, at least the e-commerce option &mdash;and in particular the walkthrough for the boutique-ado ecommerce website&mdash; involves a good deal more work (rather than simply more complexity) than the first four modules and, though I was to some extent forewarned of this, I didn't expect the difference in terms of time required to be _quite_ as big as it has turned out to be. There were a number of other circumstances, including a short bout of illness, that contributed to my inability to finish on time, but those circumstances paled into insignificance beside the widely recognised technical flaws and continuity gaps in the final walkthrough, as well as its sheer length.
-
-I am determined however, to get this final part of the course done properly, given a reasonable amount of time to complete the job. I realise that my failure to complete the 5th project on time will put a pass ceiling on my efforts, but my priority has always been to learn the skills I need to learn rather than to receive an especially impressive grade on my certificate.
-
-This Readme file (especially from line 214 on) should be treated as a set of notes for the later finalisation of my eventual Readme file for the finished portfolio project.
-
-I'm very grateful to the tutors for their ongoing help in getting through this very challenging section of the course (though they were also just as supportive, encouraging, patient and competent in earlier parts of the course) and to my customer care person for their encouragement and advice. I'm grateful too to my mentor for the help he has provided so far, and I hope to benefit further from his expertise and generosity over the next couple of weeks in my efforts to finish this project.
-
-Thanks very much to you as well for your patience!  And my sincere apologies for the unfinished state of my project!
 
 [TOC]
 
@@ -351,13 +341,13 @@ Still in the Developer section of my Stripe account (in test mode, of course), I
 The project as I have conceived it so far will require at least three data models markedly different from those included in the walkthrough project:
 - The Product model/table will contain a number of important original fields/columns not included in the walkthrough.
 - The Category model/table will be significantly more complex than the one used in the walkthrough.
-- there will be at least one original custom model/table: _HusbandrySystem_.
+- There will be at least one original custom model/table: _HusbandrySystem_.
 
 ### UI elements to delete records for CRUD
-The project will include several UI elements that allow Site administrators to create and remove product records without having to use the Admin panel. Both registered and unregistered users will of course be able to read all product records.
+The project includes several UI elements that allow Site administrators to create, modify and remove product records without having to use the Admin panel. Both registered and unregistered users will of course be able to read all product records.
 
 ### Agile methodology
-All development will be completed as guided by Milestones, Epics and User stories pre-defined using an associated project in the GitHub repository. Because Elise is workin on her own, she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
+All development has been completed via pre-set User stories pre-set for the developer (me!) using an associated project in the GitHub repository. Because Elise is workin on her own, she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
 
 ### CEO
 The project will include a functional robots.txt and sitemap.xml file. The header of each page on the site will include appropriate descriptive metatags. At least one link will correctly implement the Rel attribute to help increase the authority of the site.
@@ -366,13 +356,13 @@ The project will include a functional robots.txt and sitemap.xml file. The heade
 The online shop will be associated with a real (though temporary) and relevant Facebook page, formatted as far as possible in the site's livery.
 
 ### Custom 404 page
-Any attempt by any sort of user to enter a non-existent page within the site will bring them to a custom 404 page consistent with the on-line shop's livery.
+Any attempt by any sort of user to enter a non-existent page within the site will bring them to a simple custom 404 page consistent with the on-line shop's livery.
 
 ### Newsletter signup option
-The site will include a custom newsletter sign-up page.
+The site includes a custom newsletter sign-up page.
 
 ### Ecommerce strategy/business model
-The description of the site owner's ecommerce business model is already largely in place on this readme (see above). The description is dominated by an account of the owner's marketing strategy.
+The description of the site owner's ecommerce business model is already largely in place on this readme (see [Credits and sources](#credits-and-sources)). The description is dominated by an account of the owner's marketing strategy.
 
 ### DEBUG mode
 The DEBUG mode of the program will be guaranteed to be false in its deployed state, either via a Heroku-side Config Var or by setting the DEBUG setting in the settings.py file to 'False'.

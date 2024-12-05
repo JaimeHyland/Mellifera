@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+Allow: /
+Sitemap: https://mellifera-e383ea0670a3.herokuapp.com/sitemap.xml
