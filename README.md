@@ -316,16 +316,63 @@ I then went to the Identity and Access Management (IAM) console, where I created
 
 I then ensured that the user was enabled for use of AWSCLI and/or API.  When this was done, I copied the Access Key ID and Secret Access Key and copied them both as key-value pairs in my Heroku project's list of config vars (on the settings tap for the Mellifera Heroku project). I also entered the region I had chosen for the bucket in the Heroku config vars AWS_S3_REGION_NAME=eu-north-1.
 
+I then moved over to AWS's Identity and Access Management console (IAM), where I created a user group (``manage-mellifera``) and attached the following policy (``mellifera-policy``) to it:
+
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "BucketPermissions",
+			"Effect": "Allow",
+			"Action": [
+				"s3:ListBucket",
+				"s3:GetBucketLocation"
+			],
+			"Resource": "arn:aws:s3:::mellifera"
+		},
+		{
+			"Sid": "ObjectPermissions",
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:GetObject",
+				"s3:DeleteObject"
+			],
+			"Resource": "arn:aws:s3:::mellifera/*"
+		}
+	]
+}
+```
+I then created a user (``mellifera_static_media_files``) and attached it to the user to the group.
+
+I was then ready to copy my aws_access_key_id and my aws_secret_access_key from IAM, returned to my development IDE and copied the keys into my env.py file (which is not included in my change control environment), as well as adding them to the config vars in Heroku for the mellifera project.
+
+Back in the IDE, I created a number of necessary settings, which I won't go into detail on here. Note, though, how Django includes no reference to the aws credential keys in settings. The awscli app handles the job of finding and checking credentials.
+
+![AWS-relevant entries in settings.py](/assets/documentation/readme_assets/aws-settings.jpg)
+
+*The AWS-relevant entries I made in setting.py*
+
+
 ### Registering for Stripe and using it
-I logged into my existing Stripe account, which I created while following the walkthrough project in a process in which I was required to follow on-screen instructions to verify my email address. I did not need to repeat this process.
+I originally logged into my Stripe account, which I had created while following the walkthrough project (in a fairly straightforward process in which I was required to follow on-screen instructions to verify my email address). I did not need to repeat this process.
 
 I went to to the developers section of the dashboard to obtain the ‘publishable key’ and ‘secret key’. These keys must be entered as config vars during the Heroku deployment phase detailed below.  They are identical for use in the development project (where they are entered as environment variables in the env.py file) and for the Heroku-hosted deployed app, where they are added as config vars on the settings tab of Heroku's Mellifera project.
 
-As with other settings in the project, corresponding entries Django setting.py file tell the system where to look for these settings' values (i.e. in env.py file during development and in the app's config vars after deployment).
+As with most other settings in the project, corresponding entries Django setting.py file tell the system where to look for these settings' values (i.e. in env.py file during development and in the app's config vars after deployment).
 
 Under no circumstances should the Stripe secret key, or any other secret authorization code for that matter, be hardcoded in settings.py, or in any other file subject to version control in the publicly accessible github project repository.
 
+Below are the main Stripe settings I made in my settings.py file.
+
+![Stripe settings in my settings.py file](stripe_settiings.png)
+
+*Stripe-related settings in the project settings.py file*
+
+
 Still in the Developer section of my Stripe account (in test mode, of course), I created two Webhooks (in other words, API end points that may be thought of as sockets into which my project can plug). I needed two of them, because my app has both a development and a deployed version, and testing the data connection between Stripe and the App is required both in development and after deployment. They point to my project URL in the development and deployed environment respectively, and have two separate secret keys to authorize their connection to Stripe. I used the same naming conventions as the walkthrough project for all these settings, whether public or secret.
+
 
  ![Stripe environmental variables in the env.py file for development](assets/documentation/readme_assets/Stripe_env_vars.jpg)
 
@@ -333,36 +380,48 @@ Still in the Developer section of my Stripe account (in test mode, of course), I
 
  *The Stripe settings as seen in the env.py file for development and Heroku settings after deployment. Note that the value for the STRIPE_WH_SECRET differs between the two locations.*
 
- Once the checkout functionality coding had been done, I used dummy credit card details to test the connections, both between the development and its Stripe webhook and between the deployed app and its own separate webhook.
+ Once the checkout functionality coding had been done, I used dummy credit card details to test the connections, both between the development and its Stripe webhook and between the deployed app and its own separate webhook.  The connection worked in both dev and deployed environments, sending a real email to the intended recipient to confirm the "purchase".
 
-## Required features
+ It almost goes without saying that a real-life online payment system would require far more testing before switching to live payments!
+
+## Required features of the project
 
 ### Original custom models
-The project as I have conceived it so far will require at least three data models markedly different from those included in the walkthrough project:
-- The Product model/table will contain a number of important original fields/columns not included in the walkthrough.
+The project includes at least three data models markedly different from those included in the walkthrough project:
+- The Product model/table  contain a number of important original fields/columns not included in the walkthrough.
 - The Category model/table will be significantly more complex than the one used in the walkthrough.
-- There will be at least one original custom model/table: _HusbandrySystem_.
+- There will be one original custom model/table: _HusbandrySystem_.
+
+My original intention was to provide the user with a site-wide filter (governed by a dropdown list on the site header) allowing them to select their husbandry system, so that equipment incompatible with that system are filtered out of the product list presented on the site, thus avoid the dander of the customer buying equipment incompatible with their existing kit.  Sadly, I had to roll back this functionality at the last minute as it was not yet working satisfactorily very close to coding freeze.
 
 ### UI elements to delete records for CRUD
-The project includes several UI elements that allow Site administrators to create, modify and remove product records without having to use the Admin panel. Both registered and unregistered users will of course be able to read all product records.
+The project includes several UI elements that allow Site administrators to create, modify and remove product records without having to use the Admin panel. Superusers &ndash;and only superusers&ndash; can add a product manually from a "Product management" menu item under "My account" in the header. Such superusers can also edit and delete files by choosing a product in the products page, and pressing _Edit_ or _Delete_ as appropriate.  These options are also available, and have the same effect, in the product_details page.
+
+Following the motto that "if it ain't broke, don't fix it", this functionality is very much based on the system in the walkthrough project, but it takes account of the modified Product model.
+
+Both registered and unregistered users will of course be able to read all product records. 
 
 ### Agile methodology
-All development has been completed via pre-set User stories pre-set for the developer (me!) using an associated project in the GitHub repository. Because Elise is workin on her own, she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
+All development has been completed via pre-set User stories pre-set for the developer (me &mdash; or Elise if you wish) using an associated project in the GitHub repository. Because Elise is working on her own, she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
+
+The Kanban for this project is available at https://github.com/users/JaimeHyland/projects/8/views/1
 
 ### CEO
-The project will include a functional robots.txt and sitemap.xml file. The header of each page on the site will include appropriate descriptive metatags. At least one link will correctly implement the Rel attribute to help increase the authority of the site.
+The project includes a functional robots.txt and sitemap.xml file. The header of the index and products pages of the site includes appropriate descriptive metatags ('description' and 'keywords') overriding the defaults contained in the project base.html. Other pages inherit the default entries set on that file.
 
 ### Social media
-The online shop will be associated with a real (though temporary) and relevant Facebook page, formatted as far as possible in the site's livery.
+The online shop will be associated with a real (though temporary and for the moment rather primitive) and relevant Facebook page. Thanks to a serious error in the facebook pages UI, and its famously unhelpful help functions, getting the page published was far more difficult than one should have expected.
+
+https://www.facebook.com/people/Mellifera/61570066172012/
 
 ### Custom 404 page
-Any attempt by any sort of user to enter a non-existent page within the site will bring them to a simple custom 404 page consistent with the on-line shop's livery.
+Any attempt by any sort of user to enter a non-existent page within the site will bring them to a primitie custom 404 page. It need work to make it consistent with the on-line shop's livery.
 
 ### Newsletter signup option
-The site includes a custom newsletter sign-up page.
+The site includes a custom newsletter sign-up page.  It currently connects up to Code Institute's form dump. Implementing it using django is another WIP.  The page has only received very limited formatting.
 
 ### Ecommerce strategy/business model
-The description of the site owner's ecommerce business model is already largely in place on this readme (see [Credits and sources](#credits-and-sources)). The description is dominated by an account of the owner's marketing strategy.
+The description of the site owner's ecommerce business model is already largely in place on this readme (see especially [The initial proposition](#the-initial-proposition), [Product range & Marketing](#product-range-&-Marketing) and [Elise's initial marketing conclusions](#elises-initial-marketing-conclusions)). The description is dominated by an account of how the fictional owner's marketing strategy developed.
 
 ### DEBUG mode
 The DEBUG mode of the program will be guaranteed to be false in its deployed state, either via a Heroku-side Config Var or by setting the DEBUG setting in the settings.py file to 'False'.
@@ -375,8 +434,6 @@ The final readme.md file will include detailed accounts of testing work, and a s
 
 ### Visibility of code-related environments
 All environments used to create my eventual future project will be made available publicly to allow the assessor(s) to do their work. That will include my GitHub repository and my project board created on my GitHub environment. The actual site will be fully deployed and available at the URL created by Heroku.
-
-## App robustness
 
 ## i10n and l10n
 No internationalisation or localisation work will be done at this stage of the project.
@@ -391,7 +448,7 @@ Each identifiable function (as identified by each Use Case in the user stories) 
 The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.
 
 ### Features testing
-Features were tested manually as part of the process described above in Manual testing.
+Features were tested manually as part of manual testing.
 
 ### Device compatibility and responsiveness
 The app in its final form was smoke tested on a variety of devices, browsers and operating systems, including smartphones, ipads and tablets, laptops and desktop screens.
@@ -403,21 +460,165 @@ All detected console.log and print errors and warnings have been eliminated by t
 ### Bugs
 Bugs have been fixed as they arose during smoke testing (see below).
 
-As far as practicable, all Bugs are resolved separately and the Bug resolution is recorded in Git commits separately, prefixing the commit text with "BUG: ".
+As far as practicable, all Bugs are resolved separately and the Bug resolution is recorded in Git commits separately, prefixing the commit text with the string "BUG" followed by the bug number.
 
 Where console.log and/or print statements were used in debugging processes, they will all include the text "DEBUG:" to ensure that they can be identified via a simple Worspace search and deleted as soon as they cease to be required.
 
 Unless otherwise clearly explained in an associated comment, all commented out code has been removed in the final version of the project.
 
-
 ### Warnings appearing on consoles, terminals and logs
+All warnings that appeared on consoles, termanals and logs, both in the development and the deployed environment, have been resolved.
 
-### Linting
+## Linting
+### Linting the Python
+All python code (aside from standard and/or boiler-plate code provided by Django and similar) has been linted and corrected using flake8. For development purposes, I took the liberty of altering flake8's ini settings (in the ``.flake8`` file in the project's root directory) to allow lines of up to 119 characters during development. I believe that modern screen resolutions allow developers to read code in lines of more than 79 characters perfectly well and that overrestrictive line length rules can be counterproductive in terms of readability. 
+
+I saw fit to comment out several issues using the ``# noqa`` notation, mostly to do with lines but also for unused import at the top of stub files (empty test.py files and the like) which I chose to keep in place, to ease future development.
+
+While I strongly believe that the limit of 79 characters per line is excessively restrictive, I would be happy to reduce the standard number of characters per line to 79 if a client requires, especially if payment for my coding were being calculated according to the number of lines coded!
+
+N.B.: It appears that the linting process has broken some of the functionality of the project. I'm afraid I haven't been able to resolve this unhandled error!  It affects the ability of the app to send a real email on completing the secure checkout process and (it seems) the display of the stored address of the user in the system on the checkout page.
+
+<!-- TOC --><a name="linting-the-html-css-and-javascript"></a>
+### Linting the HTML, CSS and JavaScript
+Time restrictions prevented me from linting in my HTML code. I had been intending to use Django's djlint tool for this point, which has proven very useful in the past in finding orphan closing nodes, etc.. The small bit of configuration that I had prepared for this uncompleted process would be seen in a .djlint file on the root directory.
+
+```
+[django-lint]
+disable = attribute-lowercase
+```
+
+I did no linting either on my fairly modestly sized css files, as it was easy enough to check their formatting and layout manually.
+
+Nor did I lint the JavaScript contained in the project. From experience, I can say that this process would have been a little more involved. The tool I generally use for this purpose is ESLint, which requires a good deal more configuration (and, among other complications, an update of GitPod's standard version of Node.js) to set up as compared the other two linters mentioned above.
+
+The configuration file would have been placed on the project's root directory as ``.eslint.config.mjs``. You can see below an idea of how I would have configured it. I would have enforced a 115-character line length here too, and formatting based on a four-character tab (I can't decide whether that or the equally standard two-char tab is preferable).
+
+```
+// import globals from "globals";
+// import pluginJs from "@eslint/js";
+
+
+// /** @type {import('eslint').Linter.Config[]} */
+// export default [
+//  {files: ["**/*.html"],
+//    languageOptions: {
+//      sourceType: "script"}},
+//  {languageOptions: { globals: globals.browser }},
+//  pluginJs.configs.recommended,
+//];
+
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import pluginHtml from "eslint-plugin-html";
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {
+    // This targets my custom HTML files.
+    // I'm not interested in the Django files copied into my project.
+    files: ["shopping_list/templates/*.html"], 
+    languageOptions: {
+      globals: {
+        bootstrap: "readonly", // eslint ain't familiar with bootstrap
+        $: "readonly", // eslint doesn't know about jQuery
+        ...globals.browser,
+      },
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "script", // Treat the files as non-modular scripts
+      },
+    },
+    plugins:  {
+      html: pluginHtml,
+    },
+
+    rules: {
+      // Three custom rules:
+      // eslint doesn't see the use of toggleCancelUncancel, but my shopping_list.html file does!
+      "no-unused-vars": ["error", { "varsIgnorePattern": "toggleCancelUncancel" }],
+      // Lines should be no longer than 80 characters.
+      "max-len": ["error", { "code": 115 }],
+      // Indents should be small and uniform.
+      "indent": ["error", 4]
+    },
+  },
+  pluginJs.configs.recommended,
+];
+```
+
+However, this is all academic, as I ran out of time to do this linting exercise, even though I probably would not have had to modify the above configurations by much, which originally cost me some time to compile originally.
+
+<!-- TOC --><a name="linting-config-files"></a>
+
+### Browser and device compatibility
+During ongoing development, I tested my work on the latest versions of Chrome and Edge, using developer tools in "inspect" mode at various resolutions (running a **smoke test** on before every commit at the very least) and intermittently running the App on the following physical devices:
+- Samsung Galaxy A8 (360 x 740px effective size, running on the latest version of Chrome)
+- ipod (768px x 1024px viewport size, running on the latest version of Safari)
+- HP laptop (1920 x 1080px) and Dell second screen (1920 x 1200px) both running on latest versions of Chrome, Microsoft Edge and Firefox 
+
+I have done no testing, nor do I plan to do any testing, on older Browser versions, nor on any other physical devices. 
+So far, this App has proved responsive enough for use on all the Android and Apple mobile devices we possess in the family.
+
+Owing to lack of time and resources, I was unable to do any testing on any legacy versions of these or on any other browsers or physical machines. Nor do I plan to make any such test in the future.
+
+Consistent with Elisa's marketing conclulsions, the main pages of the App are, and will continue to be, optimised for use via a laptop or tablet. Of course, in the future, it will need to be adapted and improved for smartphone compatibility
 
 ## Unresolved technical issues
-
-## Lessons learned
+The major unresolved technical issue is the need for one of the central functions of the app to filter products by husbandry_system.  While I initially made good progress on it, it fell over late in development and I was forced to roll it back.
 
 ## Other unresolved issues and future development
+Most of the allauth templates have not yet been formatted to the site's livery!  A shortage of time is the only explanation for this. It is the highest priority for future development!
+Much of the formatting, either using bootstrap or custom css, is still very primitive, and too close to the walkthrough project for comfort. This will need to be sorted out speedily.
+As described above, linting was only completed for the python elements in the project. Time constraints prevented me from running linting on html/css elements and on the javascript portions of the code.
 
-## Credits
+## Other design questions
+
+<!-- TOC --><a name="hard-coded-data"></a>
+### Hard-coded data
+Some of the data used by the app is for reasons of simplicity hard-coded at the development stage. One example of such data is the list of shop types (TYPES_OF_SHOP) used by the program, which is hard-coded into the Models.py file. This list (and any other hard-coded data) may be integrated into an appropriate data table in a future iteration, depending on early user feedback.
+
+<!-- TOC --><a name="help-functions"></a>
+### Help functions
+I have not, and do not intend in any scheduled future, to implement any particular systematic user Help functionality behind the App in addition to Django's generic help features. I will concentrate on ensuring that the UX is as seamless as possible and that all UIs in the App are as intuitive and simple as humanly possible. In any rare cases where it seems that some explanation may be necessary, I may provide the user with information via discreet modal displays. Apart from immediate aesthetic considerations, I'll have to give further thought to the positioning of buttons, the greater use of modal windows, etc. (see above).
+
+<!-- TOC --><a name="text-resources-for-i10n-and-l10n"></a>
+### Text resources for i10n and l10n
+I do not anticipate any need to internationalise an App essentially designed for a single family. However, as I live in Germany, and many potential testers of my app will be far more comfortable using the German language, any practicable beta version will need to be localized for such users. When the time comes to take that step, I will leverage Django's built-in i18n and l10n capabilities in a later iteration of the App.
+
+<!-- TOC --><a name="credits-and-sources"></a>
+## Credits and sources
+
+<!-- TOC --><a name="code-resources"></a>
+### Code resources
+All the code is my own, though some of it is adapted from, or at least inspired by, some of the educational and industry sites listed below. As you will see, I have made very extensive use of the code provided in the Code Institute's learning resources and of the Django, Bootstrap materials, as well as other documentation provided to me by CI. Future iterations of this project will be making even more use of such sources.
+
+<!-- TOC --><a name="external-technical-and-learning-resources"></a>
+### External technical and learning resources
+Naturally enough, I have researched widely to find out how to implement a variety of features not explicitly included in Code Institute's learning materials, including several visits to the following sites:
+- [w3schools.com](https://w3schools.com/)
+- [stackoverflow.com](https://stackoverflow.com/)
+- [freecodecamp.org](https://www.freecodecamp.org/)
+- [codecademy.com](https://www.codecademy.com/)
+- [w3docs.com](https://www.w3docs.com/)
+- [discuss.python.org](https://discuss.python.org/)
+- [digitalocean.com](https://www.digitalocean.com/)
+- [programiz.com](https://www.programiz.com/python-programming)
+- [digitalocean.com](https://www.digitalocean.com/community/tutorials/)
+- [geeksforgeeks.org](https://www.geeksforgeeks.org/)
+- [medium.com](https://medium.com/)
+- [django channels](https://channels.readthedocs.io/en/latest/)
+- [Python Software Foundation](https://pypi.org/)
+- [djLint](https://www.djlint.com/)
+- [ESLint](https://eslint.org/)
+
+I used some code I found at [https://github.com/derlin/](https://derlin.github.io/bitdowntoc/) to generate this readme file's table of contents.
+
+<!-- TOC --><a name="other-credits"></a>
+### Other credits
+I would still like to thank my fellow students for their helpful suggestions and support, and in particular to my Student Care facilitator, for their inspiration, encouragement and help in combatting my recurring impostor syndrome! But mainly for their patience.
+
+Code Institute's excellent tutoring team also deserve a special mention for their help, which they have consistently given in an open, friendly, encouraging, knowledgeable and professional manner.
+
+I also feel the need to thank you, my project assessor, for your patience and understanding of both the complexity, overambition and imperfections of this project. And for your sheer effort in putting yourself through the effort of reviewing this project, and especially its over-long readme file.
+

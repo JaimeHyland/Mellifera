@@ -18,7 +18,7 @@ from storages.backends.s3boto3 import S3Boto3Storage
 
 
 if os.path.isfile('env.py'):
-    import env
+    import env  # noqa
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,7 +34,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't mess with this setting: it ensures the deployed app is not in DEBUG mode!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['localhost','8000-jaimehyland-mellifera-9iv0369mu6a.ws.codeinstitute-ide.net', 'mellifera-e383ea0670a3.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost',
+    '8000-jaimehyland-mellifera-9iv0369mu6a.ws.codeinstitute-ide.net',
+    'mellifera-e383ea0670a3.herokuapp.com'
+]
 
 
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com", "https://*.codeinstitute-ide.net"]
@@ -66,7 +70,6 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'husbandry_system',
-    
 ]
 
 MIDDLEWARE = [
@@ -95,7 +98,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # allauth requires this option
+                'django.template.context_processors.request',   # allauth requires this option
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -154,13 +157,6 @@ else:
         }
     }
 
-# DATABASES = {
-#      'default': dj_database_url.parse('postgresql://neondb_owner:uzWJKw9G6CcL@ep-raspy-truth-a2xx9a8y.eu-central-1.aws.neon.tech/drown_haven_gloss_461745')
-#  }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -220,7 +216,7 @@ if os.environ.get('USE_AWS'):
 
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
-    AWS_S3_CUSTOM_DOMAIN =f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'

@@ -215,6 +215,13 @@ input[name='q']::placeholder {
     background-color: #f0c717;
 }
 
+#shaded-area {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(250, 250, 250, 0.8);
+    width: 330px;
+}
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {

@@ -14,13 +14,17 @@
     {% endblock %}
 
     <!-- Required meta tags -->
-    {% block meta %}
+    {% block meta_tags %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mellifera{% block extra_title %}: for all your bees' needs{% endblock %}</title>
     {% endblock %}
 
     {% block extra_meta %}
+        <!-- Default meta tags for each page-->
+        <meta name="description" content="Shop for high-quality beekeeping supplies at Mellifera. Your trusted source for everything beekeeping." />
+        <meta name="keywords" content="beekeeping, beekeeping supplies, Mellifera, honey, honeybees" />
     {% endblock %}
 
     <!-- Bootstrap CSS -->
@@ -56,7 +60,6 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Mellifera{% block extra_title %}: for all your bees' needs{% endblock %}</title>
 </head>
 <body>
     <header class="container-fluid fixed-top">
@@ -95,7 +98,9 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Product management</a>
+                                <a href="{% url 'add_product' %}" class="dropdown-item">Add a product</a>
+                                {% else %}
+                                <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Sign up to our newsletter</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>

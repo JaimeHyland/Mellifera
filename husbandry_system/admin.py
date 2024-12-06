@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import HusbandrySystem
 
+
 class HusbandrySystemAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -12,5 +13,6 @@ class HusbandrySystemAdmin(admin.ModelAdmin):
         'depth_shallow_mm',
         'description',
     )
+
 
 admin.site.register(HusbandrySystem, HusbandrySystemAdmin)

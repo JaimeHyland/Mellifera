@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class HusbandrySystem(models.Model):
     name = models.CharField(max_length=100)
     box_length_mm = models.PositiveIntegerField(default=0)

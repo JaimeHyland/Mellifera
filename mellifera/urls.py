@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.http import HttpResponse
 from django.views.generic import TemplateView
+from home import views
 
 
 urlpatterns = [
@@ -31,5 +31,5 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('husbandry_system/', include('husbandry_system.urls')),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    path('newsletter_signup/', views.newsletter_signup, name='newsletter_signup'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

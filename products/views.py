@@ -7,7 +7,6 @@ from django.db.models.functions import Lower
 from .models import Product, Category
 from .forms import ProductForm
 
-# Create your views here.
 
 def all_products(request):
 
@@ -84,13 +83,14 @@ def add_product(request):
             messages.error(request, 'Could not add new product. Please make sure your form entries are valid.')
     else:
         form = ProductForm()
-    
+
     template = 'products/add_product.html'
     context = {
         'form': form,
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_product(request, product_id):
@@ -118,6 +118,7 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_product(request, product_id):
