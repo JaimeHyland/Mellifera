@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -5,16 +7,28 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category
+from husbandry_system.models import HusbandrySystem
 from .forms import ProductForm
 
 
-def all_products(request):
+def product_list(request):
 
-    products = Product.objects.all()
     query = None
     categories = None
     sort = None
     direction = None
+
+    selected_husbandry_system = request.session.get('husbandry_system', '')
+
+    if selected_husbandry_system:
+        products = Product.objects.filter(
+            current=True
+            ).filter(
+            Q(husbandry_system__name=selected_husbandry_system)| Q(husbandry_system__isnull=True)
+        )
+    else:
+        products = Product.objects.filter(current=True)
+
 
     if request.GET:
         if 'sort' in request.GET:
@@ -52,6 +66,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'selected_husbandry_system': selected_husbandry_system,
     }
 
     return render(request, 'products/products.html', context)

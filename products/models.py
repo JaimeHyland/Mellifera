@@ -33,6 +33,7 @@ class Product(models.Model):
     image_url = models.URLField(max_length=1824, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     in_stock = models.BooleanField(default=True)
+    current = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

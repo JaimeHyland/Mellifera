@@ -16,7 +16,6 @@ import sys
 from pathlib import Path
 from storages.backends.s3boto3 import S3Boto3Storage
 
-
 if os.path.isfile('env.py'):
     import env  # noqa
 
@@ -103,6 +102,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
+                'products.context_processors.husbandry_system_context',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

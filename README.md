@@ -745,6 +745,8 @@ Naturally enough, I have researched widely to find out how to implement a variet
 - [Python Software Foundation](https://pypi.org/)
 - [djLint](https://www.djlint.com/)
 - [ESLint](https://eslint.org/)
+-v[favicon](https://favicon.io/favicon-converter/) I used this site to convert my icon png file (see next entry) into a set of favicon files
+- [Vecteezy](https://www.vecteezy.com/vector-art/7634350-bee-logo-icon-design-template-vector) I based my site icon/favicon (in colour) on a free black&white image provided by this site.
 
 I used some code I found at [https://github.com/derlin/](https://derlin.github.io/bitdowntoc/) to generate this readme file's table of contents.
 

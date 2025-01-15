@@ -20,7 +20,13 @@ body {
 }
 
 .logo-font {
+    font-family: 'Belleza', sans-serif;
     text-transform: uppercase;
+}
+
+.align-to-text {
+    height: 1em;
+    vertical-align: middle;
 }
 
 .main-logo-link {
