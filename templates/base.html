@@ -120,9 +120,7 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Add a product</a>
-                                {% else %}
-                                <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Sign up to our newsletter</a>
+                                    <a href="{% url 'add_product' %}" class="dropdown-item">Add a product</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -130,6 +128,7 @@
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Get an account</a>
                                 <a href="{% url 'account_login' %}" class="dropdown-item">Log in</a>
                             {% endif %}
+                            <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Sign up to our newsletter</a>
                         </div>
                     </li>
                     <li class="list-inline-item">

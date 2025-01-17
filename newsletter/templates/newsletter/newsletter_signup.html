@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_meta %}
+    <meta name="description" content="Sign up to our hugely informative mellifera newsletter." />
+    <meta name="keywords" content="beekeeping, news, beehives, technology, treatments, varroa, pests, events" />
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mb-4"><i class="fa-solid fa-inbox"></i> Subscribe to our newsletter!</h2>
+    <p class="text-center mb-4">Stay updated with our latest offers and beekeeping news.</p>
+    <form id="subscribe-form" method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 # Testing
 
 
-#### [<< Return to Readme](https://github.com/jamie120/ms4-wild-mile/blob/master/README.md)
+#### [<< Return to Readme](https://github.com/JaimeHyland/Mellifera/blob/main/README.md)
 
 
 ## Contents
@@ -19,7 +19,7 @@
 
 # Manual Testing
 
-### **The following checks were completed on all browsers, any issues have been captured and documented below with screenshots.**
+### **The following checks were completed on both listed browsers, any issues have been captured and documented below with screenshots.**
  
 **<details><summary>Sitewide</summary>**
 
@@ -105,22 +105,22 @@
 
 ### Navbar and Banner
 
-* Verify hover effects are present on all nav links - :white_check_mark:
-* Check all links in the nav element direct users to expected pages - :white_check_mark:
-* Check all links in the mobile nav element direct users to the expected pages - :white_check_mark:
-* Verify login and register links remove once a user is logged into the site - :white_check_mark:
-* Verify admin/superuser specific links appear in 'My Account' dropdown - :white_check_mark:
-* Verify scrolling banner displays and is animated - :white_check_mark:
+* Verify hover effects are present on all nav links. ✔
+* Check all links in the nav element direct users to expected pages. ✔
+* Check all links in the mobile nav element direct users to the expected pages. ✔
+* Verify login and register links remove once a user is logged into the site. ✔
+* Verify admin/superuser specific links appear in 'My Account' dropdown. ✔
+* Verify scrolling banner displays and is animated. ✔
 
 ### Footer
-* Verify social icons link to the corresponding social media websites and that they open in a new window when clicked :white_check_mark:
-* Verify the year is rendered as the current year in the copyright caption :white_check_mark:
+* Verify social icons link to the corresponding social media websites and that they open in a new window when clicked. ✔
+* Verify the year is rendered as the current year in the copyright caption. ✔
 
 ### Search Bar
-* Check an existing search term to achieve render the conversions template with search query applied - :white_check_mark:
+* Check an existing search term to achieve render the conversions template with search query applied. ✔
 ![Search - True](documentation/testing/img/search-true.png) 
 
-* Check a non-existent search term to render the conversions template with search query applied - :white_check_mark:
+* Check a non-existent search term to render the conversions template with search query applied. ✔
 ![Search - False](documentation/testing/img/search-false.png) 
 
 <div align="right">
@@ -128,36 +128,36 @@
 </div>
 
 # **Home Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify site-entry overlay only loads on the initial page and does NOT load if refreshed in the same browser tab. :white_check_mark:
-* Verify When clicked the site-overlay fades (1500ms) and the element is removed - :white_check_mark:
-* Verify the 'grow' animation on the logo in the site-overlay functions as expected - :white_check_mark:
-* Check all links in index.html direct users to the correct routes - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify site-entry overlay only loads on the initial page and does NOT load if refreshed in the same browser tab. ✔:
+* Verify When clicked the site-overlay fades (1500ms) and the element is removed. ✔
+* Verify the 'grow' animation on the logo in the site-overlay functions as expected. ✔
+* Check all links in index.html direct users to the correct routes. ✔
 
 # **About Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify images load as expected and scale accordingly based on browser - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify images load as expected and scale accordingly based on browser. ✔
 
 # **FAQ Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify questions are clickable, to toggle display of relevant answers to users. -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify questions are clickable, to toggle display of relevant answers to users. ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Sign In and Logout**
-* Verify pages load as expected and responsively on all device sizes. - :white_check_mark:
-* Check all links operate as required -:white_check_mark:
+* Verify pages load as expected and responsively on all device sizes. ✔
+* Check all links operate as required ✔
 
 ### Sign in and logout Fixes
 - Remove home link from sign-in page - Not required
 
 
 # **Register**
-* Check signup process functions as expected, including verification email being sent to a new user - :white_check_mark:
-* Verification email received - :white_check_mark:
-* User Confirmed - :white_check_mark:
+* Check signup process functions as expected, including verification email being sent to a new user ✔
+* Verification email received ✔
+* User Confirmed ✔
 
     ![Email - Sent](documentation/testing/img/verify-email-sent.png)
     ![Email - Recieved](documentation/testing/img/verify-email.png)
@@ -174,20 +174,20 @@
 </div>
 
 # **Conversions Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
 
 * Check all buttons/links function as expected :
-    1. Filter category buttons - :white_check_mark:
-    2. View Details button - :white_check_mark:
-    3. Save to Profile button - :white_check_mark:
-    4. Sort by dropdown - :white_check_mark:
-    5. Pagination links - :white_check_mark:
-    6. Back to top link - :white_check_mark:
-    7. Carousel controls - :white_check_mark:
+    1. Filter category buttons ✔
+    2. View Details button ✔
+    3. Save to Profile button ✔
+    4. Sort by dropdown ✔
+    5. Pagination links ✔
+    6. Back to top link ✔
+    7. Carousel controls ✔
 
-* Verify pagination is active, four listings (max) are present per page - :white_check_mark:
+* Verify pagination is active, four listings (max) are present per page ✔
 
-* Verify carousel displays the listings first three images :white_check_mark:
+* Verify carousel displays the listings first three images ✔:
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
@@ -195,28 +195,28 @@
 
 # **Conversion Detail Page**
 
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
 
-* Check all buttons/links function as expected :
-    1. Contact Seller button - :white_check_mark:
-    2. Save to profile button - :white_check_mark:
-    3. Image links open in new tab - :white_check_mark:
-    4. Back to conversions link - :white_check_mark:
-    5. Back to top link - :white_check_mark:
-    6. Carousel controls - :white_check_mark:
+* Check all buttons/links function as expected:
+    1. Contact Seller button ✔
+    2. Save to profile button ✔
+    3. Image links open in new tab ✔
+    4. Back to conversions link ✔
+    5. Back to top link ✔
+    6. Carousel controls ✔
 
-* Verify 'inactive' listing can only be viewed by listing owner or admin - :white_check_mark:
+* Verify 'inactive' listing can only be viewed by listing owner or admin. ✔
 
     ![Inactive - listing - regular user](documentation/testing/img/inactive-listing.png)
 
-* Verify 'inactive' listing is labelled to admin and listing owner - :white_check_mark:
+* Verify 'inactive' listing is labelled to admin and listing owner ✔
 
     ![Inactive - listing - regular user](documentation/testing/img/inactive-listing-admin.png)
 
 ## Images
-* CSS image grid displays 6 conversion images in the bottom section of the page (viewports 768px and above) -:white_check_mark:
+* CSS image grid displays 6 conversion images in the bottom section of the page (viewports 768px and above) ✔
 * Verify listings with more than six images have an owl-carousel element with controls rendered below the CSS image grid :x:
-* Verify the owl-carousel contains ALL listing images with controls on viewports below 768px, the CSS image grid is not displayed :white_check_mark:
+* Verify the owl-carousel contains ALL listing images with controls on viewports below 768px, the CSS image grid is not displayed ✔:
 
 ## Conversion Detail Fixes
 
@@ -228,8 +228,8 @@
 
 # **Save to Profile Feature**
 
-* Verify only registered users can use the save to profile feature (users will be prompted to sign in) -:white_check_mark:
-* Verify listings can only be added to the user profile once (toast messages provide feedback to the user) - :white_check_mark:
+- [x] Verify only registered users can use the save to profile feature (users will be prompted to sign in) ✔
+- [x] Verify listings can only be added to the user profile once (toast messages provide feedback to the user) ✔
     ![User - Confirmed](documentation/testing/img/save-item-first.png)
 
     ![User - Confirmed](documentation/testing/img/save-item-false.png)
@@ -241,16 +241,16 @@
 </div>
 
 # **Add Conversion Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify only logged in users can access the 'add_conversion' template -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify only logged in users can access the 'add_conversion' template ✔
 * Verify links work as expected 
-    * Go to profile - :white_check_mark:
-    * View listing token - :white_check_mark:
-* Verify form validation prevents the user from submitting the form with errors -:white_check_mark:
+    * Go to profile ✔
+    * View listing token ✔
+* Verify form validation prevents the user from submitting the form with errors ✔
 * Verify all validation is as expected and supports the user experience :x:
-* Verify that once the form is submitted and validated, the user is redirected to the newly created listing - rendering the conversion_detail template -:white_check_mark: 
-* Verify the newly created listing is NOT active -:white_check_mark:
-* Verify the newly created listing is viewable in the user profile 'my_listings' template :white_check_mark:
+* Verify that once the form is submitted and validated, the user is redirected to the newly created listing - rendering the conversion_detail template ✔ 
+* Verify the newly created listing is NOT active ✔
+* Verify the newly created listing is viewable in the user profile 'my_listings' template ✔
 
 ## Add conversion form fixes
 * Make vehicle dimensions able to be decimals - change IntegerField - DecimalField in the model.
@@ -260,14 +260,14 @@
 </div>
 
 # **Edit Conversion Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify users can only access the 'edit_conversion' template for listings which they have previously created (exception - Admin/superuser can edit all listings) -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify users can only access the 'edit_conversion' template for listings which they have previously created (exception - Admin/superuser can edit all listings) ✔
 * Verify 'back-to' link is dynamically rendered to the template:
-    * Admin/Superuser - BACK TO CONVERSION MANAGEMENT -:white_check_mark:
-    * Listing creator - BACK TO MY LISTINGS -:white_check_mark:
-* Check all listing content is rendered to the form, ready for a user to edit -:white_check_mark:
-* Check all images have the ability to 'delete' if desired -:white_check_mark:
-* Check that three NEW image upload elements are present at the bottom of the form -:white_check_mark:
+    * Admin/Superuser - BACK TO CONVERSION MANAGEMENT ✔
+    * Listing creator - BACK TO MY LISTINGS ✔
+* Check all listing content is rendered to the form, ready for a user to edit ✔
+* Check all images have the ability to 'delete' if desired ✔
+* Check that three NEW image upload elements are present at the bottom of the form ✔
 * Verify that users are able to add/remove/update image files and save changes -:x:
 
 ## Edit form fixes
@@ -278,114 +278,114 @@
 </div>
 
 # **Delete Conversion Function**
-* Verify users may request deletion only of listings which they have previously created (exception - Admin/superuser can delete all listings) -:white_check_mark:
-* Verify a modal to confirm deletion is displayed to the user before commencing with deletion of listing -:white_check_mark:
-* Verfify listings are deleted from the database once the process is confirmed and completed -:white_check_mark:
+* Verify users may request deletion only of listings which they have previously created (exception - Admin/superuser can delete all listings) ✔
+* Verify a modal to confirm deletion is displayed to the user before commencing with deletion of listing ✔
+* Verfify listings are deleted from the database once the process is confirmed and completed ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Listing Token Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
 * Verify links work as expected 
-    * Standard Listing - :white_check_mark:
-    * Extended Listing (disabled) - :white_check_mark:
-    * Quarterly Listing (disabled) - :white_check_mark:
+    * Standard Listing ✔
+    * Extended Listing (disabled) ✔
+    * Quarterly Listing (disabled) ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Merchandise Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
 * Verify links work as expected 
-    1. Filter category buttons - :white_check_mark:
-    2. View Product Details (product card) - :white_check_mark:
-    3. Edit product button (visible to admin/superuser only) - :white_check_mark:
-    4. Delete product button (visible to admin/superuser only) - :white_check_mark:
-    5. Sort by dropdown - :white_check_mark:
-    6. Back to top link - :white_check_mark:
+    1. Filter category buttons ✔
+    2. View Product Details (product card) ✔
+    3. Edit product button (visible to admin/superuser only) ✔
+    4. Delete product button (visible to admin/superuser only) ✔
+    5. Sort by dropdown ✔
+    6. Back to top link ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Product Detail Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
 * Verify links/buttons work as expected 
-    1. Keep Shopping - :white_check_mark:
-    2. Add to bag - :white_check_mark:
-    3. Product Image (opens in new tab - large) - :white_check_mark:
-    4. Product quantity buttons (not able to reduce the quantity to below 1) - :white_check_mark:
-    5. Edit product button (visible to admin/superuser only) - :white_check_mark:
-    6. Delete product button (visible to admin/superuser only) - :white_check_mark:
-* Verify sizes dropdown is rendered for products which include sizes -:white_check_mark:
+    1. Keep Shopping ✔
+    2. Add to bag ✔
+    3. Product Image (opens in new tab - large) ✔
+    4. Product quantity buttons (not able to reduce the quantity to below 1) ✔
+    5. Edit product button (visible to admin/superuser only) ✔
+    6. Delete product button (visible to admin/superuser only) ✔
+* Verify sizes dropdown is rendered for products which include sizes ✔
 
 ## Product Detail - Listing Token
-* Verify 'inactive' listings dropdown is rendered if the product is a listing token -:white_check_mark:
-* Verify quantity buttons are removed for 'listing token' product -:white_check_mark:
-* Verify quantity of an item cannot be manually adjusted from the default of 1 -:white_check_mark:
-* Verify 'keep shopping' button is changed to 'back to listing levels' button -:white_check_mark:
+* Verify 'inactive' listings dropdown is rendered if the product is a listing token ✔
+* Verify quantity buttons are removed for 'listing token' product ✔
+* Verify quantity of an item cannot be manually adjusted from the default of 1 ✔
+* Verify 'keep shopping' button is changed to 'back to listing levels' button ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Add Product Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify only logged admin/superusers can access the 'add_product' template -:white_check_mark:
-* Verify form validation prevents user from submitting the form with errors -:white_check_mark:
-* Verify that once the form is submitted and validated, the user is redirected to the newly created product - rendering the product_detail template -:white_check_mark: 
+* Verify the page loads responsively on all device sizes. ✔
+* Verify only logged admin/superusers can access the 'add_product' template ✔
+* Verify form validation prevents user from submitting the form with errors ✔
+* Verify that once the form is submitted and validated, the user is redirected to the newly created product - rendering the product_detail template ✔ 
 
 # **Edit Product Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify only superusers can access the 'edit_product' template for -:white_check_mark:
-* Check all product content is rendered to the form, ready for a superuser to edit -:white_check_mark:
-* Verfify the 'clear' image checkbox works as expected if checked when the form is submitted. -:white_check_mark:
-* Verify that once the form is submitted, the user is redirected to the product_detail template for the recently updated product -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify only superusers can access the 'edit_product' template for ✔
+* Check all product content is rendered to the form, ready for a superuser to edit ✔
+* Verfify the 'clear' image checkbox works as expected if checked when the form is submitted. ✔
+* Verify that once the form is submitted, the user is redirected to the product_detail template for the recently updated product ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Shopping Bag Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify all session bag contents render to the shopping bag template -:white_check_mark:
-* Verify totals and delivery is accurately calculated and displayed to the user -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify all session bag contents render to the shopping bag template ✔
+* Verify totals and delivery is accurately calculated and displayed to the user ✔
 * Verify links/buttons work as expected
-    1. Product quantity buttons (cannot be reduced below 1) -:white_check_mark:
-    2. Update / Remove product buttons -:white_check_mark:
-    3. Keep Shopping button -:white_check_mark:
-    4. Secure checkout button -:white_check_mark:
+    1. Product quantity buttons (cannot be reduced below 1) ✔
+    2. Update / Remove product buttons ✔
+    3. Keep Shopping button ✔
+    4. Secure checkout button ✔
 * For listing tokens: -
-    * Verify update button is removed -:white_check_mark:
-    * Verify quantity cannot be adjusted -:white_check_mark:
+    * Verify update button is removed ✔
+    * Verify quantity cannot be adjusted ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Checkout Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify the order summary displays as expected -:white_check_mark:
-* User details populate from userprofile (default delivery info, name and email) if registered user -:white_check_mark:
-* Save delivery infomation checkbox - if checked form data is added/updated to user profile -:white_check_mark:
-* Stripe card element verification/validation works as expected -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify the order summary displays as expected ✔
+* User details populate from userprofile (default delivery info, name and email) if registered user ✔
+* Save delivery infomation checkbox - if checked form data is added/updated to user profile ✔
+* Stripe card element verification/validation works as expected ✔
 * Verify buttons work as expected
-    1. Adjust bag (returns user to shopping bag) -:white_check_mark:
-    2. Complete Order (generates order, redirects to checkout_success) -:white_check_mark:
+    1. Adjust bag (returns user to shopping bag) ✔
+    2. Complete Order (generates order, redirects to checkout_success) ✔
 * If bag total is £0.00 -
-    1. Stripe element is not present on the page (checkout_free template rendered) - payment not required to complete order -:white_check_mark:
+    1. Stripe element is not present on the page (checkout_free template rendered) - payment not required to complete order ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Checkout Success Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify the order details displayed are as expected -:white_check_mark:
-* Verify all links work as expected -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify the order details displayed are as expected ✔
+* Verify all links work as expected ✔
 * Verify a confirmation order email is sent to the user :x:
 
 ## Checkout Success Fixes
@@ -397,63 +397,63 @@
 </div>
 
 # **My Profile Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify all links to other profile pages work as expected -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify all links to other profile pages work as expected ✔
 * Default delivery information is displayed in the rendered form, if present.
-* Verify the 'update information' feature works as expected for the default delivery information -:white_check_mark:
+* Verify the 'update information' feature works as expected for the default delivery information ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Order History Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verfify all previous orders associated with the userprofile display on this page -:white_check_mark:
-* Verify order number links work as expected, rendering checkout_success template with corresponding order details -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verfify all previous orders associated with the userprofile display on this page ✔
+* Verify order number links work as expected, rendering checkout_success template with corresponding order details ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **My Listings Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify all listings created by the user, are displayed within card elements on this page -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify all listings created by the user, are displayed within card elements on this page ✔
 * Verify all buttons on listing cards work as expected 
-    1. Goto listing(conversion_detail template) -:white_check_mark:
-    2. Edit listing(edit_conversion template) -:white_check_mark:
-    3. Delete listing(delete_conversion function) -:white_check_mark:
+    1. Goto listing(conversion_detail template) ✔
+    2. Edit listing(edit_conversion template) ✔
+    3. Delete listing(delete_conversion function) ✔
 * Verify the listing status is displayed to the user in the card footer 
-    1. Active listing (green text) -:white_check_mark:
-    2. Inactive listing (orange text + button to view pricing) -:white_check_mark:
+    1. Active listing (green text) ✔
+    2. Inactive listing (orange text + button to view pricing) ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Saved Listings Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify all listings saved to the userprofile, are displayed within card elements on this page -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify all listings saved to the userprofile, are displayed within card elements on this page ✔
 * Verify all buttons on listing cards work as expected 
-    1. View Listing(conversion_detail template) -:white_check_mark:
-    2. Remove Listing(remove_saved_listing function) -:white_check_mark:
-* Verify the listing status is displayed to the user in the card footer if inactive - :white_check_mark:
-* Verify listing cannot be viewed if inactive (View listing button disabled) -:white_check_mark
+    1. View Listing(conversion_detail template) ✔
+    2. Remove Listing(remove_saved_listing function) ✔
+* Verify the listing status is displayed to the user in the card footer if inactive ✔
+* Verify listing cannot be viewed if inactive (View listing button disabled) ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
 </div>
 
 # **Conversion Management Page**
-* Verify the page loads responsively on all device sizes. - :white_check_mark:
-* Verify access to this template is limited to superusers only -:white_check_mark:
-* Verify all conversion listings are able to be displayed on this template - Using the buttons 'Active Listings' & 'Awaiting Approval' the user will filter displayed content based on the listing status -:white_check_mark:
+* Verify the page loads responsively on all device sizes. ✔
+* Verify access to this template is limited to superusers only ✔
+* Verify all conversion listings are able to be displayed on this template - Using the buttons 'Active Listings' & 'Awaiting Approval' the user will filter displayed content based on the listing status ✔
 * Each listing summary is displayed in a card element.
 * Card elements contain the following buttons in their footer, buttons function as expected:
-    1. View Details (conversion_detail template) -:white_check_mark:
-    2. Edit Conversion (edit_conversion template) -:white_check_mark:
-    3. Delete Conversion (delete_conversion function) -:white_check_mark:
-    4. Contact Seller (displays contact into the card element footer) -:white_check_mark:
-    4. Delist / Approve listing (changes listing 'isactive' status) -:white_check_mark:
+    1. View Details (conversion_detail template) ✔
+    2. Edit Conversion (edit_conversion template) ✔
+    3. Delete Conversion (delete_conversion function) ✔
+    4. Contact Seller (displays contact into the card element footer) ✔
+    4. Delist / Approve listing (changes listing 'isactive' status) ✔
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>
@@ -471,7 +471,7 @@ Google DevTools was used within Google Chrome on macOS throughout the developmen
 * Console used to support the development of JavaScript code.
     * console.log used at various points to check values of variables and function outputs, whilst developing logic for site.
     * Upon site completion - the console was checked for any errors
-    * Once the site was completed, the console was checked for any errors on each page :white_check_mark:
+    * Once the site was completed, the console was checked for any errors on each page ✔:
 
 <div align="right">
     <a href="#contents"> ⇧ Back To Contents </a>

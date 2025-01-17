@@ -10,6 +10,13 @@ body {
     font-family: 'Lato';
 }
 
+#shaded-area {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(250, 250, 250, 0.8);
+    width: 330px;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;

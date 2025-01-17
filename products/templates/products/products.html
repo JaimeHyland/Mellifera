@@ -69,6 +69,11 @@
                                 <div class="card-body pb-0">
                                     <p class="mb-0">{{ product.name }}</p>
                                 </div>
+                                {% if not product.in_stock %}
+                                <div class="out-of-stock">
+                                    <h2 class="text-center text-danger fw-bold display-5  text-uppercase">Out of stock</h2>
+                                </div>
+                                {% endif %}
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">

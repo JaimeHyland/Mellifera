@@ -32,7 +32,3 @@ def send_test_email(request):
         return HttpResponse("Test email sent successfully!")
     except Exception as e:
         return HttpResponse(f"Error: {e}")
-
-
-def newsletter_signup(request):
-    return render(request, 'newsletter_signup.html')

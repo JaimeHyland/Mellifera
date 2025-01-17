@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from home.views import set_husbandry_system, newsletter_signup
+from home.views import set_husbandry_system
+from newsletter.views import newsletter_signup
 
 
 urlpatterns = [

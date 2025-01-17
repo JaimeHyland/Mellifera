@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'husbandry_system',
+    'newsletter',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +104,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
                 'products.context_processors.husbandry_system_context',
+                'newsletter.context_processors.newsletter_form',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

@@ -60,6 +60,13 @@
                                     </select>
                                 </div>
                             {% endif %}
+                            {% endwith %}
+                            {% if not product.in_stock %}
+                            <div class="out-of-stock">
+                                <h2 class="text-center text-danger fw-bold display-5 text-uppercase">Out of stock</h2>
+                                <p class="fw-bold">This article is currently out of stock and can therefore not be added your shopping trolley. However, you can pre-order it now and be first in line to receive the product as soon as it becomes available!</p>
+                            </div>
+                            {% endif %}
                             <div class="col-12">
                                 <p class="mt-3"><strong>Quantity:</strong></p>
                                 <div class="form-group w-50">
@@ -92,12 +99,15 @@
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
+                                    <span class="text-uppercase">Continue shopping</span>
                                 </a>
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                {% if product.in_stock %}
+                                <input type="submit" name="action" value="add_to_bag" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                {% else %}
+                                <input type="submit" name="action" value="pre_order" class="btn btn-black rounded-0 text-uppercase mt-5" value="Pre-order">
+                                {% endif %}
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            {% endwith %}
                         </div>
                     </form>
                 </div>

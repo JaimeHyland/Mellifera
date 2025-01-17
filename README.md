@@ -595,8 +595,8 @@ Where console.log and/or print statements were used in debugging processes, they
 Unless otherwise clearly explained in an associated comment, all commented out code has been removed in the final version of the project.
 
 <!-- TOC --><a name="warnings-appearing-on-consoles-terminals-and-logs"></a>
-### Warnings appearing on consoles, terminals and logs
-All warnings that appeared on consoles, termanals and logs, both in the development and the deployed environment, have been resolved.
+### Warnings and errors appearing on consoles, terminals and logs
+All errors and warnings that appeared on consoles, terminals and logs during testing, both in the development and the deployed environment, have been resolved.  However, there may yet be warnings and errors that I have not yet detected. Any such errors and warnings will be resolved as soon as practicable after they reveal themselves or are reported.
 
 <!-- TOC --><a name="linting"></a>
 ## Linting
