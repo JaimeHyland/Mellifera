@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'profiles',
     'husbandry_system',
     'newsletter',
+    'pre_order',
 ]
 
 MIDDLEWARE = [

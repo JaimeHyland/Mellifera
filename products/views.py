@@ -5,9 +5,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.utils.timezone import now
 
 from .models import Product, Category
 from husbandry_system.models import HusbandrySystem
+from pre_order.models import PreOrder
 from .forms import ProductForm
 
 
@@ -73,15 +75,34 @@ def product_list(request):
 
 
 def product_detail(request, product_id):
-
     product = get_object_or_404(Product, pk=product_id)
 
+    if request.method == "POST":
+        action = request.POST.get("action")
+        print("DEBUG: action being sent: ", action)
+
+        if action == "add_to_bag":
+            print("DEBUG: running add_to_bag logic!")
+            bag = request.session.get("bag", {})
+            bag[str(product.id)] = bag.get(str(product.id), 0) + 1
+            request.session["bag"] = bag
+            return redirect("bag")
+
+        elif action == "pre_order":
+            print("DEBUG: running pre_order logic!")
+            PreOrder.objects.create(
+                user=request.user,
+                product=product,
+                quantity=1,
+                date_preordered=now(),
+            )
+            return redirect("pre_order_confirmation")
+    
     context = {
-        'product': product,
+        "product": product,
     }
-
-    return render(request, 'products/product_detail.html', context)
-
+    return render(request, "products/product_detail.html", context)
+    
 
 @login_required
 def add_product(request):
