@@ -1,4 +1,33 @@
 <li class="list-inline-item">
+    <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-husbandry" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fa-solid fa-box-archive fa-lg"></i></div>
+            <p class="my-0">Filter by system</p>
+        </div>
+    </a>
+    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-husbandry">
+        <form class="form" method="GET" action="{% url 'set_husbandry_system' %}">
+            {% csrf_token %}
+            <div class="input-group w-100">
+                <select name="husbandry_system" id="mobile_husbandry_system" class="form-control border border-black rounded-0">
+                    <option value="">-- Filter by husbandry system --</option>
+                    {% for system in husbandry_systems %}
+                        <option value="{{ system }}"
+                            {% if selected_husbandry_system == system %}selected{% endif %}>
+                            {{ system|default:"(No system specified)" }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="input-group-append">
+                    <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>
+<li class="list-inline-item">
     <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-search fa-lg"></i></div>

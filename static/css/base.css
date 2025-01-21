@@ -10,6 +10,55 @@ body {
     font-family: 'Lato';
 }
 
+#topnav .col-12 {
+    text-align: center !important;
+}
+
+#topnav .logo-font {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#topnav .nav-link.main-logo-link {
+    display: inline-block;
+}
+
+#topnav h2 {
+    margin: 0;
+}
+
+#reset-husbandry-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reset-husbandry-form button {
+    margin-left: 10px;
+}
+
+#reset-button:disabled {
+    cursor: no-drop !important;
+    opacity: 0.8;
+}
+
+#husbandry-filter-form button[disabled] {
+    background-color: #e0e0e0;
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+#husbandry-toast {
+    width: auto;
+    max-width: 400px; 
+    word-wrap: break-word;
+    text-align: center;
+}
+#husbandry-toast .toast-body {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
 #shaded-area {
     display: flex;
     flex-direction: column;

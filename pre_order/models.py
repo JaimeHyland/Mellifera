@@ -15,7 +15,9 @@ class PreOrder(models.Model):
         related_name='pre_orders')
     quantity = models.PositiveIntegerField()
     date_preordered = models.DateTimeField(default=now)
+
     current = models.BooleanField(default=True)
+
 
     def __str__(self):
         return f"Pre-order: {self.product.name} pre-ordered by {self.user.username}"

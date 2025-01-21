@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
+    path('pre-order/', include('pre_order.urls')),
     path('products/', include('products.urls')),
     path('bag/', include('bag.urls')),
     path('checkout/', include('checkout.urls')),
@@ -34,5 +35,4 @@ urlpatterns = [
     path('set-husbandry-system/', set_husbandry_system, name='set_husbandry_system'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     path('newsletter_signup/', newsletter_signup, name='newsletter_signup'),
-    path('pre-order/', include('pre_order.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

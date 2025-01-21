@@ -9,11 +9,14 @@ from django.shortcuts import redirect
 
 def set_husbandry_system(request):
     if request.method == 'POST':
-        selected_system = request.POST.get('husbandry_system', '')
-        if selected_system:
-            request.session['husbandry_system'] = selected_system
+        if request.POST.get('reset') == 'true':
+            request.session.pop('husbandry_system', None)
         else:
-            request.session.pop('husbandry_system', None)  # Clear the filter if no selection
+            selected_system = request.POST.get('husbandry_system', '')
+            if selected_system:
+                request.session['husbandry_system'] = selected_system
+            else:
+                request.session.pop('husbandry_system', '')
     return redirect(request.META.get('HTTP_REFERER', 'home:index'))
 
 def index(request):

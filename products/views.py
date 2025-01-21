@@ -77,30 +77,60 @@ def product_list(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
+    pre_ordered_quantity = 0
+    pre_order_date = None
+
+    try:
+        pre_order = PreOrder.objects.get(user=request.user, product=product)
+        pre_ordered_quantity = pre_order.quantity
+        pre_order_date = pre_order.date_preordered
+    
+    except PreOrder.DoesNotExist:
+        pre_ordered_quantity = 0
+        pre_order_date = None
+
     if request.method == "POST":
         action = request.POST.get("action")
         print("DEBUG: action being sent: ", action)
 
         if action == "add_to_bag":
-            print("DEBUG: running add_to_bag logic!")
             bag = request.session.get("bag", {})
             bag[str(product.id)] = bag.get(str(product.id), 0) + 1
             request.session["bag"] = bag
-            return redirect("bag")
+            return redirect("view_bag")
 
         elif action == "pre_order":
-            print("DEBUG: running pre_order logic!")
-            PreOrder.objects.create(
-                user=request.user,
-                product=product,
-                quantity=1,
-                date_preordered=now(),
-            )
+            try:
+                quantity = int(request.POST.get("quantity", 1))
+                if quantity < 1:
+                    raise ValueError("Quantity must be at least 1.")
+
+                # Create a pre_order for the product is none exists and flag as created. If not, get the existing pre_order
+                pre_order, created = PreOrder.objects.get_or_create(
+                    user=request.user,
+                    product=product,
+                    defaults={"quantity": quantity, "date_preordered": now()},
+                )
+
+                if not created:
+                    # WIP
+                    pass
+
+
+                messages.success(request, f"Pre-order updated! Total quantity: {pre_order.quantity}.")
+            except ValueError as e:
+                messages.error(request, str(e))
+            except Exception as e:
+                messages.error(request, "An error occurred while processing your pre-order.")
+                
             return redirect("pre_order_confirmation")
     
     context = {
         "product": product,
+        "pre_ordered_quantity": pre_ordered_quantity,
+        "pre_order_date": pre_order_date,
     }
+    
     return render(request, "products/product_detail.html", context)
     
 

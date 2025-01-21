@@ -62,6 +62,45 @@
     </script>
     <script src="https://kit.fontawesome.com/c92ad0e9bd.js" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Script for toast on reset button -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdown = document.getElementById('husbandry_system');
+            const resetButton = document.querySelector('button[name="reset"]');
+            const toast = document.getElementById('husbandry-toast');
+            const bootstrapToast = new bootstrap.Toast(toast, { autohide: true, delay: 5000 });
+
+            // Initially hide the toast manually to prevent it from showing on page load
+            toast.classList.add('hide'); 
+
+            // Reset button click handler
+            resetButton.addEventListener('click', function (event) {
+                event.preventDefault();  // Prevent form submission to control it manually
+
+                // Update the dropdown to show everything and submit the form
+                dropdown.value = ''; 
+                dropdown.form.submit();
+
+                // Manually show the toast after reset button is clicked
+                bootstrapToast.show();
+            });
+
+            // Dropdown change handler
+            dropdown.addEventListener('change', function () {
+                console.log("Dropdown changed to:", dropdown.value);
+                if (dropdown.value === '') {
+                    resetButton.disabled = true;
+                    console.log("Toast should appear now");
+
+                    // Show toast only when switching to "All systems"
+                    bootstrapToast.show();
+                } else {
+                    resetButton.disabled = false;
+                }
+            });
+        });
+    </script>
     {% endblock %}
 
     {% block extra_js %}
@@ -71,81 +110,124 @@
 <body>
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-honey pt-lg-2 d-none d-lg-flex">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-black my-0"><img src="{{ MEDIA_URL }}bee_icon.png" alt="The mellifera bee"  class="align-to-text"> Mellifera</h2>
-                </a>
+            <!-- First row - logo and site name -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Left column: Centered logo and name -->
+                    <div class="col-12 col-lg-8 d-flex justify-content-center justify-content-lg-start align-items-center py-3">
+                        <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                            <h2 class="logo-font text-black my-0">
+                                <img src="{{ MEDIA_URL }}bee_icon.png" alt="The mellifera bee" class="align-to-text"> Mellifera
+                            </h2>
+                        </a>
+                    </div>
+        
+                    <!-- Right column: Two menus side-by-side, aligned to the right -->
+                     <!-- User options -->
+                    <div class="col-12 col-lg-4 d-flex justify-content-end align-items-center py-1 py-lg-0">
+                        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                            <li class="list-inline-item dropdown">
+                                <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="text-center">
+                                        <div><i class="fas fa-user fa-lg"></i></div>
+                                        <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Account{% endif %}</p>
+                                    </div>
+                                </a>
+        
+                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                    {% if request.user.is_authenticated %}
+                                        {% if request.user.is_superuser %}
+                                            <a href="{% url 'add_product' %}" class="dropdown-item">Add a product</a>
+                                        {% endif %}
+                                        <a href="{% url 'profile' %}" class="dropdown-item">My profile</a>
+                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                    {% else %}
+                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Get an account</a>
+                                        <a href="{% url 'account_login' %}" class="dropdown-item">Log in</a>
+                                    {% endif %}
+                                    <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Sign up to our newsletter</a>
+                                    {% if request.user.is_authenticated %}
+                                        <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Edit my pre-orders</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+        
+                            <!-- Cart section -->
+                            <li class="list-inline-item">
+                                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                                    <div class="text-center">
+                                        <div><i class="fa-solid fa-cart-flatbed"></i></div>
+                                        <p class="my-0">
+                                            {% if grand_total %}
+                                            € {{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                            € 0.00
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form id="husbandry-filter-form" method="post" action="{% url 'set_husbandry_system' %}">
-                    {% csrf_token %}
-                    <label for="husbandry_system">Filter by husbandry system:</label>
-                    <select name="husbandry_system" id="husbandry_system" onchange="this.form.submit()">
-                        <option value="">-- all systems --</option>
-                        {% for system in husbandry_systems %}
-                            <option value="{{ system }}" 
-                                {% if selected_husbandry_system == system %}selected{% endif %}>
-                                {{ system|default:"(No system specified)" }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </form>
-            </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="get" action="{% url 'products' %}">
-                    <div class="input-group w-100">
-                        <input type="text" class="form-control border border-black rounded-0" name="q"
-                            placeholder="Search for the product you want">
-                        <div class="input-group-append">
-                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                                <span class="icon">
-                                    <i class="fas fa-search"></i>
-                                </span>
+            <!-- Second row - husbandry filter and search function  -->
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <!-- Husbandry filter -->
+                <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+                    <form id="husbandry-filter-form" method="post" action="{% url 'set_husbandry_system' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <select name="husbandry_system" id="husbandry_system" class="form-control" onchange="this.form.submit()">
+                                <option value="">-- Filter by husbandry system --</option>
+                                {% for system in husbandry_systems %}
+                                    <option value="{{ system }}" 
+                                        {% if selected_husbandry_system == system %}selected{% endif %}>
+                                        {{ system|default:"(No system specified)" }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <!-- Reset Button with dynamic styling -->
+                            <button type="submit" name="reset" value="true" class="btn 
+                                {% if selected_husbandry_system %}btn-black{% else %}btn-secondary{% endif %} 
+                                border border-black rounded-0" 
+                                {% if not selected_husbandry_system %}disabled{% endif %}
+                                id="reset-button">
+                                Reset
                             </button>
                         </div>
+                    </form>
+                </div>
+                
+                <!-- Toast Notification -->
+                <div class="toast hide" id="husbandry-toast" style="position: fixed; top: 120px; right: 20px;" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="mr-auto">Mellifera</strong>
+                        <button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </form>
-            </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Account{% endif %}</p>
+                    <div class="toast-body">
+                        <b>Now showing all husbandry systems.</b>
+                    </div>
+                </div>
+            
+                <!-- Search function -->
+                <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+                    <form method="get" action="{% url 'products' %}">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control border border-black rounded-0" name="q"
+                                placeholder="Search for the product you're looking for">
+                            <div class="input-group-append">
+                                <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
                             </div>
-                        </a>
-
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                            {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item">Add a product</a>
-                                {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Get an account</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Log in</a>
-                            {% endif %}
-                            <a href="{% url 'newsletter_signup' %}" class="dropdown-item">Sign up to our newsletter</a>
                         </div>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
-                            <div class="text-center">
-                                <div><i class="fa-solid fa-cart-flatbed"></i></div>
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                    € {{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    € 0.00
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="row bg-honey">
@@ -158,7 +240,7 @@
             </nav>
         </div>
     </header>
-
+    
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
