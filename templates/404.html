@@ -1,5 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_meta %}
+    <meta name="description" content="Welcome to Mellifera, your go-to online store for premium beekeeping equipment. Discover a wide range of products to suit every beekeeping need, from beginners to experts." />
+    <meta name="keywords" content="beekeeping equipment, Mellifera, online store, bee hives, beekeeping tools, honey extraction, sustainable beekeeping" />
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +40,6 @@
 <body>
     <h1>404 - Page doesn't exist</h1>
     <p>Oh dear, the page you seem to be looking for (maybe it was just a typo) doesn't exist on this site!</p>
-    <p><a href="/">Return to Home</a></p>
+    <p><a href="/">Return to Homepage</a></p>
 </body>
 </html>
