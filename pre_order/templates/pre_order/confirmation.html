@@ -14,7 +14,7 @@
         <div class="confirm">
             <h1>Pre-order successfully created!</h1>
             <p>Your pre-order of {{product}} has been successfully created. You have pre-ordered {{quantity}} of this product.</p>
-            <p>Please go to the pre-order detail page if you would like to adjust this number.</p>
+            <p>Please go to the <a href="{% url 'pre_order_detail' product.id %}">pre-order detail page</a> if you would like to adjust this number.</p>
             <p><a href="/">Return to Homepage</a></p>
         </div>
     </div>
