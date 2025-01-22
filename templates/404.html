@@ -13,33 +13,11 @@
     </div>
 </div>
 {% endblock %}>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This page doesn't exist</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            font-size: 48px;
-            color: #ff6f61;
-        }
-        p {
-            font-size: 18px;
-            color: #555;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
+
+{% block content %}
+<div class="fourohfour">
     <h1>404 - Page doesn't exist</h1>
-    <p>Oh dear, the page you seem to be looking for (maybe it was just a typo) doesn't exist on this site!</p>
+    <p>Oh dear, the page you seem to be looking for (or maybe you just made a typo) doesn't exist on this site!</p>
     <p><a href="/">Return to Homepage</a></p>
-</body>
-</html>
+</div>
+{% endblock %}
