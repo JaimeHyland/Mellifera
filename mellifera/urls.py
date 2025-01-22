@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from home.views import set_husbandry_system
-from newsletter.views import newsletter_signup
+from newsletter.views import newsletter_signup, verify_subscription
 
 
 urlpatterns = [
@@ -35,4 +35,5 @@ urlpatterns = [
     path('set-husbandry-system/', set_husbandry_system, name='set_husbandry_system'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     path('newsletter_signup/', newsletter_signup, name='newsletter_signup'),
+    path("verify-subscription/<str:token>/", verify_subscription, name="verify_subscription"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

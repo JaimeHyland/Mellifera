@@ -16,7 +16,7 @@ def newsletter_signup(request):
             if created or not subscriber.verified:
                 # Send verification email
                 verification_url = request.build_absolute_uri(
-                    f"/verify-newsletter/{subscriber.verification_token}/"
+                    f"/verify-subscription/{subscriber.verification_token}/"
                 )
                 send_mail(
                     "Verify Your Newsletter Subscription",
@@ -26,7 +26,8 @@ def newsletter_signup(request):
                 )
                 messages.success(request, "Check your email to verify your subscription.")
             else:
-                messages.info(request, "You are already subscribed and verified!")
+                messages.info(request, "You are already subscribed and your email is verified!")
+            return redirect("home")
         else:
             messages.error(request, "Invalid email address. Please try again.")
     else:
@@ -40,6 +41,6 @@ def verify_subscription(request, token):
     if not subscriber.verified:
         subscriber.verified = True
         subscriber.save()
-        return HttpResponse("Your subscription is verified! Thank you.")
+        return render(request, "newsletter/verification_success.html", {"status": "verified"})
     else:
-        return HttpResponse("This subscription is already verified.")
+        return render(request, "newsletter/verification_success.html", {"status": "already_verified"})
