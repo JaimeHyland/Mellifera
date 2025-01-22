@@ -162,7 +162,7 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, mark_safe(
-        f"Your order has been successfully processed!<br><br>"
+        f"Your order has successfully been processed!<br><br>"
         f"Your order number is:<br>"
         f"{order_number}<br><br>"
         f"We'll be sending you a confirmation email to:<br>"

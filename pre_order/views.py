@@ -5,8 +5,14 @@ from .models import PreOrder
 from products.models import Product
 
 
-def pre_order_confirmation(request):
-    return render(request, 'pre_order/confirmation.html')
+def pre_order_confirmation(request, product_id):
+    pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+    quantity = pre_order.quantity
+    context = {
+        'product': pre_order.product,
+        'quantity': quantity,
+    }
+    return render(request, 'pre_order/confirmation.html', context)
 
 
 def pre_ordered_products(request):
@@ -25,6 +31,30 @@ def pre_ordered_products(request):
     }
 
     return render(request, 'pre_order/edit_pre_orders.html', context)
+
+def change_pre_order_quantity(request, product_id):
+    if request.method == 'POST':
+        quantity = request.POST.get('quantity')
+        print("DEBUG: Quantity entered: ", quantity)
+
+        if quantity and quantity.isdigit() and int(quantity) > 0:
+            pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+            pre_order.quantity = int(quantity)
+            pre_order.save()
+            print("DEBUG: Quantity recorded in DB: ", pre_order.quantity)
+
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+def delete_pre_order(request, product_id):
+    if request.method == 'POST':
+        pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+        pre_order.delete()
+        messages.success(request, "Your pre-order has successfully been deleted.")
+    else:
+        messages.error(request, "Invalid request method.")
+
+    return redirect('edit_pre_orders')
 
 
 def edit_pre_orders(request):
@@ -52,10 +82,6 @@ def pre_order_detail(request, product_id):
 
     if request.method =="POST":
         action = request.POST.get("action")
-
-        if action == add_to_bag:
-            pass
-
     
         if action == "pre_order":
             if not pre_order:
@@ -70,13 +96,7 @@ def pre_order_detail(request, product_id):
     if request.method == "POST":
         action = request.POST.get("action")
 
-        if action == "add_to_bag":
-            bag = request.session.get("bag", {})
-            bag[str(product.id)] = bag.get(str(product.id), 0) + 1
-            request.session["bag"] = bag
-            return redirect("bag")
-
-        elif action == "pre_order":
+        if action == "pre_order":
             PreOrder.objects.create(
                 user=request.user,
                 product=product,

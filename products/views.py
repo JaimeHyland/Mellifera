@@ -97,6 +97,7 @@ def product_detail(request, product_id):
             bag = request.session.get("bag", {})
             bag[str(product.id)] = bag.get(str(product.id), 0) + 1
             request.session["bag"] = bag
+            
             return redirect("view_bag")
 
         elif action == "pre_order":
@@ -105,16 +106,12 @@ def product_detail(request, product_id):
                 if quantity < 1:
                     raise ValueError("Quantity must be at least 1.")
 
-                # Create a pre_order for the product is none exists and flag as created. If not, get the existing pre_order
+                # Create a pre_order for the product
                 pre_order, created = PreOrder.objects.get_or_create(
                     user=request.user,
                     product=product,
                     defaults={"quantity": quantity, "date_preordered": now()},
                 )
-
-                if not created:
-                    # WIP
-                    pass
 
 
                 messages.success(request, f"Pre-order updated! Total quantity: {pre_order.quantity}.")
@@ -123,7 +120,7 @@ def product_detail(request, product_id):
             except Exception as e:
                 messages.error(request, "An error occurred while processing your pre-order.")
                 
-            return redirect("pre_order_confirmation")
+            return redirect('pre_order_confirmation', product_id=product_id)
     
     context = {
         "product": product,

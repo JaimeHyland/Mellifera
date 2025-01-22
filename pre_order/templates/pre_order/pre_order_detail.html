@@ -49,42 +49,50 @@
                     </p>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
-                    <form class="form" method="POST">
-                        {% csrf_token %}
-                        <div class="form-row">
-
-                            {% if not product.in_stock %}
-                            <div class="out-of-stock">
-                                <h2 class="text-center text-danger fw-bold display-5 text-uppercase">Out of stock</h2>
-                                <p class="fw-bold">This article is currently out of stock. As you have pre-ordered it, we will let you know when it becomes available again if your user profile contains a contact email address.</p>
-                            </div>
-                            {% endif %}
-
-                            <div class="col{% if s %}-12 mt-2{% endif %}">
-                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Continue shopping</span>
-                                </a>
-                                {% if not product.in_stock %}
-                                    {% if request.user.is_authenticated %}
-                                    <form method="POST" action="{% url 'pre_order_detail' product.id %}">
-                                        {% csrf_token %}
-                                        <p>Quantity pre-ordered: 
-                                            <input type="number" name="quantity" value="{{ pre_ordered_quantity }}" min="1" required>
-                                        </p>
-                                        <p>Pre-order date: {{ pre_order_date }}</p>
-                                        <button type="submit" class="btn btn-primary mt-3">Update Quantity</button>
-                                    </form>
-                                    {% endif %}
-                                {% else %}
-                                    <button type="submit" name="action" value="add_to_bag" class="btn btn-black rounded-0 text-uppercase mt-5">Add to bag</button>
-                                {% endif %}
-                            </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% if not product.in_stock %}
+                        <div class="out-of-stock">
+                            <h2 class="text-center text-danger fw-bold display-5 text-uppercase">Out of stock</h2>
+                            <p class="fw-bold">This article is currently out of stock. As you have pre-ordered it, we will let you know when it becomes available again if your user profile contains a contact email address.</p>
                         </div>
-                    </form>
+                    {% endif %}
+
+                    <div class="col{% if s %}-12 mt-2{% endif %}">
+                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Continue shopping</span>
+                        </a>
+                        <br>
+                        <br>
+                        {% if not product.in_stock %}
+                            {% if request.user.is_authenticated %}
+                                <form method="POST" action="{% url 'change_pre_order_quantity' product.id %}">
+                                    {% csrf_token %}
+                                    <p>Quantity pre-ordered: 
+                                        <input type="number" name="quantity" value="{{ pre_ordered_quantity }}" min="1" required>
+                                    </p>
+                                    <p>Pre-order date: {{ pre_order_date }}</p>
+                                    <button type="submit" class="btn btn-primary mt-3">Update quantity</button>
+                                </form>
+                                <br>
+                                <form method="POST" action="{% url 'delete_pre_order' product.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger rounded-0 text-uppercase mt-5">Delete Pre-Order</button>
+                                </form>
+
+                            {% endif %}
+                        {% else %}
+                            <form method="POST" action="{% url 'add_to_bag' product.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="quantity" value="{{ pre_ordered_quantity }}">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-5">Add to bag</button>
+                            </form>
+                        {% endif %}
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
                 </div>
             </div>
         </div>
