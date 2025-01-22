@@ -33,6 +33,11 @@ body {
     align-items: center;
 }
 
+.logo-name {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
 #reset-husbandry-form button {
     margin-left: 10px;
 }
@@ -277,7 +282,7 @@ input[name='q']::placeholder {
     background-color: #f0c717;
 }
 
-.fourohfour-container, .confirm-container {
+.fourohfour-container, .confirm-container, .nl-signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,7 +291,7 @@ input[name='q']::placeholder {
     background-color: #f5f5f5;
 }
 
-.fourohfour-box, .confirm-box {
+.fourohfour-box, .confirm-box, .nl-signup-box {
     text-align: center;
     background-color: #ffffff;
     padding: 30px;
@@ -296,20 +301,20 @@ input[name='q']::placeholder {
     margin: 0 auto;
 }
 
-.fourohfour h1, .confirm h1 {
+.fourohfour h1, .confirm h1, .nl-signup h1 {
     font-size: 48px;
     color: #ff6f61;
     font-size: 1.8rem;
     margin-bottom: 15px;
 }
 
-.fourohfour p, .confirm p {
+.fourohfour p, .confirm p, .nl-signup p {
     font-size: 18px;
     color: #555;
     margin-bottom: 10px;
 }
 
-.fourohfour a, .confirm a {
+.fourohfour a, .confirm a, .nl-signup a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
@@ -334,7 +339,7 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 205px;
     }
 }
 
