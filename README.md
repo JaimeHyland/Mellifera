@@ -1,6 +1,71 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-[TOC]
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Mellifera](#mellifera)
+   * [How the idea came about](#how-the-idea-came-about)
+      + [The initial proposition](#the-initial-proposition)
+      + [Elise's thought processes after her chats with Tomáš.](#elises-thought-processes-after-her-chats-with-tomá)
+   * [Initial design](#initial-design)
+   * [Product range & Marketing](#product-range-marketing)
+      + [Face-to-face 'interviews'](#face-to-face-interviews)
+      + [Phone calls and e-mails with Tomáš](#phone-calls-and-e-mails-with-tomá)
+      + [Other consultations](#other-consultations)
+   * [Elise's initial marketing conclusions](#elises-initial-marketing-conclusions)
+      + [Marketing-relevant measures for immediate action](#marketing-relevant-measures-for-immediate-action)
+      + [... and possibly for later](#-and-possibly-for-later)
+      + [CEO and the like](#ceo-and-the-like)
+   * [Design of website's logic and structure](#design-of-websites-logic-and-structure)
+      + [Husbandry system](#husbandry-system)
+      + [Pre-order](#pre-order)
+      + [Newsletter subscription](#newsletter-subscription)
+      + [From the user-shopper' point of view](#from-the-user-shopper-point-of-view)
+      + [From the registered user's point of view](#from-the-registered-users-point-of-view)
+      + [From the superuser point of view](#from-the-superuser-point-of-view)
+      + [Database design](#database-design)
+      + [The initial development DB](#the-initial-development-db)
+      + [The deployed DB](#the-deployed-db)
+      + [Registering for Heroku and using it](#registering-for-heroku-and-using-it)
+         - [Initial signup](#initial-signup)
+         - [Setting up the Heroku app](#setting-up-the-heroku-app)
+      + [Registering for Amazon AWS and using its services](#registering-for-amazon-aws-and-using-its-services)
+         - [Signing up](#signing-up)
+         - [Creating a bucket, a user and a user group](#creating-a-bucket-a-user-and-a-user-group)
+      + [Registering for Stripe and using it](#registering-for-stripe-and-using-it)
+   * [Required features of the project](#required-features-of-the-project)
+      + [Original custom models](#original-custom-models)
+      + [UI elements to delete records for CRUD](#ui-elements-to-delete-records-for-crud)
+      + [Agile methodology](#agile-methodology)
+      + [CEO](#ceo)
+      + [Social media](#social-media)
+      + [Custom 404 page](#custom-404-page)
+      + [Newsletter signup option](#newsletter-signup-option)
+      + [Ecommerce strategy/business model](#ecommerce-strategybusiness-model)
+      + [DEBUG mode](#debug-mode)
+      + [User registration, logging in and logging out, and purchasing rules](#user-registration-logging-in-and-logging-out-and-purchasing-rules)
+      + [Manual testing](#manual-testing)
+      + [Visibility of code-related environments](#visibility-of-code-related-environments)
+   * [i10n and l10n](#i10n-and-l10n)
+   * [Help functions](#help-functions)
+   * [Manual testing](#manual-testing-1)
+      + [Django's effect on the need for robustness testing; invalid user entries](#djangos-effect-on-the-need-for-robustness-testing-invalid-user-entries)
+      + [Features testing](#features-testing)
+      + [Device compatibility and responsiveness](#device-compatibility-and-responsiveness)
+   * [Bug fixes, warning resolution and linting](#bug-fixes-warning-resolution-and-linting)
+      + [Bugs](#bugs)
+      + [Warnings and errors appearing on consoles, terminals and logs](#warnings-and-errors-appearing-on-consoles-terminals-and-logs)
+   * [Linting](#linting)
+      + [Linting the Python](#linting-the-python)
+      + [Linting the HTML, CSS and JavaScript](#linting-the-html-css-and-javascript)
+      + [Browser and device compatibility](#browser-and-device-compatibility)
+   * [Unresolved issues and future development](#unresolved-issues-and-future-development)
+      + [Help functions](#help-functions-1)
+   * [Credits and sources](#credits-and-sources)
+      + [Code resources](#code-resources)
+      + [External technical and learning resources](#external-technical-and-learning-resources)
+      + [Other credits](#other-credits)
+
+<!-- TOC end -->
 
 <!-- TOC --><a name="mellifera"></a>
 # Mellifera
@@ -213,12 +278,15 @@ She believes that the improvement in the UX resulting from easier identification
 ## Design of website's logic and structure
 Following the principle of "if it ain't broke don't fix it", this entire project is based closely on the design of the *Code Institute* walkthrough project "Boutique Ado", with (of course) very different products ... and a number of adjustments to the existing models, as well as a three entirely new models to deal with the special needs of beekeeper customers as described in the user stories, and to respond to Elise's conclusions from her discussions on marketing.
 
+<!-- TOC --><a name="husbandry-system"></a>
 ### Husbandry system
 The first new model, *husbandry_system*, divides some of the products (i.e. most of the hive components that the shop sells) into a number of sub-categories based on the husbandry system that they fit. The model enables both the app owner/superuser to add to and remove from the site products designed exclusively for use with a particular husbandry system in mind (and that almost certainly won't fit other husbandry systems).  The basic difference between this *husbandry-system* model and the existing *category* model is that the former only applies to a limited (though large) number of products, while all products are associated with to one or other record in the Category model. The ultimate purpose of the System model is to allow users to choose the single husbandry system that they use, thus filtering out all products that would be unsuitable for that system from the get-go. In short, it's there to help prevent users from buying products that are the wrong size for their system.  The problem bedevils beginner beekeepers especially, but it can also be costly and embarrassing even for the more experienced ones.
 
+<!-- TOC --><a name="pre-order"></a>
 ### Pre-order
 The second new model, *pre_order*, allows registered users to mark goods that are out of stock for later purchase. It's useful both as a reminder to users and provides information to the *Mellifera* shop staff as to what the customers are waiting most breathlessly for. For users who recorded an email address, the shop staff has the option to send emails to let them know that the goods they're looking for have arrived.  This part of the system remains manual for the moment.
 
+<!-- TOC --><a name="newsletter-subscription"></a>
 ### Newsletter subscription
 The third and final new model, *newsletter* is simply a classic signup form to the *Mellifera* newsletter with a simple, classic email validation system.
 
@@ -252,7 +320,7 @@ A good proportion of the database tables required for the project were provided 
 The database is largely based on the walk-through project's walkthrough, with the three important customisations described above.
 
 
-<!-- TOC --><a name="the-development-db"></a>
+<!-- TOC --><a name="the-initial-development-db"></a>
 ### The initial development DB
 
 As the project is based on a cloned copy the walk-through project, to create the database for the development environment, I did the following:
@@ -454,7 +522,7 @@ The DEBUG mode of the program will be guaranteed to be false in its deployed sta
 ### User registration, logging in and logging out, and purchasing rules
 Users will be able to register, and log in and out of the app via a verification system based on the walkthrough project. They will be able to buy products either as logged-in registered users or as guest visitors. 
 
-<!-- TOC --><a name="testing-logs"></a>
+<!-- TOC --><a name="manual-testing"></a>
 ### Manual testing
 
 The following testing has been completed in the deployed environment (for unregistered user, logged-in users, and superusers, where relevant)
@@ -482,11 +550,11 @@ No internationalisation or localisation work will be done at this stage of the p
 ## Help functions
 No user help functionality will be developed at this stage of the project.
 
-<!-- TOC --><a name="manual-testing"></a>
+<!-- TOC --><a name="manual-testing-1"></a>
 ## Manual testing
 Each identifiable function (as identified by each Use Case in the user stories) has been tested on the final version of the app.
 
-<!-- TOC --><a name="robustness-testing-invalid-user-entries"></a>
+<!-- TOC --><a name="djangos-effect-on-the-need-for-robustness-testing-invalid-user-entries"></a>
 ### Django's effect on the need for robustness testing; invalid user entries
 The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.
 
@@ -513,7 +581,7 @@ Where console.log and/or print statements were used in debugging processes, they
 
 Unless otherwise clearly explained in an associated comment, all commented out code has been removed in the final version of the project.
 
-<!-- TOC --><a name="warnings-appearing-on-consoles-terminals-and-logs"></a>
+<!-- TOC --><a name="warnings-and-errors-appearing-on-consoles-terminals-and-logs"></a>
 ### Warnings and errors appearing on consoles, terminals and logs
 All errors and warnings that appeared on consoles, terminals and logs during testing, both in the development and the deployed environment, have been resolved.  However, there may yet be warnings and errors that I have not yet detected. Any such errors and warnings will be resolved as soon as practicable after they reveal themselves or are reported.
 
