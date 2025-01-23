@@ -22,7 +22,7 @@
       + [From the user-shopper' point of view](#from-the-user-shopper-point-of-view)
       + [From the registered user's point of view](#from-the-registered-users-point-of-view)
       + [From the superuser point of view](#from-the-superuser-point-of-view)
-      + [Database design](#database-design)
+   * [Database design](#database-design)
       + [The initial development DB](#the-initial-development-db)
       + [The deployed DB](#the-deployed-db)
       + [Registering for Heroku and using it](#registering-for-heroku-and-using-it)
@@ -59,7 +59,10 @@
       + [Linting the HTML, CSS and JavaScript](#linting-the-html-css-and-javascript)
       + [Browser and device compatibility](#browser-and-device-compatibility)
    * [Unresolved issues and future development](#unresolved-issues-and-future-development)
+      + [Using the current flag instead of deleting](#using-the-current-flag-instead-of-deleting)
       + [Help functions](#help-functions-1)
+      + [Last minute error in the checkout interface](#last-minute-error-in-the-checkout-interface)
+      + [Dynamic styling of links, etc.](#dynamic-styling-of-links-etc)
    * [Credits and sources](#credits-and-sources)
       + [Code resources](#code-resources)
       + [External technical and learning resources](#external-technical-and-learning-resources)
@@ -538,16 +541,28 @@ Users will be able to register, and log in and out of the app via a verification
 
 The following testing has been completed in the deployed environment (for unregistered user, logged-in users, and superusers, where relevant)
 - Complete testing of login, logout and signup templates
+  - All three allauth templates should have the mellifera header with the correct menus for the current user status
+  - All three allauth should be at least minimally styled
+  - All three allauth templates should log the user in or out, or register them as a user in the expected manner
 - Test menu visibility (logged out, logged in, superuser)
+  - All user statuses should see each of links and menu items they need to see
+   - Superusers (and only superusers) should see links and menu items allowing them to edit products
+   - Superusers and registered users (but not guest users) should see links allowing them to pre-order sold-out products
 - Complete functional testing on *husbandry system filter*, search and menu items
-- Verify link to Facebook page and 404 page
+  - Click on each filter item in turn (any single user will do)
+  - Turn the filter on and off, both via the Reset button and directly using the dropdown list
+- Click on each in turn for each user category and check for 404s, runtime errors and unexpected behaviours
+- Verify link to Facebook page and 404 
+  - Click on the Facebook link (any user status and any page will suffice) to see that the link works
+  - Enter a non-existent URL based on the home url in the browser's URL bar and check that the custom 404 page comes up as expected
 - Test superuser functions: what they can do
+  - Check that superusers (and nobody else) can add, edit and delete individual products
 - Logged in users, what they can do, what they can't
 - Site guests: what they can do, what they can't
 - Functional testing *Pre-orders*
 - Functional testing *Newsletter subscription*
 - Functional testing bag/prices
-- Test purchase
+- Make a test purchase for each user status.
 
 <!-- TOC --><a name="visibility-of-code-related-environments"></a>
 ### Visibility of code-related environments
@@ -609,14 +624,16 @@ While I strongly believe that the limit of 79 characters per line is excessively
 
 <!-- TOC --><a name="linting-the-html-css-and-javascript"></a>
 ### Linting the HTML, CSS and JavaScript
-Time restrictions prevented me from linting in my HTML code. I had been intending to use Django's djlint tool for this point, which has proven very useful in the past in finding orphan closing nodes, etc.. The small bit of configuration that I had prepared for this uncompleted process would be seen in a .djlint file on the root directory.
+I linted the HTML code using djlint (``djlint templates`` on the command line and using the ini file shown below). 
 
 ```
 [django-lint]
 disable = attribute-lowercase
 ```
 
-I did no linting either on my fairly modestly sized custom-made base.css file, as it was easy enough to check their formatting and layout manually.
+I ignored the linting errors I found on django boilerplate templates that I was not using. As a result, there was little linting to do (most of my linting was already completed in the 2nd interation of this project).
+
+I did no linting either on my fairly modestly sized custom-made base.css file, as it was easy enough (I hope) to check their formatting and layout manually.
 
 Nor did I lint the JavaScript contained in the project. From experience, I can say that this process would have been a little more involved. The tool I generally use for this purpose is ESLint, which requires a good deal more configuration (and, among other complications, an update of GitPod's standard version of Node.js) to set up as compared the other two linters mentioned above.
 
@@ -675,7 +692,7 @@ export default [
 ];
 ```
 
-However, this is all academic, as I ran out of time to do this linting exercise, even though I probably would not have had to modify the above configurations by much, which originally cost me some time to compile originally.
+However, this is all academic, as I ran out of time to do this javascript linting exercise, even though I probably would not have had to modify the above configurations by much, which originally cost me some time to compile originally.  Since I have run eslint on a previous iteration of this project and did very little javascript work on this iteration, I don't think I would have found much to fix.
 
 
 <!-- TOC --><a name="browser-and-device-compatibility"></a>
@@ -683,7 +700,7 @@ However, this is all academic, as I ran out of time to do this linting exercise,
 During ongoing development, I tested my work on the latest versions of Chrome and Edge, using developer tools in "inspect" mode at various resolutions (running a **smoke test** on before every commit at the very least) and intermittently running the App on the following physical devices:
 - Samsung Galaxy A8 (360 x 740px effective size, running on the latest version of Chrome)
 - ipod (768px x 1024px viewport size, running on the latest version of Safari)
-- HP laptop (1920 x 1080px) and Dell second screen (1920 x 1200px) both running on latest versions of Chrome, Microsoft Edge and Firefox 
+- HP laptop (1920 x 1080px) and Dell second screen (1920 x 1200px) both running on latest versions of Chrome, Microsoft Edge and Firefox
 
 I have done no testing, nor do I plan to do any testing, on older Browser versions, nor on any other physical devices. 
 So far, this App has proved responsive enough for use on all the Android and Apple mobile devices we possess in the family.
@@ -698,9 +715,23 @@ Consistent with Elisa's marketing conclulsions, the main pages of the App are, a
 
 Much of the formatting, either using bootstrap or custom css, is still fairly primitive, and much of it is still too close to the walkthrough project for comfort. The site's responsiveness to user mouse movements still needs lots of work.  The styling on the allauth templates is also pretty limited.
 
+<!-- TOC --><a name="using-the-current-flag-instead-of-deleting"></a>
+### Using the current flag instead of deleting
+An attentive assessor will notice that I added a 'current' boolean field to some of my models. My intention was to a simple change to some of the deletion functions on the site so that they no longer actually delete, but mark 'current' as false, and altering the query logic so that it always includes a filter (current=True), thus making it easier for admin users to restore records that have been mistakenly deleted, and making them available to use as the basis for similar new records as they are added.
+
+This effort will have to wait until the next iteration of the project (long after this effort has been marked and critiqued by the assessors).
+
 <!-- TOC --><a name="help-functions-1"></a>
 ### Help functions
 I have not, and do not intend in any scheduled future, to implement any particular systematic user Help functionality behind the App in addition to Django's generic help features. I will concentrate on ensuring that the UX is as seamless as possible and that all UIs in the App are as intuitive and simple as humanly possible. In any rare cases where it seems that some explanation may be necessary, I may provide the user with information via discreet modal displays. Apart from immediate aesthetic considerations, I'll have to give further thought to the positioning of buttons, the greater use of modal windows, etc. (see above).
+
+<!-- TOC --><a name="last-minute-error-in-the-checkout-interface"></a>
+### Last minute error in the checkout interface
+At the last minute, the overlay with its moving wait symbol in the secure checkout function suddenly and inexplicably ceased working. I haven't been able to find the issue here yet. It does not affect the functioning of the stripe-based payment system, which appears to continue working normally.
+
+<!-- TOC --><a name="dynamic-styling-of-links-etc"></a>
+### Dynamic styling of links, etc.
+Most links lack the dynamic styling that people have grown used to on modern websites (changing, size, shape, text decoration and/or colour during user interaction). Remedying this is a high priority for future iterations of this project.
 
 
 <!-- TOC --><a name="credits-and-sources"></a>
