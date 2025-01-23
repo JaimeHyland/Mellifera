@@ -311,18 +311,18 @@ Clicking on the _Go to order list_ button, icon or link will bring the user to t
 <!-- TOC --><a name="database-design"></a>
 ## Database design
 
-![An ERD-based explanation of the HusbandrySystem model](assets/documentation/readme_assets/ERD_HusbandrySystem.pdf)
+![An ERD-based explanation of the HusbandrySystem model](assets/documentation/readme_assets/HusbandrySystem.gif)
 
 *An ERD-based explanation of the HusbandrySystem model*
 
 
-![An ERD-based explanation of the PreOrder model](assets/documentation/readme_assets/ERD_Preorder.pdf)
+![An ERD-based explanation of the PreOrder model](assets/documentation/readme_assets/PreOrder.gif)
 
 
 *An ERD-based explanation of the PreOrder model*
 
 
-![An ERD-based explanation of the Newsletter model](assets/documentation/readme_assets/ERD_Newsletter.pdf)
+![An ERD-based explanation of the Newsletter model](assets/documentation/readme_assets/Newsletter.gif)
 
 *An ERD-based explanation of the PreOrder model*
 
