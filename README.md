@@ -309,11 +309,22 @@ Clicking on the _Go to order list_ button, icon or link will bring the user to t
 ### From the superuser point of view
 
 <!-- TOC --><a name="database-design"></a>
-### Database design
+## Database design
 
-![Some flow charts portraying a selection of important Mellifera workflows](assets/readme_assets/hamamelis.gif)
+![An ERD-based explanation of the HusbandrySystem model](assets/documentation/readme_assets/ERD_HusbandrySystem.pdf)
 
-*Some flow charts portraying a selection of important Mellifery worklflows*
+*An ERD-based explanation of the HusbandrySystem model*
+
+
+![An ERD-based explanation of the PreOrder model](assets/documentation/readme_assets/ERD_Preorder.pdf)
+
+
+*An ERD-based explanation of the PreOrder model*
+
+
+![An ERD-based explanation of the Newsletter model](assets/documentation/readme_assets/ERD_Newsletter.pdf)
+
+*An ERD-based explanation of the PreOrder model*
 
 A good proportion of the database tables required for the project were provided by Django's standard user authentication system, _django.contrib.auth_. I do not propose to discuss that system in detail, except to the extent that the registration and log-in/out options that it makes possible are described above.
 
