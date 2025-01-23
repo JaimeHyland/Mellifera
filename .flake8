@@ -2,4 +2,4 @@
 [flake8]
 exclude = migrations, .vscode, .git
 
-max-line-length = 115
+max-line-length = 79

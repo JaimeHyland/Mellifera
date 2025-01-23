@@ -78,27 +78,28 @@
 # Mellifera
 A simple B2C ecommerce website for the online sale of honey-bee-related equipment, materials, tools, consumables and packaging to German hobby beekeepers.
 
-Code Institute - Fifth Milestone Project: Under my interpretation, the requirements for this project would be satisfied as follows:
+*Code Institute* - Fifth Milestone Project: Under my interpretation, the requirements for this project are satisfied as follows:
 
 Build a Full-Stack e-commerce website that facilitates the online sale of and payment for a range of beekeeping-related goods based on a business logic that reflects the variety and taxonomy of that range of goods, satisfying the expectations of both an imaginary online store owner and of their very real potential customers.
 
-I believe that completing such a project would satisfy the requirements listed for the fifth porfolio project in Code Institute's LMS, i.e. to show  an appropriate level of understanding on my part of a number of different concepts, technologies and disciplines related to Full-Stack programming in the e-commerce sector:
+I believe that completing such a project would satisfy the requirements listed for the fifth porfolio project in *Code Institute*'s LMS, i.e. to show  an appropriate level of understanding on my part of a number of different concepts, technologies and disciplines related to Full-Stack programming in the e-commerce sector:
 
 - Django development on a cloud-based IDE (using Django-3.x on a VS Studio IDE hosted on Gitpod).
 - The creation, maintenance and use in Python code of database models, implemented using Django, running on Postgresql.
+- The design and creation of three models and their implementation in javascript, python and html to turn them into genuinely useful site features.
 - Use of agile methodologies via the project features available in GitHub, associated with the repository for this portfolio project.
-- Creation of UI elements outside Django's admin panel to allow users to create and update records in database tables.
+- Creation of UI elements outside Django's admin panel to allow users to create and update records in the database models, both standard and custom-made.
 - The use of robots.txt and sitemap.xml files.
 - The use and purpose of descriptive metatags in HTML code.
 - How to link to external resources using the Rel attribute.
 - How to make a custom 404 error page.
 - The use of social media, using the instance of a (dummy) Facebook presence as an example.
-- Creation of a newsletter signup form.
+- Creation of a newsletter signup form with email address verification.
 - The use of DEBUG mode, and in particular the need to switch it to False before deploying.
 - The Django functionality allowing users to log in and out of the project application.
 - The use of Stripe together with Django, bootstrap and bespoke HTML, CSS, JavaScript and Python code to demonstrate a(n almost) working online purchasing system
-- The correct use of linting to check code formatting.
-- Detailed human-made logs of testing processes.
+- The correct use of linting to check code formatting in python and html/css.
+- Simple human-made logging of manual testing processes.
 - Appropriate use of online research and problem-solving resources publicly available on the Internet.
 
 
@@ -115,7 +116,7 @@ I believe that completing such a project would satisfy the requirements listed f
 <!-- TOC --><a name="the-initial-proposition"></a>
 ### The initial proposition
 
-The very fictional Elise Knolle is a Berlin-based amateur beekeeper who, while on an equally fictional skiiing holiday in mountainous Northern Bohemia a few months ago, met an imaginary woodworker who makes high-quality beehive boxes and honey frames in the spruce and pine lumber local to the area. He makes a good living selling his wooden products at competitive retail prices. He also makes higher quality cedar boxes at a higher, though still relatively attractive retail prices. Elise (who had, with some relief, just completed an online course in Full-Stack Development at the famous Irish training body, Code Institute) hit it off immediately with the Czech woodworker on meeting him one evening during the apres-ski. After a generous helping of excellent food, washed down with an excellent Pilsner beer and a glass of homemade herbal schnapps, the conversation &ndash;as occasionally happens in such circumstances&ndash; turned to business.
+The very fictional Elise Knolle is a Berlin-based amateur beekeeper who, while on an equally fictional skiiing holiday in mountainous Northern Bohemia a few months ago, met an imaginary woodworker who makes high-quality beehive boxes and honey frames in the spruce and pine lumber local to the area. He makes a good living selling his wooden products at competitive retail prices. He also makes higher quality cedar boxes at a higher, though still relatively attractive retail prices. Elise (who had, with some relief, just completed an online course in Full-Stack Development at the famous Irish training body, *Code Institute*) hit it off immediately with the Czech woodworker on meeting him one evening during the apres-ski. After a generous helping of excellent food, washed down with an excellent Pilsner beer and a glass of homemade herbal schnapps, the conversation &ndash;as occasionally happens in such circumstances&ndash; turned to business.
 
 Tomáš (for that's his name) has a good deal of experience sending his wares by DHL around the Czech Republic, Poland and Slovakia, and is the proud owner of some very expensive and sorely under-exploited woodworking tools and machinery. As such, he's keen to expand his production, with the first option for achoeving this being extending his products' geographical market. Early in his conversation with Elise (neither spoke the other's native language, so they communicated in English), he learnt two facts that made his ears prick up: firstly, that there are no less than 150,000 hobby beekeepers in Germany, and secondly, that Elise is currently having to buy beehive boxes of what she considers inferior quality from a Brandenburg-based specialist at a significantly higher price (after conversion into Euros).
 
@@ -123,9 +124,9 @@ As the conversation went on, Elise, who is not rolling in money (ski holidays ar
 
 The following day they met in a café near the bottom of the ski slope (Elise was happy to give up her skiing for the day to continue her conversation with Tomáš), they came to the following arrangement:
 
-Within three monts of arriving back in Berlin, Elise should put together a proof-of-concept version of a B2C e-commerce website designed to sell Tomáš' wares to German beekeepers and would return to Czechia to show Tomáš the results of her efforts and to discuss how much work still needed to be done to get the website up and running. They could then discuss what, if anything, Tomáš would be willing to contribute to the completion and final deployment of the website, including its localisation into German, its internationalisation for the Swiss and Austrian markets (at least) and the simple web-marketing, security and analytical functionality that the system would be likely to require.
+Within three months of arriving back in Berlin, Elise should put together a proof-of-concept version of a B2C e-commerce website designed to sell Tomáš' wares to German beekeepers and would return to Czechia to show Tomáš the results of her efforts and to discuss how much work still needed to be done to get the website up and running. They could then discuss what, if anything, Tomáš would be willing to contribute to the completion and final deployment of the website, including its localisation into German, its internationalisation for the Swiss and Austrian markets (at least) and the simple web-marketing, security and analytical functionality that the system would be likely to require.
 
-The project I'm now presenting should be looked upon as if it were the test website that Elise built and turned up a few months later to present to Tomáš. It doesn't include the aforementioned localisation or internationalisation, nor the sort of security and analytical functionality that a real-world working website would need.
+The project I'm now presenting should be looked upon as if it were the test website that Elise built and turned up a few months later to present to Tomáš. It doesn't include the aforementioned localisation or internationalisation, nor the sort of security and analytical functionality that a real-world working website would need. It should be considered an MVP. Its graphic presentation is particularly primitive, but it does have at least a consistent, appropriate visual style throughout. Its visual responsiveness to user movements of mouse and fingertips is lacking, in favour of functionality.
 
 <!-- TOC --><a name="elises-thought-processes-after-her-chats-with-tomá"></a>
 ### Elise's thought processes after her chats with Tomáš.
@@ -137,7 +138,7 @@ While Tomáš had reassured her that he can make hive boxes according to whateve
 
 Thankfully, the standard frames that are hung inside such boxes are slightly less complicated, generally varying only in terms of length and depth to match only the interior measurements of that box. The actual thickness of the timber used to make such frames is most often a fairly standard 9.5 mm (or about 3/8 of an inch for the more old-fashioned among us).
 
-Despite this little mercy, all these factors seemed like worrying complications. It was nothing she couldn't handle (thought she) by adjusting her data models and workflow to take account of it, relying on Tomáš' reassurances.
+Despite this little mercy, all these factors seemed like worrying complications. It was nothing she couldn't handle (thought she) by adjusting her data models and workflow to take account of it, relying heavily on Tomáš' information.
 
 - - -
 
@@ -182,10 +183,10 @@ Elise didn't actually do any formal face-to-face interviews with anyone (hence t
 >> The one thing they seemed to agree was not necessary (or even desirable) for her to sell in her shop were packages of bees themselves: mated queen packages, living hive nuclei, etc.. The consensus was that such products should be left to a specialist producer/dealer and that offering them would do little to add to the site's reputation as a reliable and professional supplier
 
 - Filtering by basic hive design
->> Beekeepers appreciated her idea of giving them up-front on the homepage the option of filtering out hive components incompatible with their hive dimensions by clicking on their chosen system as it appeared in a horizontal bar at the bottom of the site header, which would have the effect that all their subsequent searches limit themselves to products compatible with their systems, unless and until they decided to undo their filter by clicking on the name of their chosen system again. As long as the user does not select any particular beekeeping system, no such filter is enforced.
+>> Beekeepers appreciated her idea of giving them up-front on the homepage the option of filtering out hive components incompatible with their hive dimensions by clicking on their chosen system as it appeared in a horizontal bar at the bottom of the site header, which would have the effect that all their subsequent searches would limit themselves to products compatible with their systems, unless and until they decided to undo their filter by clicking a _RESET_ button. As long as the user does not select any particular beekeeping system, no such filter is enforced.
 
 - Other filters and sorting options
-They also let her know that the ability to filter according to a number of different criteria would be appreciated, with the general consensus being that "the more, the better", but that the site's products should be filterable and sortable according to the categories mentioned above under "Product range" (except anything involving live bees).
+They also let her know that the ability to filter according to a number of different criteria would be appreciated, with the general consensus being that "the more, the better", but that the site's products should be filterable and sortable according to the categories mentioned above under "Product range".
 
 - Added marketing discussions
   - Beekeeper's forum
@@ -205,7 +206,7 @@ Through some more or less detailed conversations with Tomáš via WhatsApp and e
 ### Other consultations
 A number of chats with relatives and non-beekeeping friends underlined the point that Elise's site is far more likely to be successful if she manages to put herself in a position to sell a full range of beekeeping supplies.
 
-One enormously important area of research will of course be to see what the compeition is doing. There are already a large number of beekeeping e-commerce sites already on the internet aimed at the DACH market. Practically everyone with whom she discusses her _Mellifera_ site mentions this as an essential part of her preparations. The obvious rubric in which to frame this information-gathering effort is to see it as a way to formally define the site's unique selling proposition (USP) on the basis of places Elise can go (with Tomáš' and perhaps others' help) that other online beekeeping suppliers can't or won't. The initial competitive advantage she has identified is value for money at the quality end of the market, but there may well be others. She suspects, for example, she can project superior authority and expertise in the beekeeping sector through better organisation and presentation of information on compatibility and incompatibilities between popular standard beehive designs used in the DACH region.
+One enormously important area of research will of course be to see what the compeition is doing. There are already a large number of beekeeping e-commerce sites already on the internet aimed at the DACH market (Germany, Austria and Switzerland). Practically everyone with whom she discusses her _Mellifera_ site mentions this as an essential part of her preparations. The obvious rubric in which to frame this information-gathering effort is to see it as a way to formally define the site's unique selling proposition (USP) on the basis of places Elise can go (with Tomáš' and perhaps others' help) that other online beekeeping suppliers can't or won't. The initial competitive advantage she has identified is value for money at the quality end of the market, but there may well be others. She suspects, for example, she can project superior authority and expertise in the beekeeping sector through better organisation and presentation of information on compatibility and incompatibilities between popular standard beehive designs used in the DACH region.
 
 She believes that the improvement in the UX resulting from easier identification of compatible equipment is very likely to substantially improve sales.
 
@@ -282,23 +283,26 @@ She believes that the improvement in the UX resulting from easier identification
 
 <!-- TOC --><a name="design-of-websites-logic-and-structure"></a>
 ## Design of website's logic and structure
-Following the principle of "if it ain't broke don't fix it", this entire project is based closely on the design of the Code Institute walkthrough project "Boutique Ado", with (of course) very different products ... and a number of adjustments to the existing models, as well as a couple of new models to deal with the special needs of beekeeper customers as described in the user stories.
+Following the principle of "if it ain't broke don't fix it", this entire project is based closely on the design of the *Code Institute* walkthrough project "Boutique Ado", with (of course) very different products ... and a number of adjustments to the existing models, as well as a three entirely new models to deal with the special needs of beekeeper customers as described in the user stories, and to respond to Elise's conclusions from her discussions on marketing.
 
-The first new model, System, divides some of the products (i.e. most of the hive components that the shop sells) into a number of sub-categories based on the husbandry system that they fit. The model enables both the app owner/superuser to add to and remove from the site products designed exclusively for use with a particular husbandry system in mind (and that almost certainly won't fit other husbandry systems).  The basic difference between this System model and the Category model is that the former only applies to a limited number of products, while all products are associated with to one or other record in the Category model. The ultimate purpose of the System model is to allow users to choose the single husbandry system that they use, thus filtering out all products that would be unsuitable for that system. In short, it prevents the user from buying products in the wrong size.
+### Husbandry system
+The first new model, *husbandry_system*, divides some of the products (i.e. most of the hive components that the shop sells) into a number of sub-categories based on the husbandry system that they fit. The model enables both the app owner/superuser to add to and remove from the site products designed exclusively for use with a particular husbandry system in mind (and that almost certainly won't fit other husbandry systems).  The basic difference between this *husbandry-system* model and the existing *category* model is that the former only applies to a limited (though large) number of products, while all products are associated with to one or other record in the Category model. The ultimate purpose of the System model is to allow users to choose the single husbandry system that they use, thus filtering out all products that would be unsuitable for that system from the get-go. In short, it's there to help prevent users from buying products that are the wrong size for their system.  The problem bedevils beginner beekeepers especially, but it can also be costly and embarrassing even for the more experienced ones.
 
-The difference between it and the simpler "has_clothing_size" field in the 
+### Pre-order
+The second new model, *pre_order*, allows registered users to mark goods that are out of stock for later purchase. It's useful both as a reminder to users and provides information to the *Mellifera* shop staff as to what the customers are waiting most breathlessly for. For users who recorded an email address, the shop staff has the option to send emails to let them know that the goods they're looking for have arrived.  This part of the system remains manual for the moment.
+
+### Newsletter subscription
+The third and final new model, *newsletter* is simply a classic signup form to the *Mellifera* newsletter with a simple, classic email validation system.
 
 <!-- TOC --><a name="from-the-user-shopper-point-of-view"></a>
 ### From the user-shopper' point of view
-From the point of view of a guest user, the core website will consist of nothing more than a _home_ , a _products_, a _product_details, an _order_list, an _order_, a _checkout_ and finally a checkout_success page. The _home_ page (aside from providing the usual links to routinely and legally necessary administrative pages in its footer and allowing a guest user via a dropdown list to either _Sign on_ as a registered user or _log in_ as an existing one) gives that user the option of creating an initial filter based a particular hive system or systems (see above), as well as providing a number of routes to reach a _products_ overview page. This _products_ page simply lists out the products offered by the site, each in its own cell, filtered according to any setting that the user has already chosen on the _home_ page. On the _products_ page, the user then can refine or remove the filter, thus increasing or reducing the range of the products listed on the page, or double click on a particular product, which will bring the user to that product's _product/_detail_ page. Some products will be available a variety of sizes (for example, Langstroth hive boxes will be available in _1/2_, _2/3_, _3/4_ or _1/1_ heights and protective clothing will be available in _S_, _M_, _L_ and _XL_). Other products (tools and tins of non-toxic paints) will not.
+From the point of view of a guest user, the core website will consist of nothing more than a _home_ , a _products_, a _product_details, an _order_list, an _order_, a _checkout_ and finally a checkout_success page (though they also have the option of giving their email to sign up for the newsletter). The _home_ page (aside from allowing a guest user via a dropdown list to either _Sign on_ as a registered user or _log in_ as an existing one) gives that user the option of creating an initial filter based a particular hive system or systems (see above), as well as providing a number of routes to reach a _products_ overview page. This _products_ page simply lists out the products offered by the site, each in its own cell, filtered according to any setting that the user has already chosen on the _home_ page or chooses via the classic header menu. On the _products_ page, the user then can refine or remove the filter, thus increasing or reducing the range of the products listed on the page, or double click on a particular product, which will bring the user to that product's _product/_detail_ page. Some products will be available a variety of sizes (for example, protective clothing will be available in _S_, _M_, _L_ and _XL_). Other products (tools and tins of non-toxic and what have you) will not.
 
-For the moment, aside from box heights and sizes for protective and hygienic clothing, any difference in other dimensions, material or special features will be dealt with by creating a separate product record.
+For the moment, aside the sizes for protective and hygienic clothing, any difference in other dimensions, material or special features will be dealt with by creating a separate product record, where appropriate with a separate husbandry system associated with it.
 
-In order to provide the flexibility to add new size scales in the future, the two size scales (bee box height and clothes size) will be stored as separate records in JSON format in the database under a simple _Size_ table connected to the relevant _Product_ records via a foreign key. For the foreseeable future, all _Size_ json records will be one-dimensional.
+However, it may be useful in the future to allow a particular product to have sub-products on two dimensions (such as say, "_1/2_, _2/3_, _3/4_" or "_1/1_" and "_with lip_" and "_without lip_"), so it might be simpler to allow the database structure to handle such issues, even if the code doesn't necessarily need to implement such a hypothetical requirement. While the Django framework that Elise is using in this project makes database updates much less difficult than using vanilla SQL, making such late changes is not without its risks.
 
-Thankfully, there are no products in the prospective range that require both separate heights and clothing sizes! :) However, it may be useful in the future to allow a particular product to have sub-products on two dimensions (such as say, "_1/2_, _2/3_, _3/4_" or "_1/1_" and "_with lip_" and "_without lip_"), so it might be simpler to allow the database structure to handle such issues, even if the code doesn't necessarily need to implement such a hypothetical requirement. While the Django framework that Elise is using in this project makes database updates much less difficult than using vanilla SQL, making such late changes is not without its risks.
-
-Users can put items in their pre-order list only from that item's _product-detail_ page. Clicking on the _Add to order list_ button will put the chosen number (and the chosen size, where relevant) of that product on the _order-list_ page, giving the user a message that they have successfully done so, and returning them to the _product_ page with the chosen filters still intact. The shopper can continue to browse through that page. The top left of each page of the site will show the total monetary value the products contained in the order_list.
+Users can put items in their pre-order list only from that item's _product-detail_ page. Clicking on the _Pre-order_ button will put the chosen number of that product on the *edit_pre_orders* page, giving the user a message that they have successfully done so, and returning them to the _product_ page with the chosen *husbandry_system* filters still intact. The shopper can continue to browse through that page. The top left of each page of the site will show the total monetary value the products contained in the order_list.
 
 Clicking on the _Go to order list_ button, icon or link will bring the user to their _order list_ page. The above-mentioned message contains a link to the pre-order page, as does the pre-order icon at the top right of every page on the site. The products page will show a _Go to pre-order_ button at bottom right.
 
@@ -317,38 +321,18 @@ Clicking on the _Go to order list_ button, icon or link will bring the user to t
 
 A good proportion of the database tables required for the project were provided by Django's standard user authentication system, _django.contrib.auth_. I do not propose to discuss that system in detail, except to the extent that the registration and log-in/out options that it makes possible are described above.
 
-The database is largely based on the walk-through project's walkthrough, with several important customisations:
-- there is now a systen app, which contains the model for recording the various typical physical husbandry systems used in the DACH area for keeping bees. They all use the same basic principle and have the same basic components, differing only in terms of their precise measurements. The importance of classifying each system separately from the point of view of the customer is described above in the User stories section. 
+The database is largely based on the walk-through project's walkthrough, with the three important customisations described above.
 
-... However, it may be useful in the future to allow a particular product to have sub-products on two dimensions (such as say, "_1/2_, _2/3_, _3/4_" or "_1/1_" and "_with lip_" and "_without lip_"), so it might be simpler to allow the database structure to handle such issues, even if the code doesn't necessarily need to implement such a hypothetical requirement. While the Django framework that Elise is using in this project makes database updates much less difficult than using vanilla SQL, making such late changes is not without its risks.
-
-<!-- TOC --><a name="frameworks"></a>
-### Frameworks
-
-<!-- TOC --><a name="bootstrap"></a>
-### Bootstrap
-
-<!-- TOC --><a name="django"></a>
-### Django
-
-<!-- TOC --><a name="jquery"></a>
-### jQuery
-
-<!-- TOC --><a name="setting-up-the-environment"></a>
-## Setting up the environment
-
-<!-- TOC --><a name="creating-the-new-database"></a>
-## Creating the new database
 
 <!-- TOC --><a name="the-development-db"></a>
-### The development DB
+### The initial development DB
 
 As the project is based on a cloned copy the walk-through project, to create the database for the development environment, I did the following:
 - Deleted the existing db.sqlite3 file (copied from the walk-through project along with the rest of the code it contained). I made the modifications to the models that I needed and commands ``python3 manage.py makemigrations`` followed by ``python3 manage.py migrate``. This created a new empty database suitable for the purposes of my Mellifera project.  I created a new set of json files in the products.fixtures directory to create new product and category records. Then I added data on other tables manually (as setting up the fixtures would have been more work). I was then in a position to continue development using very basic &ndash;but basically realistic&ndash; data.
 
 <!-- TOC --><a name="the-deployed-db"></a>
 ### The deployed DB
-When the time came to deploy the app to Heroku (see below for the rest of this fairly complex process), I followed the steps provided by Code Institute to create a db hosted on their servers and retrieved its URL. I then dumped the data from my local SQLite db, ready for import when the remote DB was ready. I changes the DATABASE settings to point to the new remote database and then (with some minor and highly educational complications) used the loaddata command several times (with a number of variants) to import all data dumped from the old database.
+When the time came to deploy the app to Heroku (see below for the rest of this fairly complex process), I followed the steps provided by *Code Institute* to create a db hosted on their servers and retrieved its URL. I then dumped the data from my local SQLite db, ready for import when the remote DB was ready. I changed the DATABASE settings to point to the new remote database and then (with some minor and highly educational complications) used the loaddata command several times (with a number of variants) to import all data dumped from the old database.
 
 Following a thorough check of the new data using the browser, I decided it was safe to delete the old database.
 
@@ -357,24 +341,24 @@ Following a thorough check of the new data using the browser, I decided it was s
 
 <!-- TOC --><a name="initial-signup"></a>
 #### Initial signup
-The first step for someone completely new to Heroku would have been to create an account with Heroku at heroku.com, clicking on "Sign up for free" and filling out the sign-up form (using a genuine email address and with Role as Student and country as the country in which I currently live), and then clicking "Create free account". One would then need to confirm via the validation email sent by Heroku, set a password and log in, accepting Heroku's terms of service. Heroku requires a real 16-digit credit or debit card for all its accounts and requires users to implement a minimum two-step validation process to use its hosting services. It allows one to choose one's own form of validation. I originally chose a process in which a code number is sent to my smartphone every time I log in log-in via Salesforce's Authenticator app.
+The first step for someone completely new to Heroku would have been to create an account with Heroku at heroku.com, clicking on "Sign up for free" and filling out the sign-up form (using a genuine email address and with Role as Student and country as the country in which I currently live), and then clicking "Create free account". One would then need to confirm via the validation email sent by Heroku, set a password and log in, accepting Heroku's terms of service. Heroku needs its users to give a real 16-digit credit or debit card for all its accounts and requires users to implement a minimum two-step validation process to use its hosting services. It allows one to choose one's own form of validation. I originally chose a process in which a code number (or swipe authorisation) is sent to my smartphone every time I log in log-in via Salesforce's Authenticator app.
 
 As I have had this in place since my third portfolio project, I didn't have to go through this rigmarole again.
 
 <!-- TOC --><a name="setting-up-the-heroku-app"></a>
 #### Setting up the Heroku app
-I created a new Heroku app from the Heroku dashboard by clicking the _New_ button, then selecting "Create New App", naming the new app "Mellifera" and choosing Europe as the location. I then moved to the Settings tab of the page for the new app and added the url for the new database received by email from Code Institute as a Config Var (with the key ``DATABASE_URL``). I also created another config var called ``DISABLE_COLLECTSTATIC`` and gave it the value 1.
+I created a new Heroku app from the Heroku dashboard by clicking the _New_ button, then selecting "Create New App", naming the new app "Mellifera" and choosing Europe as the location. I then moved to the Settings tab of the page for the new app and added the url for the new database received by email from *Code Institute* as a Config Var (with the key ``DATABASE_URL``). I also created another config var called ``DISABLE_COLLECTSTATIC`` and gave it the value 1.
 
 I then added, committed and pushed my coding work to github, went to the _Deploy_ tab of the Herou App and connected that App to the corresponding Github repository. There I enabled automatic deploys and pressed the _Deploy Branch_ button on the main branch of my repo.
 
 <!-- TOC --><a name="registering-for-amazon-aws-and-using-its-services"></a>
 ### Registering for Amazon AWS and using its services
-I decided to use Amazon AWS as the location to store my App's static and media files for use in the deployed version of the App. The reason this was necessary is that Heroku's free tier is not designed to store either static or media files and cannot (of course) reach such files from within the development environment. As a result, the files have to be served from an environment designed for the purpose. Following the principle "if it ain't broke, don't fix it", I used a procedure effectively identical to the one described in the Boutique Ado walkthrough.
+I decided to use Amazon AWS as the location to store my App's static and media files for use in the deployed version of the App. The reason this was necessary is that Heroku's free tier is not designed to store either static or media files and cannot (of course) reach such files from within the development environment. As a result, the files have to be served from an environment designed for the purpose. Again following the principle "if it ain't broke, don't fix it", I used a procedure effectively identical to the one described in the Boutique Ado walkthrough.
 
 <!-- TOC --><a name="signing-up"></a>
 #### Signing up
 
-My original first step was to sign up for the AWS _free tier_, creating a user account, and setting up billing information (presumably for the day when I need services that are no longer free). As I had already done this for the walkthrough project, I didn't need to repeat the same rigmarole.
+My original first step was to sign up for the AWS _free tier_, creating a user account, and setting up billing information (presumably for the day when I need services that are no longer free). As I had already done this for the walkthrough project, I didn't need to repeat the same process.
 
 The free tier allows 5GB of standard storage in S3, as well as 20,000 GET requests and 2,000 PUT requests each month before any charges start kicking in.
 
@@ -487,7 +471,7 @@ Still in the Developer section of my Stripe account (in test mode, of course), I
 
  *The Stripe settings as seen in the env.py file for development and Heroku settings after deployment. Note that the value for the STRIPE_WH_SECRET differs between the two locations.*
 
- Once the checkout functionality coding had been done, I used dummy credit card details to test the connections, both between the development and its Stripe webhook and between the deployed app and its own separate webhook.  The connection worked in both dev and deployed environments, sending a real email to the intended recipient to confirm the "purchase".
+ Once the checkout functionality coding had been completed, I used dummy credit card details to test the connections, both between the development and its Stripe webhook and between the deployed app and its own separate webhook.  The connection worked in both dev and deployed environments, sending a real email to the intended recipient to confirm the "purchase".
 
  It almost goes without saying that a real-life online payment system would require far more testing before switching to live payments!
 
@@ -496,12 +480,7 @@ Still in the Developer section of my Stripe account (in test mode, of course), I
 
 <!-- TOC --><a name="original-custom-models"></a>
 ### Original custom models
-The project includes at least three data models markedly different from those included in the walkthrough project:
-- The Product model/table  contain a number of important original fields/columns not included in the walkthrough.
-- The Category model/table will be significantly more complex than the one used in the walkthrough.
-- There will be one original custom model/table: _HusbandrySystem_.
-
-My original intention was to provide the user with a site-wide filter (governed by a dropdown list on the site header) allowing them to select their husbandry system, so that equipment incompatible with that system are filtered out of the product list presented on the site, thus avoid the dander of the customer buying equipment incompatible with their existing kit.  Sadly, I had to roll back this functionality at the last minute as it was not yet working satisfactorily very close to coding freeze.
+The project includes at least three entirely new data models (each within a dedicated django app) as compared to those included in the walkthrough project. See the details described above on the the *husbandry_system*, *pre_order* and *newsletter* models/apps.
 
 <!-- TOC --><a name="ui-elements-to-delete-records-for-crud"></a>
 ### UI elements to delete records for CRUD
@@ -513,7 +492,7 @@ Both registered and unregistered users will of course be able to read all produc
 
 <!-- TOC --><a name="agile-methodology"></a>
 ### Agile methodology
-All development has been completed via pre-set User stories pre-set for the developer (me &mdash; or Elise if you wish) using an associated project in the GitHub repository. Because Elise is working on her own, she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
+All development has been completed via pre-set User stories pre-set for the developer (me &mdash; or Elise if you wish) using an associated project in the GitHub repository. Because Elise is working on her own (as I am), she won't require scrums or sprints, but will simply assign bite-size bundles issues to herself as an when appropriate.
 
 The Kanban for this project is available at https://github.com/users/JaimeHyland/projects/8/views/1
 
@@ -523,37 +502,37 @@ The project includes a functional robots.txt and sitemap.xml file. The header of
 
 <!-- TOC --><a name="social-media"></a>
 ### Social media
-The online shop will be associated with a real (though temporary and for the moment rather primitive) and relevant Facebook page. Thanks to a serious error in the facebook pages UI, and its famously unhelpful help functions, getting the page published was far more difficult than one should have expected.
+The online shop will be associated with a real (though temporary and for the moment rather primitive) and relevant Facebook page. Thanks to one serious error in the facebook pages UI, and its famously unhelpful help functions, getting the page published was far more difficult than one should have expected.
 
 https://www.facebook.com/people/Mellifera/61570066172012/
 
 <!-- TOC --><a name="custom-404-page"></a>
 ### Custom 404 page
-Any attempt by any sort of user to enter a non-existent page within the site will bring them to a primitie custom 404 page. It need work to make it consistent with the on-line shop's livery.
+Any attempt by any sort of user to enter a non-existent page within the site will bring them to a simple custom 404 page containing a short explanation and a link back to the homepage.
 
 <!-- TOC --><a name="newsletter-signup-option"></a>
 ### Newsletter signup option
-The site includes a custom newsletter sign-up page.  It currently connects up to Code Institute's form dump. Implementing it using django is another WIP.  The page has only received very limited formatting.
+The site includes a custom newsletter sign-up page, complete with the usual classic email address validation functionality.
 
 <!-- TOC --><a name="ecommerce-strategybusiness-model"></a>
 ### Ecommerce strategy/business model
-The description of the site owner's ecommerce business model is already largely in place on this readme (see especially [The initial proposition](#the-initial-proposition), [Product range & Marketing](#product-range-&-Marketing) and [Elise's initial marketing conclusions](#elises-initial-marketing-conclusions)). The description is dominated by an account of how the fictional owner's marketing strategy developed.
+The description of the site owner's ecommerce business model is already largely in place on this readme (see especially [The initial proposition](#the-initial-proposition), [Product range & Marketing](#product-range-&-Marketing) and [Elise's initial marketing conclusions](#elises-initial-marketing-conclusions)). The description is dominated by an account of how the fictional owner's marketing strategy developed, but I feel it accurately describes the marketing priorities that lit the way for the site's development so far.
 
 <!-- TOC --><a name="debug-mode"></a>
 ### DEBUG mode
-The DEBUG mode of the program will be guaranteed to be false in its deployed state, either via a Heroku-side Config Var or by setting the DEBUG setting in the settings.py file to 'False'.
+The DEBUG mode of the program will be guaranteed to be false in its deployed state via a Heroku-side Config Var of DEBUG=0.
 
 <!-- TOC --><a name="user-registration-logging-in-and-logging-out-and-purchasing-rules"></a>
 ### User registration, logging in and logging out, and purchasing rules
-Users will be able to register, and log in and out of the app via a verification system based on the walkthrough project. They will be able to buy products either as logged-in registered users or as guest site visitors.
+Users will be able to register, and log in and out of the app via a verification system based on the walkthrough project. They will be able to buy products either as logged-in registered users or as guest visitors. 
 
 <!-- TOC --><a name="testing-logs"></a>
 ### Testing logs
-The final readme.md file will include detailed accounts of testing work, and a short account of linting (code validation) issues found and resolved.
+This readme.md file includes a detailed account of manual testing , as well as a short account of linting (code validation) issues found and resolved.
 
 <!-- TOC --><a name="visibility-of-code-related-environments"></a>
 ### Visibility of code-related environments
-All environments used to create my eventual future project will be made available publicly to allow the assessor(s) to do their work. That will include my GitHub repository and my project board created on my GitHub environment. The actual site will be fully deployed and available at the URL created by Heroku.
+All relevant environments used to create my eventual future project will be made available publicly to allow the assessor(s) to do their work. That will include my GitHub repository and my project board created on my GitHub environment. The actual site will be fully deployed and available at the URL created by Heroku.
 
 <!-- TOC --><a name="i10n-and-l10n"></a>
 ## i10n and l10n
@@ -568,12 +547,12 @@ No user help functionality will be developed at this stage of the project.
 Each identifiable function (as identified by each Use Case in the user stories) has been tested on the final version of the app.
 
 <!-- TOC --><a name="robustness-testing-invalid-user-entries"></a>
-### Robustness testing; invalid user entries
+### Django's effect on the need for robustness testing; invalid user entries
 The need for robustness testing was considerably eased by the fact standard Django processes provided very clear pathways for all users &mdash;whether registered or guest customers, or even superusers&mdash; to follow, leaving only a few spots where invalid entries were possible.
 
 <!-- TOC --><a name="features-testing"></a>
 ### Features testing
-Features were tested manually as part of manual testing.
+Features were tested as part of the manual testing effort.
 
 <!-- TOC --><a name="device-compatibility-and-responsiveness"></a>
 ### Device compatibility and responsiveness
@@ -586,9 +565,9 @@ All detected console.log and print errors and warnings have been eliminated by t
 
 <!-- TOC --><a name="bugs"></a>
 ### Bugs
-Bugs have been fixed as they arose during smoke testing (see below).
+Bugs have been fixed as they arose during ongoing smoke testing in development (see below).
 
-As far as practicable, all Bugs are resolved separately and the Bug resolution is recorded in Git commits separately, prefixing the commit text with the string "BUG" followed by the bug number.
+As far as practicable, all bugs are resolved separately and the bug resolution is recorded in Git commits separately, prefixing the commit text with the string "BUG" followed by the bug's issue number.
 
 Where console.log and/or print statements were used in debugging processes, they will all include the text "DEBUG:" to ensure that they can be identified via a simple Worspace search and deleted as soon as they cease to be required.
 
@@ -600,6 +579,29 @@ All errors and warnings that appeared on consoles, terminals and logs during tes
 
 <!-- TOC --><a name="linting"></a>
 ## Linting
+### Linting the Python
+All python code (aside from standard and/or boiler-plate code provided by Django and similar) has been linted and corrected using flake8. For development purposes, I altered flake8's ini settings (in the ``.flake8`` file in the project's root directory) to allow lines of up to 119 characters during development. For the purposes of this project, however, I temporarily set the maximum line length to 79, as required by the guidelines, and as advised by my mentor.
+
+I saw fit to comment out several issues using the ``# noqa`` notation, mostly to do with lines slightly longer than 79 characters whose readability would have clearly disimproved rather than improved by the addition of a line break (these cases were mostly in the models.py and urls.py files), but also once for an unused import at the top of my stub tests.py file, which was not used in this iteration of the App's development cycle.
+
+While I strongly believe that the limit of 79 characters per line is excessively restrictive for python code readability in these days of larger, higher-resolution screens that often make much longer lines perfectly readable, I would be happy to reduce the standard number of characters per line to 79 if a client requires, especially if payment for my coding were being calculated according to the number of lines coded!
+
+<!-- TOC --><a name="linting-the-html-css-and-javascript"></a>
+### Linting the HTML, CSS and JavaScript
+I did the linting in my HTML code (and only my HTML code &ndash;not the code provided by Django, even if slightly altered by me&ndash as that could be checked visually) using djlint, which was very useful in finding orphan closing nodes, etc.. The small bit of configuration that I did can be seen in the .djlint file on the root directory.
+
+I did no linting on my fairly modestly sized css files, as it was easy enough to check their formatting and layout manually.
+
+Linting my JavaScript was a little more involved. I used ESLint, which required a good deal more configuration (and, among other complications, an update of GitPod's standard version of Node.js) to set up.
+
+You can see the configuration file on the project's root directory: ``.eslint.config.mjs``. You can see how I configured it by taking a look at the contents of that file. I enforced a 79-character line length here too, and formatting based on a four-character tab (I can't decide whether that or the equally standard two-char tab is preferable).
+
+I discovered a bug in the ESLint's default configuration: in one piece of code (``fetch .then .catch`` structure) the linter demanded one tab more than is appropriate on each line from the ``.then`` keyword until the end of the structure. I dealt with this issue with a baseball bat: I simply marked each affected line of code with an instruction for the linter to ignore them (``// eslint-disable-line``) &ndash;an ugly but exceptional solution.
+
+<!-- TOC --><a name="linting-config-files"></a>
+### Linting config files.
+The only reason I had to include the lint configuration files in my github repo was to facilitate the assessors of this project. I would normally simply keep such files locally on my personal coding notes and exclude them from the commit process by naming them in the .gitignore file. Given the choice, I would also allow lines much longer than the standard 79-80. I consider 119-character lines perfectly readable on modern screens.
+
 <!-- TOC --><a name="linting-the-python"></a>
 ### Linting the Python
 All python code (aside from standard and/or boiler-plate code provided by Django and similar) has been linted and corrected using flake8. For development purposes, I took the liberty of altering flake8's ini settings (in the ``.flake8`` file in the project's root directory) to allow lines of up to 119 characters during development. I believe that modern screen resolutions allow developers to read code in lines of more than 79 characters perfectly well and that overrestrictive line length rules can be counterproductive in terms of readability. 
@@ -608,7 +610,6 @@ I saw fit to comment out several issues using the ``# noqa`` notation, mostly to
 
 While I strongly believe that the limit of 79 characters per line is excessively restrictive, I would be happy to reduce the standard number of characters per line to 79 if a client requires, especially if payment for my coding were being calculated according to the number of lines coded!
 
-N.B.: It appears that the linting process has broken some of the functionality of the project. I'm afraid I haven't been able to resolve this unhandled error!  It affects the ability of the app to send a real email on completing the secure checkout process and (it seems) the display of the stored address of the user in the system on the checkout page.
 
 <!-- TOC --><a name="linting-the-html-css-and-javascript"></a>
 ### Linting the HTML, CSS and JavaScript
@@ -619,7 +620,7 @@ Time restrictions prevented me from linting in my HTML code. I had been intendin
 disable = attribute-lowercase
 ```
 
-I did no linting either on my fairly modestly sized css files, as it was easy enough to check their formatting and layout manually.
+I did no linting either on my fairly modestly sized custom-made base.css file, as it was easy enough to check their formatting and layout manually.
 
 Nor did I lint the JavaScript contained in the project. From experience, I can say that this process would have been a little more involved. The tool I generally use for this purpose is ESLint, which requires a good deal more configuration (and, among other complications, an update of GitPod's standard version of Node.js) to set up as compared the other two linters mentioned above.
 
@@ -695,41 +696,27 @@ Owing to lack of time and resources, I was unable to do any testing on any legac
 
 Consistent with Elisa's marketing conclulsions, the main pages of the App are, and will continue to be, optimised for use via a laptop or tablet. Of course, in the future, it will need to be adapted and improved for smartphone compatibility
 
-<!-- TOC --><a name="unresolved-technical-issues"></a>
-## Unresolved technical issues
-The major unresolved technical issue is the need for one of the central functions of the app to filter products by husbandry_system.  While I initially made good progress on it, it fell over late in development and I was forced to roll it back.
 
-<!-- TOC --><a name="other-unresolved-issues-and-future-development"></a>
-## Other unresolved issues and future development
-Most of the allauth templates have not yet been formatted to the site's livery!  A shortage of time is the only explanation for this. It is the highest priority for future development!
-Much of the formatting, either using bootstrap or custom css, is still very primitive, and too close to the walkthrough project for comfort. This will need to be sorted out speedily.
-As described above, linting was only completed for the python elements in the project. Time constraints prevented me from running linting on html/css elements and on the javascript portions of the code.
+<!-- TOC --><a name="unresolved-issues-and-future-development"></a>
+## Unresolved issues and future development
 
-<!-- TOC --><a name="other-design-questions"></a>
-## Other design questions
-
-<!-- TOC --><a name="hard-coded-data"></a>
-### Hard-coded data
-Some of the data used by the app is for reasons of simplicity hard-coded at the development stage. One example of such data is the list of shop types (TYPES_OF_SHOP) used by the program, which is hard-coded into the Models.py file. This list (and any other hard-coded data) may be integrated into an appropriate data table in a future iteration, depending on early user feedback.
+Much of the formatting, either using bootstrap or custom css, is still fairly primitive, and much of it is still too close to the walkthrough project for comfort. The site's responsiveness to user mouse movements still needs lots of work.
 
 <!-- TOC --><a name="help-functions-1"></a>
 ### Help functions
 I have not, and do not intend in any scheduled future, to implement any particular systematic user Help functionality behind the App in addition to Django's generic help features. I will concentrate on ensuring that the UX is as seamless as possible and that all UIs in the App are as intuitive and simple as humanly possible. In any rare cases where it seems that some explanation may be necessary, I may provide the user with information via discreet modal displays. Apart from immediate aesthetic considerations, I'll have to give further thought to the positioning of buttons, the greater use of modal windows, etc. (see above).
 
-<!-- TOC --><a name="text-resources-for-i10n-and-l10n"></a>
-### Text resources for i10n and l10n
-I do not anticipate any need to internationalise an App essentially designed for a single family. However, as I live in Germany, and many potential testers of my app will be far more comfortable using the German language, any practicable beta version will need to be localized for such users. When the time comes to take that step, I will leverage Django's built-in i18n and l10n capabilities in a later iteration of the App.
 
 <!-- TOC --><a name="credits-and-sources"></a>
 ## Credits and sources
 
 <!-- TOC --><a name="code-resources"></a>
 ### Code resources
-All the code is my own, though some of it is adapted from, or at least inspired by, some of the educational and industry sites listed below. As you will see, I have made very extensive use of the code provided in the Code Institute's learning resources and of the Django, Bootstrap materials, as well as other documentation provided to me by CI. Future iterations of this project will be making even more use of such sources.
+All the code is my own, though some of it is adapted from, or at least inspired by, some of the educational and industry sites listed below. As you will see, I have made very extensive use of the code provided in the *Code Institute*'s learning resources and of the Django, Bootstrap materials, as well as other documentation provided to me by CI. Future iterations of this project will very likely make even more use of such sources.
 
 <!-- TOC --><a name="external-technical-and-learning-resources"></a>
 ### External technical and learning resources
-Naturally enough, I have researched widely to find out how to implement a variety of features not explicitly included in Code Institute's learning materials, including several visits to the following sites:
+Naturally enough, I have researched widely to find out how to implement a variety of features not explicitly included in *Code Institute*'s learning materials, including several visits to the following sites:
 - [w3schools.com](https://w3schools.com/)
 - [stackoverflow.com](https://stackoverflow.com/)
 - [freecodecamp.org](https://www.freecodecamp.org/)
@@ -754,6 +741,6 @@ I used some code I found at [https://github.com/derlin/](https://derlin.github.i
 ### Other credits
 I would still like to thank my fellow students for their helpful suggestions and support, and in particular to my Student Care facilitator, for their inspiration, encouragement and help in combatting my recurring impostor syndrome! But mainly for their patience.
 
-Code Institute's excellent tutoring team also deserve a special mention for their help, which they have consistently given in an open, friendly, encouraging, knowledgeable and professional manner.
+*Code Institute*'s excellent tutoring team also deserve a special mention for their help, which they have consistently given in an open, friendly, encouraging, knowledgeable and professional manner.  The very same applies to my mentor, who provided me with timely, thoughtful and professional advice, perspective and priority lists.
 
 I also feel the need to thank you, my project assessor, for your patience and understanding of both the complexity, overambition and imperfections of this project. And for your sheer effort in putting yourself through the effort of reviewing this project, and especially its over-long readme file.

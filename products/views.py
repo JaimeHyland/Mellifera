@@ -8,7 +8,6 @@ from django.db.models.functions import Lower
 from django.utils.timezone import now
 
 from .models import Product, Category
-from husbandry_system.models import HusbandrySystem
 from pre_order.models import PreOrder
 from .forms import ProductForm
 
@@ -91,7 +90,6 @@ def product_detail(request, product_id):
 
     if request.method == "POST":
         action = request.POST.get("action")
-        print("DEBUG: action being sent: ", action)
 
         if action == "add_to_bag":
             bag = request.session.get("bag", {})
@@ -112,7 +110,6 @@ def product_detail(request, product_id):
                     product=product,
                     defaults={"quantity": quantity, "date_preordered": now()},
                 )
-
 
                 messages.success(request, f"Pre-order updated! Total quantity: {pre_order.quantity}.")
             except ValueError as e:

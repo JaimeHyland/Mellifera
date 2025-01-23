@@ -21,3 +21,7 @@ class PreOrder(models.Model):
 
     def __str__(self):
         return f"Pre-order: {self.product.name} pre-ordered by {self.user.username}"
+
+    class Meta:
+        verbose_name = "pre-order"
+        verbose_name_plural = "pre-orders"

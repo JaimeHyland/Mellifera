@@ -17,7 +17,6 @@ def pre_order_confirmation(request, product_id):
 
 def pre_ordered_products(request):
     pre_orders = PreOrder.objects.filter(user=request.user).select_related('product')
-    print("DEBUG: ", pre_orders)
 
     pre_ordered_product_ids = pre_orders.values_list('product_id', flat=True)
 
@@ -35,13 +34,11 @@ def pre_ordered_products(request):
 def change_pre_order_quantity(request, product_id):
     if request.method == 'POST':
         quantity = request.POST.get('quantity')
-        print("DEBUG: Quantity entered: ", quantity)
 
         if quantity and quantity.isdigit() and int(quantity) > 0:
             pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
             pre_order.quantity = int(quantity)
             pre_order.save()
-            print("DEBUG: Quantity recorded in DB: ", pre_order.quantity)
 
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -59,8 +56,6 @@ def delete_pre_order(request, product_id):
 
 def edit_pre_orders(request):
     pre_orders = PreOrder.objects.filter(user=request.user)
-    for pre_order in pre_orders:
-        print("DEBUG: Pre-order found:", pre_order)
 
     context = {
         'pre-orders': pre_orders,
