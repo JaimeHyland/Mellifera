@@ -16,8 +16,9 @@ class StaticViewSitemap(Sitemap):
         return reverse(item)
 
     # This rather involved rigmarole seems to be needed to get the sitemap view
-    # to use the site domain in the settings file without concatenating "https//example.com"!
-    # It's a workaround. There is almost certainly be a better way!
+    # to use the site domain in the settings file without concatenating
+    # "https//example.com"! It's a workaround. There is almost certainly
+    # a better way!
     def get_urls(self, site=None, **kwargs):
         urls = super().get_urls(site=site, **kwargs)
         for url in urls:

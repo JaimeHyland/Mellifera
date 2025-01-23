@@ -18,9 +18,10 @@ class PreOrder(models.Model):
 
     current = models.BooleanField(default=True)
 
-
     def __str__(self):
-        return f"Pre-order: {self.product.name} pre-ordered by {self.user.username}"
+        return f"Pre-order: {
+            self.product.name
+        } pre-ordered by {self.user.username}"
 
     class Meta:
         verbose_name = "pre-order"

@@ -31,9 +31,26 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
-    path('husbandry_system/', include('husbandry_system.urls')),
-    path('set-husbandry-system/', set_husbandry_system, name='set_husbandry_system'),
-    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    path(
+        'husbandry_system/',
+        include('husbandry_system.urls')
+    ),
+    path(
+        'set-husbandry-system/',
+        set_husbandry_system,
+        name='set_husbandry_system'
+    ),
+    path(
+        'robots.txt',
+        TemplateView.as_view(
+            template_name='robots.txt',
+            content_type='text/plain'
+        )
+    ),
     path('newsletter_signup/', newsletter_signup, name='newsletter_signup'),
-    path("verify-subscription/<str:token>/", verify_subscription, name="verify_subscription"),
+    path(
+        "verify-subscription/<str:token>/",
+        verify_subscription,
+        name="verify_subscription"
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

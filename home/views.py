@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from husbandry_system.models import HusbandrySystem
-from products.models import Product
 
 from django.shortcuts import redirect
 
@@ -18,6 +16,7 @@ def set_husbandry_system(request):
             else:
                 request.session.pop('husbandry_system', '')
     return redirect(request.META.get('HTTP_REFERER', 'home:index'))
+
 
 def index(request):
     return render(request, 'home/index.html')

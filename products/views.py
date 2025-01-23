@@ -1,5 +1,3 @@
-import logging
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -25,11 +23,10 @@ def product_list(request):
         products = Product.objects.filter(
             current=True
             ).filter(
-            Q(husbandry_system__name=selected_husbandry_system)| Q(husbandry_system__isnull=True)
-        )
+                Q(husbandry_system__name = selected_husbandry_system)| Q(husbandry_system__isnull=True)  # noqa
+            )
     else:
         products = Product.objects.filter(current=True)
-
 
     if request.GET:
         if 'sort' in request.GET:
@@ -54,10 +51,13 @@ def product_list(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You haven't created any search criteria for your search!")
+                messages.error(
+                    request,
+                    "You haven't created any search criteria for your search!"
+                )
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)  # noqa
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -79,12 +79,16 @@ def product_detail(request, product_id):
     pre_ordered_quantity = 0
     pre_order_date = None
 
-    try:
-        pre_order = PreOrder.objects.get(user=request.user, product=product)
-        pre_ordered_quantity = pre_order.quantity
-        pre_order_date = pre_order.date_preordered
-    
-    except PreOrder.DoesNotExist:
+    if request.user.is_authenticated:
+        try:
+            pre_order = PreOrder.objects.get(user=request.user, product=product)
+            pre_ordered_quantity = pre_order.quantity
+            pre_order_date = pre_order.date_preordered
+
+        except PreOrder.DoesNotExist:
+            pre_ordered_quantity = 0
+            pre_order_date = None
+    else:
         pre_ordered_quantity = 0
         pre_order_date = None
 
@@ -95,7 +99,7 @@ def product_detail(request, product_id):
             bag = request.session.get("bag", {})
             bag[str(product.id)] = bag.get(str(product.id), 0) + 1
             request.session["bag"] = bag
-            
+
             return redirect("view_bag")
 
         elif action == "pre_order":
@@ -111,36 +115,51 @@ def product_detail(request, product_id):
                     defaults={"quantity": quantity, "date_preordered": now()},
                 )
 
-                messages.success(request, f"Pre-order updated! Total quantity: {pre_order.quantity}.")
+                messages.success(
+                    request,
+                    f"Pre-order updated! Total quantity: {pre_order.quantity}."
+                )
             except ValueError as e:
                 messages.error(request, str(e))
-            except Exception as e:
-                messages.error(request, "An error occurred while processing your pre-order.")
-                
+            except Exception:
+                messages.error(
+                    request,
+                    "An error occurred while processing your pre-order."
+                )
+
             return redirect('pre_order_confirmation', product_id=product_id)
-    
+
     context = {
         "product": product,
         "pre_ordered_quantity": pre_ordered_quantity,
         "pre_order_date": pre_order_date,
     }
-    
+
     return render(request, "products/product_detail.html", context)
-    
+
 
 @login_required
 def add_product(request):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Mellifera staff.")
+        messages.error(
+            request,
+            "This page is only accessible to Mellifera staff."
+        )
         return redirect(reverse('home'))
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'You have successfully added a new product to the range.')
+            messages.success(
+                request,
+                'You have successfully added a new product to the range.'
+            )
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Could not add new product. Please make sure your form entries are valid.')
+            messages.error(
+                request,
+                'Could not add new product. Please make sure your form entries are valid.'  # noqa
+            )
     else:
         form = ProductForm()
 
@@ -155,7 +174,10 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Mellifera staff.")
+        messages.error(
+            request,
+            "This page is only accessible to Mellifera staff."
+        )
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -163,10 +185,16 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You have successfully modified the product record!')
+            messages.success(
+                request,
+                'You have successfully modified the product record!'
+            )
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed attempt to update product. Please check that your entries are valid!')
+            messages.error(
+                request,
+                'Failed attempt to update product. Please check that your entries are valid!'  # noqa
+            )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are currently editing {product.name}.')
@@ -183,10 +211,16 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, "This page is only accessible to Mellifera staff.")
+        messages.error(
+            request,
+            "This page is only accessible to Mellifera staff."
+        )
         return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     del_product_name = product.name
     product.delete()
-    messages.info(request, f'You have successfully deleted the {del_product_name} product')
+    messages.info(
+        request,
+        f'You have successfully deleted the {del_product_name} product'
+    )
     return redirect(reverse('products'))

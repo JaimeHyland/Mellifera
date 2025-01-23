@@ -1,78 +1,6 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
-- [Mellifera](#mellifera)
-   * [How the idea came about](#how-the-idea-came-about)
-      + [The initial proposition](#the-initial-proposition)
-      + [Elise's thought processes after her chats with Tomáš.](#elises-thought-processes-after-her-chats-with-tomá)
-   * [Initial design](#initial-design)
-   * [Product range & Marketing](#product-range-marketing)
-      + [Face-to-face 'interviews'](#face-to-face-interviews)
-      + [Phone calls and e-mails with Tomáš](#phone-calls-and-e-mails-with-tomá)
-      + [Other consultations](#other-consultations)
-   * [Elise's initial marketing conclusions](#elises-initial-marketing-conclusions)
-      + [Marketing-relevant measures for immediate action](#marketing-relevant-measures-for-immediate-action)
-      + [... and possibly for later](#-and-possibly-for-later)
-      + [CEO and the like](#ceo-and-the-like)
-   * [Design of website's logic and structure](#design-of-websites-logic-and-structure)
-      + [From the user-shopper' point of view](#from-the-user-shopper-point-of-view)
-      + [From the registered user's point of view](#from-the-registered-users-point-of-view)
-      + [From the superuser point of view](#from-the-superuser-point-of-view)
-      + [Database design](#database-design)
-      + [Frameworks](#frameworks)
-      + [Bootstrap](#bootstrap)
-      + [Django](#django)
-      + [jQuery](#jquery)
-   * [Setting up the environment](#setting-up-the-environment)
-   * [Creating the new database](#creating-the-new-database)
-      + [The development DB](#the-development-db)
-      + [The deployed DB](#the-deployed-db)
-      + [Registering for Heroku and using it](#registering-for-heroku-and-using-it)
-         - [Initial signup](#initial-signup)
-         - [Setting up the Heroku app](#setting-up-the-heroku-app)
-      + [Registering for Amazon AWS and using its services](#registering-for-amazon-aws-and-using-its-services)
-         - [Signing up](#signing-up)
-         - [Creating a bucket, a user and a user group](#creating-a-bucket-a-user-and-a-user-group)
-      + [Registering for Stripe and using it](#registering-for-stripe-and-using-it)
-   * [Required features of the project](#required-features-of-the-project)
-      + [Original custom models](#original-custom-models)
-      + [UI elements to delete records for CRUD](#ui-elements-to-delete-records-for-crud)
-      + [Agile methodology](#agile-methodology)
-      + [CEO](#ceo)
-      + [Social media](#social-media)
-      + [Custom 404 page](#custom-404-page)
-      + [Newsletter signup option](#newsletter-signup-option)
-      + [Ecommerce strategy/business model](#ecommerce-strategybusiness-model)
-      + [DEBUG mode](#debug-mode)
-      + [User registration, logging in and logging out, and purchasing rules](#user-registration-logging-in-and-logging-out-and-purchasing-rules)
-      + [Testing logs](#testing-logs)
-      + [Visibility of code-related environments](#visibility-of-code-related-environments)
-   * [i10n and l10n](#i10n-and-l10n)
-   * [Help functions](#help-functions)
-   * [Manual testing](#manual-testing)
-      + [Robustness testing; invalid user entries](#robustness-testing-invalid-user-entries)
-      + [Features testing](#features-testing)
-      + [Device compatibility and responsiveness](#device-compatibility-and-responsiveness)
-   * [Bug fixes, warning resolution and linting](#bug-fixes-warning-resolution-and-linting)
-      + [Bugs](#bugs)
-      + [Warnings appearing on consoles, terminals and logs](#warnings-appearing-on-consoles-terminals-and-logs)
-   * [Linting](#linting)
-      + [Linting the Python](#linting-the-python)
-      + [Linting the HTML, CSS and JavaScript](#linting-the-html-css-and-javascript)
-      + [Browser and device compatibility](#browser-and-device-compatibility)
-   * [Unresolved technical issues](#unresolved-technical-issues)
-   * [Other unresolved issues and future development](#other-unresolved-issues-and-future-development)
-   * [Other design questions](#other-design-questions)
-      + [Hard-coded data](#hard-coded-data)
-      + [Help functions](#help-functions-1)
-      + [Text resources for i10n and l10n](#text-resources-for-i10n-and-l10n)
-   * [Credits and sources](#credits-and-sources)
-      + [Code resources](#code-resources)
-      + [External technical and learning resources](#external-technical-and-learning-resources)
-      + [Other credits](#other-credits)
-
-<!-- TOC end -->
+[TOC]
 
 <!-- TOC --><a name="mellifera"></a>
 # Mellifera
@@ -527,8 +455,20 @@ The DEBUG mode of the program will be guaranteed to be false in its deployed sta
 Users will be able to register, and log in and out of the app via a verification system based on the walkthrough project. They will be able to buy products either as logged-in registered users or as guest visitors. 
 
 <!-- TOC --><a name="testing-logs"></a>
-### Testing logs
-This readme.md file includes a detailed account of manual testing , as well as a short account of linting (code validation) issues found and resolved.
+### Manual testing
+
+The following testing has been completed in the deployed environment (for unregistered user, logged-in users, and superusers, where relevant)
+- Complete testing of login, logout and signup templates
+- Test menu visibility (logged out, logged in, superuser)
+- Complete functional testing on *husbandry system filter*, search and menu items
+- Verify link to Facebook page and 404 page
+- Test superuser functions: what they can do
+- Logged in users, what they can do, what they can't
+- Site guests: what they can do, what they can't
+- Functional testing *Pre-orders*
+- Functional testing *Newsletter subscription*
+- Functional testing bag/prices
+- Test purchase
 
 <!-- TOC --><a name="visibility-of-code-related-environments"></a>
 ### Visibility of code-related environments
@@ -579,29 +519,6 @@ All errors and warnings that appeared on consoles, terminals and logs during tes
 
 <!-- TOC --><a name="linting"></a>
 ## Linting
-### Linting the Python
-All python code (aside from standard and/or boiler-plate code provided by Django and similar) has been linted and corrected using flake8. For development purposes, I altered flake8's ini settings (in the ``.flake8`` file in the project's root directory) to allow lines of up to 119 characters during development. For the purposes of this project, however, I temporarily set the maximum line length to 79, as required by the guidelines, and as advised by my mentor.
-
-I saw fit to comment out several issues using the ``# noqa`` notation, mostly to do with lines slightly longer than 79 characters whose readability would have clearly disimproved rather than improved by the addition of a line break (these cases were mostly in the models.py and urls.py files), but also once for an unused import at the top of my stub tests.py file, which was not used in this iteration of the App's development cycle.
-
-While I strongly believe that the limit of 79 characters per line is excessively restrictive for python code readability in these days of larger, higher-resolution screens that often make much longer lines perfectly readable, I would be happy to reduce the standard number of characters per line to 79 if a client requires, especially if payment for my coding were being calculated according to the number of lines coded!
-
-<!-- TOC --><a name="linting-the-html-css-and-javascript"></a>
-### Linting the HTML, CSS and JavaScript
-I did the linting in my HTML code (and only my HTML code &ndash;not the code provided by Django, even if slightly altered by me&ndash as that could be checked visually) using djlint, which was very useful in finding orphan closing nodes, etc.. The small bit of configuration that I did can be seen in the .djlint file on the root directory.
-
-I did no linting on my fairly modestly sized css files, as it was easy enough to check their formatting and layout manually.
-
-Linting my JavaScript was a little more involved. I used ESLint, which required a good deal more configuration (and, among other complications, an update of GitPod's standard version of Node.js) to set up.
-
-You can see the configuration file on the project's root directory: ``.eslint.config.mjs``. You can see how I configured it by taking a look at the contents of that file. I enforced a 79-character line length here too, and formatting based on a four-character tab (I can't decide whether that or the equally standard two-char tab is preferable).
-
-I discovered a bug in the ESLint's default configuration: in one piece of code (``fetch .then .catch`` structure) the linter demanded one tab more than is appropriate on each line from the ``.then`` keyword until the end of the structure. I dealt with this issue with a baseball bat: I simply marked each affected line of code with an instruction for the linter to ignore them (``// eslint-disable-line``) &ndash;an ugly but exceptional solution.
-
-<!-- TOC --><a name="linting-config-files"></a>
-### Linting config files.
-The only reason I had to include the lint configuration files in my github repo was to facilitate the assessors of this project. I would normally simply keep such files locally on my personal coding notes and exclude them from the commit process by naming them in the .gitignore file. Given the choice, I would also allow lines much longer than the standard 79-80. I consider 119-character lines perfectly readable on modern screens.
-
 <!-- TOC --><a name="linting-the-python"></a>
 ### Linting the Python
 All python code (aside from standard and/or boiler-plate code provided by Django and similar) has been linted and corrected using flake8. For development purposes, I took the liberty of altering flake8's ini settings (in the ``.flake8`` file in the project's root directory) to allow lines of up to 119 characters during development. I believe that modern screen resolutions allow developers to read code in lines of more than 79 characters perfectly well and that overrestrictive line length rules can be counterproductive in terms of readability. 
@@ -700,7 +617,7 @@ Consistent with Elisa's marketing conclulsions, the main pages of the App are, a
 <!-- TOC --><a name="unresolved-issues-and-future-development"></a>
 ## Unresolved issues and future development
 
-Much of the formatting, either using bootstrap or custom css, is still fairly primitive, and much of it is still too close to the walkthrough project for comfort. The site's responsiveness to user mouse movements still needs lots of work.
+Much of the formatting, either using bootstrap or custom css, is still fairly primitive, and much of it is still too close to the walkthrough project for comfort. The site's responsiveness to user mouse movements still needs lots of work.  The styling on the allauth templates is also pretty limited.
 
 <!-- TOC --><a name="help-functions-1"></a>
 ### Help functions

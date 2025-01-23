@@ -1,17 +1,17 @@
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from .forms import NewsletterSignupForm
 from .models import NewsletterSignup
 from django.conf import settings
 
+
 def newsletter_signup(request):
     if request.method == 'POST':
         form = NewsletterSignupForm(request.POST)
         if form.is_valid():
             subscriber, created = NewsletterSignup.objects.get_or_create(
-            email=form.cleaned_data['email']
+                email=form.cleaned_data['email']
             )
             if created or not subscriber.verified:
                 # Send verification email
@@ -20,13 +20,21 @@ def newsletter_signup(request):
                 )
                 send_mail(
                     "Verify Your Newsletter Subscription",
-                    f"Click the link to verify your subscription: {verification_url}",
+                    f"Click the link to verify your subscription: {
+                        verification_url
+                    }",
                     settings.DEFAULT_FROM_EMAIL,
                     [subscriber.email],
                 )
-                messages.success(request, "Check your email to verify your subscription.")
+                messages.success(
+                    request,
+                    "Check your email to verify your subscription."
+                )
             else:
-                messages.info(request, "You are already subscribed and your email is verified!")
+                messages.info(
+                    request,
+                    "You are already subscribed and your email is verified!"
+                )
             return redirect("home")
         else:
             messages.error(request, "Invalid email address. Please try again.")
@@ -41,6 +49,14 @@ def verify_subscription(request, token):
     if not subscriber.verified:
         subscriber.verified = True
         subscriber.save()
-        return render(request, "newsletter/verification_success.html", {"status": "verified"})
+        return render(
+            request,
+            "newsletter/verification_success.html",
+            {"status": "verified"}
+        )
     else:
-        return render(request, "newsletter/verification_success.html", {"status": "already_verified"})
+        return render(
+            request,
+            "newsletter/verification_success.html",
+            {"status": "already_verified"}
+        )

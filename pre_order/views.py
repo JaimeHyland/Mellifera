@@ -6,7 +6,11 @@ from products.models import Product
 
 
 def pre_order_confirmation(request, product_id):
-    pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+    pre_order = get_object_or_404(
+        PreOrder,
+        product_id=product_id,
+        user=request.user
+    )
     quantity = pre_order.quantity
     context = {
         'product': pre_order.product,
@@ -16,7 +20,9 @@ def pre_order_confirmation(request, product_id):
 
 
 def pre_ordered_products(request):
-    pre_orders = PreOrder.objects.filter(user=request.user).select_related('product')
+    pre_orders = PreOrder.objects.filter(
+        user=request.user
+    ).select_related('product')
 
     pre_ordered_product_ids = pre_orders.values_list('product_id', flat=True)
 
@@ -31,12 +37,19 @@ def pre_ordered_products(request):
 
     return render(request, 'pre_order/edit_pre_orders.html', context)
 
+
 def change_pre_order_quantity(request, product_id):
     if request.method == 'POST':
         quantity = request.POST.get('quantity')
 
-        if quantity and quantity.isdigit() and int(quantity) > 0:
-            pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+        if quantity and quantity.isdigit() and int(
+            quantity
+        ) > 0:
+            pre_order = get_object_or_404(
+                PreOrder,
+                product_id=product_id,
+                user=request.user
+            )
             pre_order.quantity = int(quantity)
             pre_order.save()
 
@@ -45,9 +58,16 @@ def change_pre_order_quantity(request, product_id):
 
 def delete_pre_order(request, product_id):
     if request.method == 'POST':
-        pre_order = get_object_or_404(PreOrder, product_id=product_id, user=request.user)
+        pre_order = get_object_or_404(
+            PreOrder,
+            product_id=product_id,
+            user=request.user
+        )
         pre_order.delete()
-        messages.success(request, "Your pre-order has successfully been deleted.")
+        messages.success(
+            request,
+            "Your pre-order has successfully been deleted."
+        )
     else:
         messages.error(request, "Invalid request method.")
 
@@ -65,7 +85,7 @@ def edit_pre_orders(request):
 
 def pre_order_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    
+
     try:
         pre_order = PreOrder.objects.get(user=request.user, product=product)
         pre_ordered_quantity = pre_order.quantity
@@ -75,9 +95,9 @@ def pre_order_detail(request, product_id):
         pre_ordered_quantity = 0
         pre_order_date = None
 
-    if request.method =="POST":
+    if request.method == "POST":
         action = request.POST.get("action")
-    
+
         if action == "pre_order":
             if not pre_order:
                 PreOrder
@@ -99,11 +119,11 @@ def pre_order_detail(request, product_id):
                 date_preordered=now(),
             )
             return redirect("pre_order_confirmation")
-    
+
     context = {
         "product": product,
         "pre_ordered_quantity": pre_ordered_quantity,
         "pre_order_date": pre_order_date,
     }
-    
+
     return render(request, "pre_order/pre_order_detail.html", context)

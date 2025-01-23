@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import PreOrder
 
+
 @admin.register(PreOrder)
 class PreOrderAdmin(admin.ModelAdmin):
     list_display = ('user', 'product', 'quantity', 'date_preordered')
