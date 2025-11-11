@@ -103,9 +103,6 @@ I believe that completing such a project would satisfy the requirements listed f
 
 *Traditional beehives (using the Langstroth 10-frame system) on an autumn evening*
 
-
-[TOC]
-
 <!-- TOC --><a name="how-the-idea-came-about"></a>
 ## How the idea came about
 
