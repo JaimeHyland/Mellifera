@@ -45,7 +45,7 @@
       + [User registration, logging in and logging out, and purchasing rules](#user-registration-logging-in-and-logging-out-and-purchasing-rules)
       + [Manual testing](#manual-testing)
       + [Visibility of code-related environments](#visibility-of-code-related-environments)
-   * [i10n and l10n](#i10n-and-l10n)
+   * [i18n and l10n](#i18n-and-l10n)
    * [Help functions](#help-functions)
    * [Manual testing](#manual-testing-1)
       + [Django's effect on the need for robustness testing; invalid user entries](#djangos-effect-on-the-need-for-robustness-testing-invalid-user-entries)
@@ -565,7 +565,7 @@ The following testing has been completed in the deployed environment (for unregi
 ### Visibility of code-related environments
 All relevant environments used to create my eventual future project will be made available publicly to allow the assessor(s) to do their work. That will include my GitHub repository and my project board created on my GitHub environment. The actual site will be fully deployed and available at the URL created by Heroku.
 
-<!-- TOC --><a name="i10n-and-l10n"></a>
+<!-- TOC --><a name="i18n-and-l10n"></a>
 ## i10n and l10n
 No internationalisation or localisation work will be done at this stage of the project.
 
